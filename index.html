@@ -1,0 +1,2897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lull // Sleep, Nap & Wake Planner</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<meta name="theme-color" content="#07091a" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#eef3fe" media="(prefers-color-scheme: light)">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Lull">
+<style>
+  :root {
+    color-scheme: light dark;
+    --serif: "Iowan Old Style", "Georgia", "Times New Roman", serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  /* ── Dark theme (default / night-sky palette) ── */
+  :root, [data-theme="dark"] {
+    --bg: #07091a;
+    --bg-glow: radial-gradient(ellipse at 50% 0%, rgba(124, 134, 255, 0.18) 0%, transparent 65%);
+    --card: #0f1328;
+    --card-hover: #131830;
+    --card-line: #1e2540;
+    --ink: #eef1fb;
+    --ink-dim: #8b93b8;
+    --moon: #c9d2ff;
+    --moon-soft: rgba(201, 210, 255, 0.1);
+    --amber: #f5b95e;
+    --amber-soft: rgba(245, 185, 94, 0.08);
+    --rem: #7c86ff;
+    --green: #4fcca0;
+    --accent-1: #a9c4fb;
+    --accent-2: #5b57d6;
+    --shadow-ambient: 0 1px 2px rgba(0,0,0,0.04), 0 8px 24px -12px rgba(20, 24, 60, 0.45);
+    --rec-text: #fde9c8;
+    --rec-text-strong: #ffffff;
+  }
+
+  /* ── Light theme (from palette: icy blue → periwinkle → indigo) ── */
+  [data-theme="light"] {
+    --bg: #eef3fe;
+    --bg-glow: radial-gradient(ellipse at 50% 0%, rgba(91, 87, 214, 0.10) 0%, transparent 65%);
+    --card: #ffffff;
+    --card-hover: #f4f7ff;
+    --card-line: #d8e2fa;
+    --ink: #1c2140;
+    --ink-dim: #6b7398;
+    --moon: #5b57d6;
+    --moon-soft: rgba(91, 87, 214, 0.08);
+    --amber: #e2954a;
+    --amber-soft: rgba(226, 149, 74, 0.10);
+    --rem: #7c86ff;
+    --green: #2fa47e;
+    --accent-1: #a9c4fb;
+    --accent-2: #5b57d6;
+    --shadow-ambient: 0 1px 2px rgba(30,40,90,0.05), 0 12px 28px -16px rgba(91,87,214,0.22);
+    --rec-text: #5c4322;
+    --rec-text-strong: #1c2140;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--sans);
+    background-color: var(--bg);
+    background-image: var(--bg-glow);
+    color: var(--ink);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 24px;
+  }
+
+  /* ── Starfield canvas ── */
+  #starfield {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.65;
+  }
+
+  .app {
+    width: 100%;
+    max-width: 460px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── Header ── */
+  header {
+    text-align: center;
+    margin-bottom: 22px;
+  }
+
+  .stars-svg {
+    width: 100%;
+    height: 72px;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .star {
+    fill: var(--moon);
+    transform-origin: center;
+    animation: twinkle 4s ease-in-out infinite;
+  }
+  .star:nth-child(2) { animation-delay: 0.6s; }
+  .star:nth-child(3) { animation-delay: 1.4s; }
+  .star:nth-child(4) { animation-delay: 2.1s; }
+  .star:nth-child(5) { animation-delay: 0.3s; }
+  .star:nth-child(6) { animation-delay: 2.8s; }
+  .star:nth-child(7) { animation-delay: 1.0s; }
+  .star:nth-child(8) { animation-delay: 3.2s; }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.2; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1); }
+  }
+
+  .moon-path {
+    stroke: var(--moon);
+    stroke-width: 1.5;
+    fill: rgba(201, 210, 255, 0.07);
+    filter: drop-shadow(0 0 8px rgba(201, 210, 255, 0.3));
+  }
+
+  header h1 {
+    font-family: var(--serif);
+    font-size: 1.875rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    text-shadow: 0 0 40px rgba(124, 134, 255, 0.5);
+  }
+
+  header p.tagline {
+    font-size: 0.8125rem;
+    color: var(--ink-dim);
+    margin-top: 4px;
+    letter-spacing: 0.02em;
+  }
+
+  /* Moon phase chip */
+  .moon-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 10px;
+    padding: 4px 10px;
+    border: 1px solid var(--card-line);
+    border-radius: 20px;
+    background: var(--card);
+    font-size: 0.7rem;
+    color: var(--ink-dim);
+    letter-spacing: 0.04em;
+  }
+
+  .moon-chip .phase-emoji { font-size: 0.85rem; }
+
+  /* ── Moon calendar (relocated to bottom of page) ── */
+  .moon-calendar-section {
+    text-align: center;
+    margin-bottom: 18px;
+  }
+
+  .moon-calendar-section .section-heading { text-align: center; }
+
+  .moon-calendar-section .moon-chip { margin-top: 0; }
+
+  /* ── Motto (quote-style, inspired by Ravn's testimonial line) ── */
+  .motto {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 0.8125rem;
+    color: var(--ink-dim);
+    letter-spacing: 0.01em;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--card-line);
+    display: inline-block;
+  }
+
+  .motto .weak { opacity: 0.65; }
+  .motto .strong {
+    color: var(--moon);
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  /* ── Scrolling word marquee (inspired by Ravn's category strip) ── */
+  .marquee {
+    margin: 16px -24px 18px;
+    padding: 9px 0;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    border-top: 1px solid var(--card-line);
+    border-bottom: 1px solid var(--card-line);
+    background: var(--card);
+  }
+
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee-scroll 32s linear infinite;
+  }
+
+  .marquee:hover .marquee-track,
+  .marquee:focus-within .marquee-track {
+    animation-play-state: paused;
+  }
+
+  .marquee-track span {
+    flex: none;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-dim);
+    padding: 0 14px;
+    white-space: nowrap;
+  }
+
+  .marquee-track span.dot { color: var(--moon); opacity: 0.6; padding: 0 4px; }
+
+  @keyframes marquee-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track { animation: none; }
+  }
+
+  /* ── Mode toggle with sliding pill ── */
+  .mode-toggle {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background: var(--card);
+    border: 1px solid var(--card-line);
+    border-radius: 14px;
+    padding: 4px;
+    margin-bottom: 18px;
+  }
+
+  .mode-pill {
+    position: absolute;
+    top: 4px;
+    bottom: 4px;
+    background: var(--moon-soft);
+    border: 1px solid rgba(201, 210, 255, 0.18);
+    border-radius: 10px;
+    transition: left 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), width 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+    pointer-events: none;
+    will-change: left, width;
+  }
+
+  .mode-toggle button {
+    font-family: var(--sans);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    color: var(--ink-dim);
+    background: transparent;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 0;
+    cursor: pointer;
+    transition: color 0.2s;
+    position: relative;
+    z-index: 1;
+  }
+
+  .mode-toggle button.active { color: var(--moon); }
+
+  /* ── Card ── */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--card-line);
+    border-radius: 18px;
+    padding: 22px;
+    margin-bottom: 18px;
+  }
+
+  .card label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--ink-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 12px;
+    text-align: center;
+  }
+
+  .time-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+  }
+
+  input[type="time"] {
+    background: var(--bg);
+    border: 1px solid var(--card-line);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 2rem;
+    font-weight: 600;
+    padding: 10px 18px;
+    border-radius: 12px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    color-scheme: dark;
+    width: 100%;
+    max-width: 200px;
+    text-align: center;
+  }
+
+  input[type="time"]:focus {
+    border-color: var(--moon);
+    box-shadow: 0 0 0 3px rgba(201, 210, 255, 0.08);
+  }
+
+  .nap-info {
+    text-align: center;
+    padding: 6px 0 2px;
+  }
+
+  .nap-now { font-size: 0.9375rem; color: var(--ink-dim); }
+
+  .nap-now strong {
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    display: block;
+    margin-top: 4px;
+  }
+
+  /* ── Mood selector ── */
+  .mood-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid var(--card-line);
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .mood-label {
+    font-size: 0.7rem;
+    color: var(--ink-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  .mood-chips {
+    display: flex;
+    gap: 6px;
+  }
+
+  .mood-chip {
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: 1px solid var(--card-line);
+    background: transparent;
+    color: var(--ink-dim);
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+
+  .mood-chip:hover { border-color: rgba(201, 210, 255, 0.3); color: var(--ink); }
+
+  .mood-chip.active {
+    background: var(--moon-soft);
+    border-color: rgba(201, 210, 255, 0.3);
+    color: var(--moon);
+  }
+
+  /* ── Now chip ── */
+  .now-chip {
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--ink-dim);
+    margin-top: 14px;
+    letter-spacing: 0.02em;
+  }
+
+  .now-chip strong { color: var(--ink); font-weight: 600; }
+
+  /* ── Advanced panel ── */
+  .adv-toggle {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid var(--card-line);
+    background: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    color: var(--ink-dim);
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+
+  .adv-toggle:hover { color: var(--ink); }
+
+  .adv-toggle .chev {
+    font-size: 0.8125rem;
+    transition: transform 0.25s;
+  }
+
+  .adv-toggle[aria-expanded="true"] .chev { transform: rotate(180deg); }
+
+  .advanced-panel { display: none; flex-direction: column; gap: 16px; }
+  .advanced-panel.open { display: flex; margin-top: 16px; }
+
+  .buffer-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .buffer-row label {
+    margin: 0;
+    text-align: left;
+    font-size: 0.75rem;
+    color: var(--ink-dim);
+    text-transform: none;
+    letter-spacing: 0;
+    flex-shrink: 0;
+  }
+
+  .buffer-row input[type="range"] {
+    flex: 1;
+    accent-color: var(--moon);
+    height: 4px;
+  }
+
+  .buffer-value {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--ink);
+    min-width: 52px;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ── Recommendation ── */
+  .recommendation {
+    background: linear-gradient(135deg, rgba(245, 185, 94, 0.07) 0%, rgba(124, 134, 255, 0.06) 100%);
+    border: 1px solid rgba(245, 185, 94, 0.2);
+    border-radius: 18px;
+    padding: 20px;
+    margin-bottom: 18px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.4s;
+  }
+
+  .recommendation::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: linear-gradient(to bottom, var(--amber), var(--rem));
+    border-radius: 3px 0 0 3px;
+  }
+
+  .rec-tag {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: var(--amber);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .rec-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--rec-text);
+  }
+
+  .rec-text strong { color: var(--rec-text-strong); }
+
+  .rec-foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(245, 185, 94, 0.15);
+  }
+
+  .caffeine-tip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.75rem;
+    color: var(--rec-text);
+    opacity: 0.9;
+  }
+  .caffeine-tip .icon { width: 0.95em; height: 0.95em; }
+
+  .rec-actions {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+  }
+
+  .reminder-btn {
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--amber);
+    background: rgba(245, 185, 94, 0.1);
+    border: 1px solid rgba(245, 185, 94, 0.28);
+    border-radius: 10px;
+    padding: 7px 12px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, transform 0.15s;
+    white-space: nowrap;
+  }
+
+  .reminder-btn:hover { background: rgba(245, 185, 94, 0.2); transform: translateY(-1px); }
+
+  .reminder-btn.active {
+    background: var(--amber);
+    color: #1a1306;
+    border-color: var(--amber);
+  }
+
+  /* Ambient & breathe icon buttons */
+  .icon-btn {
+    font-size: 0.875rem;
+    background: var(--moon-soft);
+    border: 1px solid var(--card-line);
+    color: var(--ink-dim);
+    border-radius: 9px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.15s;
+    flex-shrink: 0;
+  }
+
+  .icon-btn:hover { background: var(--moon-soft); border-color: var(--moon); color: var(--moon); transform: translateY(-1px); }
+
+  .icon-btn.active {
+    background: var(--moon-soft);
+    border-color: var(--moon);
+    color: var(--moon);
+  }
+
+  /* ── 24-hour dial ── */
+  .dial-card { text-align: center; }
+  .dial-card .section-heading { text-align: center; }
+
+  .dial-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 4px;
+  }
+
+  .dial-wrap svg { width: 220px; height: 220px; display: block; }
+
+  .dial-track { fill: none; stroke: var(--card-line); stroke-width: 2; }
+
+  .dial-tick { stroke: var(--card-line); stroke-width: 1; }
+  .dial-tick.major { stroke: var(--ink-dim); stroke-width: 1.5; opacity: 0.7; }
+
+  .dial-label {
+    font-size: 8.5px;
+    fill: var(--ink-dim);
+    font-family: var(--sans);
+  }
+
+  .dial-arc {
+    fill: none;
+    stroke-width: 6;
+    stroke-linecap: round;
+  }
+
+  .dial-arc-glow {
+    fill: none;
+    stroke-width: 10;
+    stroke-linecap: round;
+    opacity: 0.2;
+    filter: blur(3px);
+  }
+
+  .dial-now-pulse {
+    fill: none;
+    stroke: var(--moon);
+    stroke-width: 2;
+    opacity: 0.7;
+    animation: pulse-ring 2.4s ease-out infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  @keyframes pulse-ring {
+    0% { r: 4; opacity: 0.7; }
+    100% { r: 17; opacity: 0; }
+  }
+
+  .dial-now { fill: var(--moon); }
+  .dial-icon-bg { fill: var(--card); }
+  .dial-icon { font-size: 13px; text-anchor: middle; dominant-baseline: central; }
+
+  .dial-center-value {
+    font-family: var(--serif);
+    font-size: 21px;
+    font-weight: 600;
+    fill: var(--ink);
+    text-anchor: middle;
+  }
+
+  .dial-center-label {
+    font-size: 9px;
+    fill: var(--ink-dim);
+    text-anchor: middle;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* ── Timeline ── */
+  .section-heading {
+    font-size: 0.75rem;
+    color: var(--ink-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+
+  .timeline-base-unused { display: flex; flex-direction: column; gap: 10px; }
+
+  .timeline-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--card);
+    border: 1px solid var(--card-line);
+    padding: 14px 18px;
+    border-radius: 14px;
+    transition: border-color 0.2s, background 0.2s, box-shadow 0.3s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .timeline-item:hover {
+    border-color: rgba(201, 210, 255, 0.3);
+    background: var(--card-hover);
+  }
+
+  .timeline-item.selected {
+    border-color: var(--moon);
+    background: var(--moon-soft);
+    box-shadow: 0 0 18px rgba(124, 134, 255, 0.15), 0 0 0 1px rgba(201, 210, 255, 0.1);
+    animation: selGlow 2.5s ease-in-out infinite;
+  }
+
+  @keyframes selGlow {
+    0%, 100% { box-shadow: 0 0 14px rgba(124, 134, 255, 0.12), 0 0 0 1px rgba(201, 210, 255, 0.1); }
+    50% { box-shadow: 0 0 28px rgba(124, 134, 255, 0.25), 0 0 0 1px rgba(201, 210, 255, 0.2); }
+  }
+
+  .timeline-item.recommended {
+    border-color: var(--amber);
+    background: var(--amber-soft);
+  }
+
+  .time-meta { display: flex; flex-direction: column; gap: 3px; }
+
+  .target-time {
+    font-family: var(--serif);
+    font-size: 1.1875rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .cycle-count {
+    font-size: 0.75rem;
+    color: var(--moon);
+    font-weight: 600;
+  }
+
+  .timeline-item.recommended .cycle-count { color: var(--amber); }
+
+  .cycle-note { color: var(--ink-dim); font-weight: 400; }
+
+  .timeline-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .duration-badge {
+    font-size: 0.8125rem;
+    background: var(--moon-soft);
+    color: var(--moon);
+    padding: 5px 11px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .timeline-item.recommended .duration-badge {
+    background: rgba(245, 185, 94, 0.15);
+    color: var(--amber);
+  }
+
+  /* Quality badge */
+  .quality-badge {
+    font-size: 0.6rem;
+    font-weight: 700;
+    padding: 3px 7px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    white-space: nowrap;
+  }
+
+  .q-short { background: rgba(255, 112, 112, 0.12); color: #ff8a8a; }
+  .q-adequate { background: rgba(245, 185, 94, 0.15); color: var(--amber); }
+  .q-optimal { background: rgba(79, 204, 160, 0.14); color: var(--green); }
+  .q-extended { background: rgba(124, 134, 255, 0.14); color: var(--rem); }
+
+  /* Ripple */
+  .ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(201, 210, 255, 0.12);
+    transform: scale(0);
+    animation: ripple-anim 0.55s ease-out forwards;
+    pointer-events: none;
+  }
+
+  @keyframes ripple-anim {
+    to { transform: scale(2.5); opacity: 0; }
+  }
+
+  /* ── Alternatives section ── */
+  .alternatives-section { margin-bottom: 18px; }
+
+  /* ── Sleep stage info ── */
+  .info-section { margin-bottom: 18px; }
+
+  .info-toggle {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--card);
+    border: 1px solid var(--card-line);
+    border-radius: 14px;
+    padding: 14px 18px;
+    color: var(--ink-dim);
+    font-family: var(--sans);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s, border-radius 0.2s;
+  }
+
+  .info-toggle:hover { color: var(--ink); border-color: rgba(201, 210, 255, 0.3); }
+
+  .info-toggle .chev { transition: transform 0.25s; color: var(--ink-dim); }
+  .info-toggle[aria-expanded="true"] { border-radius: 14px 14px 0 0; border-bottom-color: transparent; }
+  .info-toggle[aria-expanded="true"] .chev { transform: rotate(180deg); }
+
+  .info-panel {
+    display: none;
+    flex-direction: column;
+    gap: 14px;
+    background: var(--card);
+    border: 1px solid var(--card-line);
+    border-top: none;
+    border-radius: 0 0 14px 14px;
+    padding: 4px 18px 18px;
+  }
+
+  .info-panel.open { display: flex; }
+
+  .stage { display: flex; gap: 12px; align-items: flex-start; }
+
+  .stage-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    margin-top: 5px;
+    flex-shrink: 0;
+  }
+
+  .stage-dot.light { background: var(--moon); }
+  .stage-dot.deep { background: var(--rem); }
+  .stage-dot.rem { background: var(--amber); }
+
+  .stage strong { display: block; font-size: 0.8125rem; color: var(--ink); margin-bottom: 2px; }
+  .stage p { font-size: 0.78rem; color: var(--ink-dim); line-height: 1.55; }
+
+  .info-footnote {
+    font-size: 0.75rem;
+    color: var(--ink-dim);
+    line-height: 1.55;
+    border-top: 1px solid var(--card-line);
+    padding-top: 12px;
+  }
+
+  /* ── Footer ── */
+  footer {
+    text-align: center;
+    font-size: 0.6875rem;
+    color: var(--ink-dim);
+    margin-top: 18px;
+    line-height: 1.6;
+  }
+
+  .footer-copyright {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--card-line);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: 0.01em;
+  }
+
+  /* ── Toast ── */
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(16px);
+    background: #1e2540;
+    border: 1px solid var(--card-line);
+    color: var(--ink);
+    padding: 11px 20px;
+    border-radius: 12px;
+    font-size: 0.8125rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s, transform 0.25s;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    z-index: 200;
+    max-width: 90vw;
+    text-align: center;
+  }
+
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  /* ── Breathing modal ── */
+  .breathe-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: rgba(7, 9, 26, 0.92);
+    backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+
+  .breathe-overlay.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .breathe-card {
+    background: var(--card);
+    border: 1px solid var(--card-line);
+    border-radius: 24px;
+    padding: 36px 32px 32px;
+    max-width: 320px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6);
+    transform: scale(0.92);
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .breathe-overlay.open .breathe-card { transform: scale(1); }
+
+  .breathe-close {
+    position: absolute;
+    top: 14px; right: 14px;
+    background: rgba(201, 210, 255, 0.07);
+    border: 1px solid var(--card-line);
+    border-radius: 8px;
+    color: var(--ink-dim);
+    font-size: 0.8rem;
+    width: 30px; height: 30px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .breathe-close:hover { background: rgba(201, 210, 255, 0.14); color: var(--ink); }
+
+  .breathe-title {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  .breathe-subtitle {
+    font-size: 0.75rem;
+    color: var(--ink-dim);
+    margin-bottom: 28px;
+    letter-spacing: 0.02em;
+  }
+
+  .breathe-ring-wrap {
+    position: relative;
+    width: 150px; height: 150px;
+    margin: 0 auto 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .breathe-outer {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: rgba(124, 134, 255, 0.06);
+    border: 1px solid rgba(124, 134, 255, 0.15);
+    transition: all 0.5s ease;
+  }
+
+  .breathe-ring {
+    width: 90px; height: 90px;
+    border-radius: 50%;
+    background: conic-gradient(from 180deg, #7c86ff 0%, #c9d2ff 50%, #f5b95e 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 4s ease-in-out, box-shadow 4s ease-in-out;
+    box-shadow: 0 0 0px rgba(124, 134, 255, 0);
+    will-change: transform, box-shadow;
+  }
+
+  .breathe-ring.inhaling {
+    transform: scale(1.4);
+    box-shadow: 0 0 40px rgba(124, 134, 255, 0.45);
+  }
+
+  .breathe-ring.holding {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transform: scale(1.4);
+    box-shadow: 0 0 50px rgba(201, 210, 255, 0.4);
+  }
+
+  .breathe-ring.exhaling {
+    transform: scale(1);
+    box-shadow: 0 0 0px rgba(245, 185, 94, 0);
+  }
+
+  .breathe-ring.idle {
+    transform: scale(1);
+    box-shadow: 0 0 0px rgba(124, 134, 255, 0);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+  }
+
+  .breathe-inner {
+    width: 56px; height: 56px;
+    background: var(--card);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .breathe-count {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1;
+  }
+
+  .breathe-phase-text {
+    font-size: 0.875rem;
+    color: var(--moon);
+    font-weight: 600;
+    margin-bottom: 6px;
+    min-height: 1.4em;
+    transition: color 0.5s;
+  }
+
+  .breathe-phase-sub {
+    font-size: 0.75rem;
+    color: var(--ink-dim);
+    margin-bottom: 20px;
+    min-height: 1.2em;
+  }
+
+  .breathe-progress-track {
+    height: 3px;
+    background: var(--card-line);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 22px;
+  }
+
+  .breathe-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--rem), var(--moon));
+    border-radius: 2px;
+    width: 0%;
+    transition: width linear;
+  }
+
+  .breathe-start-btn {
+    width: 100%;
+    padding: 12px;
+    background: var(--moon-soft);
+    border: 1px solid rgba(201, 210, 255, 0.25);
+    border-radius: 12px;
+    color: var(--moon);
+    font-family: var(--sans);
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    margin-bottom: 12px;
+  }
+
+  .breathe-start-btn:hover { background: rgba(201, 210, 255, 0.16); transform: translateY(-1px); }
+  .breathe-start-btn.running { background: rgba(201, 210, 255, 0.05); color: var(--ink-dim); }
+
+  .breathe-tip {
+    font-size: 0.7rem;
+    color: var(--ink-dim);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .star { animation: none; opacity: 0.7; }
+    .dial-now-pulse { animation: none; opacity: 0; }
+    .timeline-item.selected { animation: none; }
+    .breathe-ring { transition: none !important; }
+  }
+
+  /* ── Change 1: Horizontal timeline carousel ── */
+  .timeline {
+    display: flex;
+    flex-direction: row !important;
+    gap: 10px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 6px;
+  }
+  .timeline::-webkit-scrollbar { display: none; }
+
+  .timeline-item {
+    flex: 0 0 calc(80vw);
+    max-width: 280px;
+    scroll-snap-align: center;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 10px;
+    padding: 16px !important;
+    cursor: pointer;
+  }
+
+  .timeline-item .time-meta { gap: 2px; }
+  .timeline-item .target-time { font-size: 1.375rem; }
+
+  .timeline-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .stage-mini-wrap {
+    width: 100%;
+  }
+
+  .stage-mini-bar {
+    display: flex;
+    height: 6px;
+    border-radius: 3px;
+    overflow: hidden;
+    gap: 1px;
+    margin-top: 8px;
+  }
+
+  .smb-light { background: var(--moon); }
+  .smb-deep  { background: var(--rem); }
+  .smb-rem   { background: var(--amber); }
+
+  .smb-legend {
+    display: flex;
+    gap: 8px;
+    margin-top: 5px;
+  }
+
+  .smb-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 0.6rem;
+    color: var(--ink-dim);
+  }
+
+  .smb-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Change 2: Always-visible stage cards ── */
+  .stage-cards {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .stage-cards::-webkit-scrollbar { display: none; }
+
+  .stage-card {
+    flex: 0 0 calc(80vw);
+    max-width: 240px;
+    background: var(--card);
+    border: 1px solid var(--card-line);
+    border-radius: 14px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .stage-card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .stage-card-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .stage-card-name {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .stage-card p {
+    font-size: 0.75rem;
+    color: var(--ink-dim);
+    line-height: 1.5;
+  }
+
+  .stage-wave {
+    height: 28px;
+    width: 100%;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .info-section {
+    margin-bottom: 18px;
+  }
+
+  .info-section-label {
+    font-size: 0.75rem;
+    color: var(--ink-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .info-footnote-standalone {
+    font-size: 0.75rem;
+    color: var(--ink-dim);
+    line-height: 1.55;
+    margin-top: 12px;
+  }
+
+  /* ── Change 3: Quick-tap time chips ── */
+  .time-chips {
+    display: flex;
+    gap: 7px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+    justify-content: center;
+  }
+
+  .time-chip {
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 5px 11px;
+    border-radius: 20px;
+    border: 1px solid var(--card-line);
+    background: transparent;
+    color: var(--ink-dim);
+    cursor: pointer;
+    transition: all 0.18s;
+    white-space: nowrap;
+  }
+
+  .time-chip:hover {
+    border-color: rgba(201, 210, 255, 0.35);
+    color: var(--ink);
+    background: rgba(201, 210, 255, 0.05);
+  }
+
+  .time-chip.active {
+    background: var(--moon-soft);
+    border-color: rgba(201, 210, 255, 0.35);
+    color: var(--moon);
+  }
+
+  /* ── Change 4: Ambient sound strip ── */
+  .ambient-strip {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+  }
+
+  .ambient-sound-btn {
+    font-family: var(--sans);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 8px;
+    border: 1px solid var(--card-line);
+    background: rgba(201, 210, 255, 0.05);
+    color: var(--ink-dim);
+    cursor: pointer;
+    transition: all 0.18s;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .ambient-sound-btn:hover {
+    background: rgba(201, 210, 255, 0.1);
+    border-color: rgba(201, 210, 255, 0.25);
+    color: var(--ink);
+  }
+
+  .ambient-sound-btn.active {
+    background: var(--moon-soft);
+    border-color: rgba(201, 210, 255, 0.35);
+    color: var(--moon);
+  }
+
+  /* ── Change 5: Color-tinted mood cards ── */
+  .mood-chips {
+    display: flex;
+    gap: 6px;
+    flex: 1;
+  }
+
+  .mood-chip {
+    flex: 1;
+    text-align: center;
+    padding: 8px 6px !important;
+    border-radius: 12px !important;
+    font-size: 0.72rem !important;
+    transition: all 0.22s !important;
+  }
+
+  .mood-chip[data-mood="exhausted"] {
+    border-color: rgba(255, 100, 100, 0.2) !important;
+    color: rgba(255, 140, 140, 0.7) !important;
+  }
+  .mood-chip[data-mood="exhausted"]:hover,
+  .mood-chip[data-mood="exhausted"].active {
+    background: rgba(255, 90, 90, 0.1) !important;
+    border-color: rgba(255, 100, 100, 0.45) !important;
+    color: #ff8a8a !important;
+    box-shadow: 0 0 14px rgba(255, 80, 80, 0.15);
+  }
+
+  .mood-chip[data-mood="tired"] {
+    border-color: rgba(201, 210, 255, 0.2) !important;
+    color: rgba(201, 210, 255, 0.6) !important;
+  }
+  .mood-chip[data-mood="tired"]:hover,
+  .mood-chip[data-mood="tired"].active {
+    background: var(--moon-soft) !important;
+    border-color: rgba(201, 210, 255, 0.4) !important;
+    color: var(--moon) !important;
+  }
+
+  .mood-chip[data-mood="wired"] {
+    border-color: rgba(80, 160, 255, 0.2) !important;
+    color: rgba(100, 180, 255, 0.65) !important;
+  }
+  .mood-chip[data-mood="wired"]:hover,
+  .mood-chip[data-mood="wired"].active {
+    background: rgba(60, 140, 255, 0.1) !important;
+    border-color: rgba(80, 160, 255, 0.45) !important;
+    color: #72b8ff !important;
+    box-shadow: 0 0 14px rgba(60, 130, 255, 0.18);
+  }
+
+  /* ── Change 6: Countdown ring ── */
+  .reminder-ring-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .reminder-ring-svg {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    display: none;
+  }
+
+  .reminder-ring-svg.visible { display: block; cursor: pointer; }
+
+  .reminder-ring-track {
+    fill: none;
+    stroke: rgba(245, 185, 94, 0.18);
+    stroke-width: 3;
+  }
+
+  .reminder-ring-fill {
+    fill: none;
+    stroke: var(--amber);
+    stroke-width: 3;
+    stroke-linecap: round;
+    transform-origin: center;
+    transform: rotate(-90deg);
+    transition: stroke-dashoffset 30s linear;
+  }
+
+  .reminder-ring-icon {
+    font-size: 11px;
+    text-anchor: middle;
+    dominant-baseline: central;
+  }
+
+  .rec-actions {
+    align-items: center;
+  }
+
+  /* ── Icon system (replaces emoji) ── */
+  .icon {
+    width: 1.15em;
+    height: 1.15em;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    vertical-align: -0.2em;
+    flex-shrink: 0;
+  }
+
+  .mode-toggle button .icon,
+  .mood-chip .icon,
+  .reminder-btn .icon,
+  .ambient-sound-btn .icon,
+  .time-chip .icon { margin-right: 5px; }
+
+  .mode-toggle button .icon { width: 1.3em; height: 1.3em; }
+  .mood-chip .icon { width: 1.35em; height: 1.35em; }
+
+  .icon-btn { width: 38px; height: 38px; }
+  .icon-btn .icon { width: 1.4em; height: 1.4em; }
+
+  .reminder-ring-icon-svg {
+    width: 15px;
+    height: 15px;
+    fill: none;
+    stroke: var(--amber);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    overflow: visible;
+  }
+
+
+  /* ── Theme toggle ── */
+  .theme-toggle {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: var(--card);
+    border: 1px solid var(--card-line);
+    color: var(--ink-dim);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.15s;
+  }
+  .theme-toggle:hover { color: var(--moon); border-color: var(--moon); }
+  .theme-toggle .icon { width: 19px; height: 19px; }
+
+  /* ── Install button ── */
+  .install-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 10px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--card-line);
+    background: var(--card);
+    color: var(--ink-dim);
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.15s;
+  }
+  .install-btn:hover { color: var(--moon); border-color: var(--moon); transform: translateY(-1px); }
+  .install-btn .icon { width: 15px; height: 15px; }
+
+
+  /* ── UI polish ── */
+  body { transition: background-color 0.3s, color 0.3s; }
+
+  .app { position: relative; }
+
+  .card, .recommendation, .timeline-item, .stage-card, .info-toggle, .info-panel, .moon-chip {
+    box-shadow: var(--shadow-ambient);
+  }
+
+  .card, .recommendation { border-radius: 20px; }
+  .timeline-item, .stage-card { border-radius: 16px; }
+
+  header h1 { letter-spacing: 0.01em; }
+
+  button {
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease,
+      color 0.15s ease, border-color 0.15s ease;
+  }
+  button:active { transform: scale(0.97); }
+
+  input[type="time"], input[type="range"] {
+    transition: border-color 0.2s, box-shadow 0.2s, background-color 0.3s, color 0.3s;
+  }
+
+  [data-theme="light"] input[type="time"] { color-scheme: light; }
+  [data-theme="dark"] input[type="time"] { color-scheme: dark; }
+
+  ::selection { background: var(--moon-soft); color: var(--ink); }
+
+  /* ── Minimalistic section nav ── */
+  body { padding-bottom: 88px; }
+  html { scroll-behavior: smooth; }
+
+  .app-nav {
+    position: fixed;
+    left: 50%;
+    bottom: 16px;
+    transform: translateX(-50%);
+    z-index: 50;
+    width: calc(100% - 32px);
+    max-width: 460px;
+    display: flex;
+    justify-content: space-between;
+    gap: 2px;
+    background: var(--card);
+    border: 1px solid var(--card-line);
+    border-radius: 18px;
+    padding: 6px;
+    box-shadow: var(--shadow-ambient), 0 12px 32px -8px rgba(0,0,0,0.25);
+    backdrop-filter: blur(10px);
+  }
+
+  .nav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    padding: 8px 2px;
+    border: none;
+    background: transparent;
+    border-radius: 13px;
+    color: var(--ink-dim);
+    font-family: var(--sans);
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .nav-item .icon { width: 19px; height: 19px; margin: 0; }
+
+  .nav-item span {
+    font-size: 0.625rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  .nav-item:hover { color: var(--ink); }
+
+  .nav-item.active {
+    background: var(--moon-soft);
+    color: var(--moon);
+  }
+
+  @media (max-width: 380px) {
+    .nav-item span { display: none; }
+    .nav-item { padding: 10px 2px; }
+  }
+
+  #planSection, #recommendationBox, #dialSection, #timelineSection, #infoSection {
+    scroll-margin-top: 16px;
+  }
+</style>
+</head>
+<body>
+
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></symbol>
+  <symbol id="i-nap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18h4l2-3 2 5 2-4 2 2h6"/><circle cx="12" cy="7" r="3"/></symbol>
+  <symbol id="i-exhausted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 10l2 2M10 10l-2 2M14 10l2 2M16 10l-2 2"/><path d="M9 16c1.2-1 4.8-1 6 0"/></symbol>
+  <symbol id="i-tired" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 10h2M14 10h2"/><path d="M9 15.5c1.2-1 4.8-1 6 0"/></symbol>
+  <symbol id="i-wired" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></symbol>
+  <symbol id="i-alarm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2"/><path d="M5 3 2 6M19 3l3 3"/></symbol>
+  <symbol id="i-lungs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v9"/><path d="M12 11c-1.5-1-3-1-4.5.5C5.5 13.5 5 17 6 20c.7 2 3 1.5 3.5-.5.4-1.6.5-4.4.5-6"/><path d="M12 11c1.5-1 3-1 4.5.5 2 2 2.5 5.5 1.5 8.5-.7 2-3 1.5-3.5-.5-.4-1.6-.5-4.4-.5-6"/></symbol>
+  <symbol id="i-rain" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 13a5 5 0 0 0-9.6-2 4 4 0 0 0 .6 8h9a3.5 3.5 0 0 0 0-7Z"/><path d="M8 19l-1 2M12 19l-1 2M16 19l-1 2"/></symbol>
+  <symbol id="i-noise" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 13c1-4 2-4 3 0s2 4 3 0 2-4 3 0"/></symbol>
+  <symbol id="i-ocean" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8c2-1.5 4-1.5 6 0s4 1.5 6 0 4-1.5 6 0"/><path d="M2 14c2-1.5 4-1.5 6 0s4 1.5 6 0 4-1.5 6 0"/><path d="M2 20c2-1.5 4-1.5 6 0s4 1.5 6 0 4-1.5 6 0"/></symbol>
+  <symbol id="i-piano" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M7 4v10M11 4v10M15 4v10M19 4v10"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13M7 11l5 5 5-5"/><path d="M4 20h16"/></symbol>
+  <symbol id="i-coffee" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h13a3 3 0 0 1 0 6h-1"/><path d="M4 9v6a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4V9"/><path d="M8 3c0 1-1 1-1 2M12 3c0 1-1 1-1 2"/></symbol>
+  <symbol id="i-compass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15 9l-2 6-6 2 2-6 6-2Z"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13"/><path d="M3 6h.01M3 12h.01M3 18h.01"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15.5H6.5A2.5 2.5 0 0 0 4 21V5.5Z"/><path d="M4 18.5A2.5 2.5 0 0 1 6.5 16H20"/></symbol>
+</svg>
+
+<canvas id="starfield"></canvas>
+
+<div class="app">
+  <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light/dark theme">
+    <svg class="icon" id="themeToggleIcon"><use href="#i-moon"/></svg>
+  </button>
+
+  <header>
+    <svg class="stars-svg" viewBox="0 0 420 72" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle class="star" cx="28"  cy="18" r="2"   />
+      <circle class="star" cx="90"  cy="48" r="1.5" />
+      <circle class="star" cx="155" cy="14" r="1"   />
+      <circle class="star" cx="295" cy="20" r="1.5" />
+      <circle class="star" cx="335" cy="50" r="2"   />
+      <circle class="star" cx="380" cy="22" r="1"   />
+      <circle class="star" cx="240" cy="58" r="1.5" />
+      <circle class="star" cx="70"  cy="58" r="1"   />
+      <path class="moon-path" d="M 218 10 A 22 22 0 1 0 218 54 A 16 16 0 1 1 218 10 Z" />
+    </svg>
+    <h1>Lull</h1>
+    <p class="tagline">Wake, sleep, or nap — timed to full cycles</p>
+    <p class="motto"><span class="weak">Sleep is Good</span> — <span class="strong">Quality Sleep is Better.</span></p>
+    <div>
+      <button class="install-btn" id="installBtn" type="button">
+        <svg class="icon"><use href="#i-download"/></svg><span id="installBtnLabel">Install app</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Full Sleep Cycles</span><span class="dot">•</span>
+      <span>REM Recovery</span><span class="dot">•</span>
+      <span>Circadian Rhythm</span><span class="dot">•</span>
+      <span>Deep Sleep</span><span class="dot">•</span>
+      <span>Power Naps</span><span class="dot">•</span>
+      <span>NASA Nap</span><span class="dot">•</span>
+      <span>Wake Refreshed</span><span class="dot">•</span>
+      <span>Quality Rest</span><span class="dot">•</span>
+      <span>Full Sleep Cycles</span><span class="dot">•</span>
+      <span>REM Recovery</span><span class="dot">•</span>
+      <span>Circadian Rhythm</span><span class="dot">•</span>
+      <span>Deep Sleep</span><span class="dot">•</span>
+      <span>Power Naps</span><span class="dot">•</span>
+      <span>NASA Nap</span><span class="dot">•</span>
+      <span>Wake Refreshed</span><span class="dot">•</span>
+      <span>Quality Rest</span><span class="dot">•</span>
+    </div>
+  </div>
+
+  <div class="mode-toggle" role="tablist" id="planSection">
+    <div class="mode-pill" id="modePill"></div>
+    <button id="modeWake" class="active" role="tab" aria-selected="true"><svg class="icon"><use href="#i-sun"/></svg>Wake</button>
+    <button id="modeSleep" role="tab" aria-selected="false"><svg class="icon"><use href="#i-moon"/></svg>Sleep</button>
+    <button id="modeNap" role="tab" aria-selected="false"><svg class="icon"><use href="#i-nap"/></svg>Nap</button>
+  </div>
+
+  <div class="card">
+    <div id="pickerWrap">
+      <label for="targetTime" id="pickerLabel">When do you need to wake up?</label>
+      <div class="time-row">
+        <input type="time" id="targetTime" value="07:00">
+      </div>
+      <div class="time-chips" id="timeChips">
+        <!-- populated by JS -->
+      </div>
+    </div>
+
+    <div id="napInfo" class="nap-info" hidden>
+      <label style="margin-bottom:0;">Starting your nap</label>
+      <p class="nap-now"><strong id="napNowTime">--:--</strong></p>
+    </div>
+
+    <div class="mood-row" id="moodRow">
+      <span class="mood-label">Feeling?</span>
+      <div class="mood-chips">
+        <button class="mood-chip" data-mood="exhausted"><svg class="icon"><use href="#i-exhausted"/></svg>Exhausted</button>
+        <button class="mood-chip active" data-mood="tired"><svg class="icon"><use href="#i-tired"/></svg>Tired</button>
+        <button class="mood-chip" data-mood="wired"><svg class="icon"><use href="#i-wired"/></svg>Wired</button>
+      </div>
+    </div>
+
+    <p class="now-chip">It's currently <strong id="nowDisplay">--:--</strong></p>
+
+    <button class="adv-toggle" id="advToggle" aria-expanded="false" type="button">
+      <span>Fine-tune cycle settings</span>
+      <span class="chev">⌄</span>
+    </button>
+    <div class="advanced-panel" id="advPanel">
+      <div class="buffer-row" id="bufferRowWrap">
+        <label for="bufferRange">Time to fall asleep</label>
+        <input type="range" id="bufferRange" min="0" max="30" step="5" value="15">
+        <span class="buffer-value" id="bufferValue">15 min</span>
+      </div>
+      <div class="buffer-row">
+        <label for="cycleRange">Cycle length</label>
+        <input type="range" id="cycleRange" min="80" max="110" step="5" value="90">
+        <span class="buffer-value" id="cycleValue">90 min</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="recommendation" id="recommendationBox">
+    <span class="rec-tag" id="recTag">Recommendation</span>
+    <p class="rec-text" id="recText" aria-live="polite">Calculating…</p>
+    <div class="rec-foot">
+      <span class="caffeine-tip" id="caffeineTip"></span>
+      <div class="rec-actions">
+        <div class="ambient-strip" id="ambientStrip">
+          <button class="ambient-sound-btn" id="ambientRain" data-sound="rain" title="Rain sounds"><svg class="icon"><use href="#i-rain"/></svg>Rain</button>
+          <button class="ambient-sound-btn" id="ambientBrown" data-sound="brown" title="Brown noise"><svg class="icon"><use href="#i-noise"/></svg>Noise</button>
+          <button class="ambient-sound-btn" id="ambientOcean" data-sound="ocean" title="Ocean waves"><svg class="icon"><use href="#i-ocean"/></svg>Ocean</button>
+          <button class="ambient-sound-btn" id="ambientPiano" data-sound="piano" title="Soft piano"><svg class="icon"><use href="#i-piano"/></svg>Piano</button>
+        </div>
+        <button class="icon-btn" id="breatheBtn" title="4-7-8 breathing guide" aria-label="Open breathing guide"><svg class="icon"><use href="#i-lungs"/></svg></button>
+        <div class="reminder-ring-wrap">
+          <svg class="reminder-ring-svg" id="reminderRingSvg" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+            <circle class="reminder-ring-track" cx="18" cy="18" r="15"/>
+            <circle class="reminder-ring-fill" id="reminderRingFill" cx="18" cy="18" r="15" stroke-dasharray="94.25" stroke-dashoffset="0"/>
+            <use href="#i-bell" class="reminder-ring-icon-svg" x="10.5" y="10.5" width="15" height="15"/>
+          </svg>
+          <button class="reminder-btn" id="reminderBtn" type="button"><svg class="icon"><use href="#i-bell"/></svg><span id="reminderBtnLabel">Remind me</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card dial-card" id="dialSection">
+    <p class="section-heading">Your 24-hour window</p>
+    <div class="dial-wrap" id="dialWrap"></div>
+  </div>
+
+  <div class="alternatives-section" id="timelineSection">
+    <p class="section-heading" id="timelineHeading">Bedtime options</p>
+    <div class="timeline" id="timeline"></div>
+  </div>
+
+  <div class="info-section" id="infoSection">
+    <p class="info-section-label">What happens during a sleep cycle?</p>
+    <div class="stage-cards">
+      <div class="stage-card">
+        <div class="stage-card-header">
+          <span class="stage-card-dot" style="background:var(--moon)"></span>
+          <span class="stage-card-name">Light Sleep</span>
+        </div>
+        <svg class="stage-wave" viewBox="0 0 120 28" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <polyline points="0,20 10,16 20,12 30,16 40,10 50,16 60,14 70,12 80,16 90,10 100,15 110,13 120,16" fill="none" stroke="var(--moon)" stroke-width="2" opacity="0.7"/>
+        </svg>
+        <p>Entry point of every cycle. Heart rate slows, muscles relax — easy to wake without grogginess.</p>
+      </div>
+      <div class="stage-card">
+        <div class="stage-card-header">
+          <span class="stage-card-dot" style="background:var(--rem)"></span>
+          <span class="stage-card-name">Deep Sleep</span>
+        </div>
+        <svg class="stage-wave" viewBox="0 0 120 28" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <polyline points="0,6 8,20 18,4 28,22 38,3 48,22 58,5 68,21 78,4 88,22 98,5 108,20 120,7" fill="none" stroke="var(--rem)" stroke-width="2" opacity="0.7"/>
+        </svg>
+        <p>Body repairs tissue and strengthens immunity. Heaviest in early cycles — waking here causes grogginess.</p>
+      </div>
+      <div class="stage-card">
+        <div class="stage-card-header">
+          <span class="stage-card-dot" style="background:var(--amber)"></span>
+          <span class="stage-card-name">REM Sleep</span>
+        </div>
+        <svg class="stage-wave" viewBox="0 0 120 28" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <polyline points="0,14 6,8 12,18 18,6 24,20 30,5 36,19 42,7 48,21 60,14 72,9 84,17 96,7 108,18 120,12" fill="none" stroke="var(--amber)" stroke-width="2" opacity="0.7"/>
+        </svg>
+        <p>Dreams and emotional processing. REM windows grow longer each cycle — why mornings feel dream-heavy.</p>
+      </div>
+    </div>
+    <p class="info-footnote-standalone">Most adults feel best after 4–6 full cycles (6–9 hrs). Waking between cycles rather than mid-cycle feels less groggy — that's the gap Lull lines up for you.</p>
+  </div>
+
+  <div class="moon-calendar-section" id="moonCalendarSection">
+    <p class="section-heading">Tonight's Moon Phase</p>
+    <div class="moon-chip">
+      <svg class="phase-icon" id="moonIcon" width="15" height="15" viewBox="0 0 32 32" aria-hidden="true"></svg>
+      <span id="moonName">Loading…</span>
+    </div>
+  </div>
+
+  <footer>
+    A full sleep cycle averages 90 minutes, moving through light, deep, and REM sleep. Adjust the cycle length above if you tend to run faster or slower than that.
+    <p class="footer-copyright">© <span id="copyrightYear"></span> Made by Biruk Daniel.</p>
+  </footer>
+</div>
+
+<nav class="app-nav" id="appNav" aria-label="Jump to section">
+  <button class="nav-item active" data-target="planSection" type="button">
+    <svg class="icon"><use href="#i-compass"/></svg><span>Plan</span>
+  </button>
+  <button class="nav-item" data-target="recommendationBox" type="button">
+    <svg class="icon"><use href="#i-spark"/></svg><span>Insight</span>
+  </button>
+  <button class="nav-item" data-target="dialSection" type="button">
+    <svg class="icon"><use href="#i-clock"/></svg><span>Window</span>
+  </button>
+  <button class="nav-item" data-target="timelineSection" type="button">
+    <svg class="icon"><use href="#i-list"/></svg><span>Options</span>
+  </button>
+  <button class="nav-item" data-target="infoSection" type="button">
+    <svg class="icon"><use href="#i-book"/></svg><span>Learn</span>
+  </button>
+</nav>
+
+<!-- Breathing modal -->
+<div class="breathe-overlay" id="breatheOverlay" aria-modal="true" role="dialog" aria-label="Breathing guide">
+  <div class="breathe-card">
+    <button class="breathe-close" id="breatheClose" aria-label="Close"><svg class="icon"><use href="#i-close"/></svg></button>
+    <h3 class="breathe-title">Wind Down</h3>
+    <p class="breathe-subtitle">4 · 7 · 8 Breathing · Calms the nervous system</p>
+
+    <div class="breathe-ring-wrap">
+      <div class="breathe-outer" id="breatheOuter"></div>
+      <div class="breathe-ring idle" id="breatheRing">
+        <div class="breathe-inner">
+          <span class="breathe-count" id="breatheCount">4</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="breathe-phase-text" id="breathePhaseText">Ready when you are</p>
+    <p class="breathe-phase-sub" id="breathePhaseSubtext">Begin to slow your breathing</p>
+
+    <div class="breathe-progress-track">
+      <div class="breathe-progress-fill" id="breatheProgressFill"></div>
+    </div>
+
+    <button class="breathe-start-btn" id="breatheStartBtn">Begin breathing</button>
+    <p class="breathe-tip">Repeat 3–4 cycles for best effect</p>
+  </div>
+</div>
+
+<div class="toast" id="toastEl"></div>
+
+<script>
+  // ── Element references ──
+  const targetInput    = document.getElementById('targetTime');
+  const pickerWrap     = document.getElementById('pickerWrap');
+  const pickerLabel    = document.getElementById('pickerLabel');
+  const napInfo        = document.getElementById('napInfo');
+  const napNowTime     = document.getElementById('napNowTime');
+  const recTag         = document.getElementById('recTag');
+  const recText        = document.getElementById('recText');
+  const timeline       = document.getElementById('timeline');
+  const timelineHeading= document.getElementById('timelineHeading');
+  const nowDisplay     = document.getElementById('nowDisplay');
+  const bufferRange    = document.getElementById('bufferRange');
+  const bufferValue    = document.getElementById('bufferValue');
+  const bufferRowWrap  = document.getElementById('bufferRowWrap');
+  const cycleRange     = document.getElementById('cycleRange');
+  const cycleValue     = document.getElementById('cycleValue');
+  const advToggle      = document.getElementById('advToggle');
+  const advPanel       = document.getElementById('advPanel');
+  const dialWrap       = document.getElementById('dialWrap');
+  const caffeineTip    = document.getElementById('caffeineTip');
+  const reminderBtn    = document.getElementById('reminderBtn');
+  const reminderBtnLabel = document.getElementById('reminderBtnLabel');
+  const toastEl        = document.getElementById('toastEl');
+  const modeWakeBtn    = document.getElementById('modeWake');
+  const modeSleepBtn   = document.getElementById('modeSleep');
+  const modeNapBtn     = document.getElementById('modeNap');
+  const modePill       = document.getElementById('modePill');
+  const ambientBtn     = null; // replaced by strip
+  const breatheBtn     = document.getElementById('breatheBtn');
+  const ambientRain    = document.getElementById('ambientRain');
+  const ambientBrown   = document.getElementById('ambientBrown');
+  const ambientOcean   = document.getElementById('ambientOcean');
+  const ambientPiano   = document.getElementById('ambientPiano');
+  const reminderRingSvg= document.getElementById('reminderRingSvg');
+  const reminderRingFill= document.getElementById('reminderRingFill');
+  const timeChips      = document.getElementById('timeChips');
+  const breatheOverlay = document.getElementById('breatheOverlay');
+  const breatheClose   = document.getElementById('breatheClose');
+  const breatheRing    = document.getElementById('breatheRing');
+  const breatheOuter   = document.getElementById('breatheOuter');
+  const breatheCount   = document.getElementById('breatheCount');
+  const breathePhaseText   = document.getElementById('breathePhaseText');
+  const breathePhaseSubtext= document.getElementById('breathePhaseSubtext');
+  const breatheProgressFill= document.getElementById('breatheProgressFill');
+  const breatheStartBtn    = document.getElementById('breatheStartBtn');
+  const moonIcon       = document.getElementById('moonIcon');
+  const moonName       = document.getElementById('moonName');
+  const themeToggle    = document.getElementById('themeToggle');
+  const themeToggleIcon= document.getElementById('themeToggleIcon');
+  const installBtn     = document.getElementById('installBtn');
+  const installBtnLabel= document.getElementById('installBtnLabel');
+  const copyrightYear  = document.getElementById('copyrightYear');
+  const appNav         = document.getElementById('appNav');
+  const navItems       = Array.from(document.querySelectorAll('.nav-item'));
+
+  // ── State ──
+  let mode          = 'wake';
+  let cycleLength   = 90;
+  let buffer        = 15;
+  let selectedIndex = null;
+  let reminderTimer = null;
+  let reminderActive= false;
+  let toastTimer    = null;
+  let mood          = 'tired';
+  let ambientActive  = false;
+  let currentSound   = null; // 'rain' | 'brown' | 'ocean' | 'piano'
+  let audioCtx       = null;
+  let sourceNode     = null;
+  let gainNode       = null;
+  let reminderRingTotal = 0;
+  let reminderRingInterval = null;
+  let breathingActive    = false;
+  let breathPhaseIndex   = 0;
+  let breathCountTimer   = null;
+  let breathProgressTimer= null;
+  let breathCurrentCount = 0;
+  let reminderCountdownTimer = null;
+
+  // ── Starfield ──
+  (function () {
+    const canvas = document.getElementById('starfield');
+    const ctx = canvas.getContext('2d');
+    let stars = [];
+
+    function resize() {
+      canvas.width  = window.innerWidth;
+      canvas.height = window.innerHeight;
+      stars = Array.from({ length: 140 }, () => ({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 1.3 + 0.25,
+        phase: Math.random() * Math.PI * 2,
+        speed: Math.random() * 0.012 + 0.004,
+      }));
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const t = Date.now() * 0.001;
+      stars.forEach(s => {
+        const opacity = 0.12 + 0.28 * Math.abs(Math.sin(s.phase + t * s.speed));
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(201,210,255,${opacity})`;
+        ctx.fill();
+      });
+      requestAnimationFrame(draw);
+    }
+
+    window.addEventListener('resize', resize);
+    resize();
+    draw();
+  })();
+
+  // ── Moon phase (vector icon, same two-arc technique as the header logo) ──
+  (function () {
+    const knownNewMoon = new Date('2000-01-06T18:14:00Z');
+    const cycle = 29.530589;
+    const days = (Date.now() - knownNewMoon) / 86400000;
+    const pct  = (((days % cycle) + cycle) % cycle) / cycle;
+
+    const ring       = `<circle cx="16" cy="16" r="13" fill="none" stroke="var(--moon)" stroke-width="1.5" opacity="0.55"/>`;
+    const fullDisc    = `<circle cx="16" cy="16" r="13" fill="var(--moon)"/>`;
+    const rightHalf   = `<circle cx="16" cy="16" r="13" fill="none" stroke="var(--moon)" stroke-width="1" opacity="0.4"/><path d="M16 3 A13 13 0 0 1 16 29 Z" fill="var(--moon)"/>`;
+    const leftHalf    = `<circle cx="16" cy="16" r="13" fill="none" stroke="var(--moon)" stroke-width="1" opacity="0.4"/><path d="M16 3 A13 13 0 0 0 16 29 Z" fill="var(--moon)"/>`;
+    const crescentR   = `<circle cx="16" cy="16" r="13" fill="var(--card-line)" opacity="0.5"/><path d="M16 3 A13 13 0 1 0 16 29 A8 13 0 1 1 16 3 Z" fill="var(--moon)"/>`;
+    const crescentL   = `<circle cx="16" cy="16" r="13" fill="var(--card-line)" opacity="0.5"/><path d="M16 3 A13 13 0 1 1 16 29 A8 13 0 1 0 16 3 Z" fill="var(--moon)"/>`;
+    const gibbousR    = `${fullDisc}<path d="M16 3 A13 13 0 1 0 16 29 A8 13 0 1 1 16 3 Z" fill="var(--card-line)" opacity="0.5"/>`;
+    const gibbousL    = `${fullDisc}<path d="M16 3 A13 13 0 1 1 16 29 A8 13 0 1 0 16 3 Z" fill="var(--card-line)" opacity="0.5"/>`;
+
+    const phases = [
+      { max: 0.04,  svg: ring,      name: 'New Moon'        },
+      { max: 0.19,  svg: crescentR, name: 'Waxing Crescent'  },
+      { max: 0.31,  svg: rightHalf, name: 'First Quarter'    },
+      { max: 0.44,  svg: gibbousR,  name: 'Waxing Gibbous'   },
+      { max: 0.56,  svg: fullDisc,  name: 'Full Moon'        },
+      { max: 0.69,  svg: gibbousL,  name: 'Waning Gibbous'   },
+      { max: 0.81,  svg: leftHalf,  name: 'Last Quarter'     },
+      { max: 1.00,  svg: crescentL, name: 'Waning Crescent'  },
+    ];
+
+    const phase = phases.find(p => pct < p.max) || phases[7];
+    moonIcon.innerHTML   = phase.svg;
+    moonName.textContent  = phase.name;
+  })();
+
+  // ── Pill indicator ──
+  function updatePill(activeBtn) {
+    const parent = activeBtn.closest('.mode-toggle');
+    const parentRect = parent.getBoundingClientRect();
+    const btnRect    = activeBtn.getBoundingClientRect();
+    modePill.style.left  = (btnRect.left - parentRect.left) + 'px';
+    modePill.style.width = btnRect.width + 'px';
+  }
+
+  // ── Formatting helpers ──
+  function formatTime(date) {
+    let h = date.getHours(), m = date.getMinutes();
+    const ap = h >= 12 ? 'PM' : 'AM';
+    h = h % 12 || 12;
+    return `${h}:${m < 10 ? '0' + m : m} ${ap}`;
+  }
+
+  function formatDuration(mins) {
+    const h = Math.floor(mins / 60), m = mins % 60;
+    if (h === 0) return `${m} min`;
+    return m === 0 ? `${h} hr` : `${h}h ${m}m`;
+  }
+
+  function cycleNote(cycles) {
+    switch (cycles) {
+      case 3: return '· short night';
+      case 4: return '· light recovery';
+      case 5: return '· ideal for most';
+      case 6: return '· longer recovery';
+      default: return '';
+    }
+  }
+
+  function cycleQuality(cycles) {
+    switch (cycles) {
+      case 3: return { label: 'Short',    cls: 'q-short'    };
+      case 4: return { label: 'Adequate', cls: 'q-adequate' };
+      case 5: return { label: 'Optimal',  cls: 'q-optimal'  };
+      case 6: return { label: 'Extended', cls: 'q-extended' };
+      default: return null;
+    }
+  }
+
+  function getMoodSuffix() {
+    if (mode === 'nap') return '';
+    switch (mood) {
+      case 'exhausted': return ' Since you\'re exhausted, aim for the 5–6 cycle option if you possibly can.';
+      case 'wired': return ' If your mind is racing, tap the breathing icon above for a quick breathing exercise before bed.';
+      default: return '';
+    }
+  }
+
+  // ── Toast ──
+  function showToast(msg) {
+    toastEl.textContent = msg;
+    toastEl.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toastEl.classList.remove('show'), 3200);
+  }
+
+  // ── Ambient sound ──
+  function buildSoundBuffer(type) {
+    const sr = audioCtx.sampleRate;
+    const len = sr * 4;
+    const buf = audioCtx.createBuffer(2, len, sr);
+    for (let ch = 0; ch < 2; ch++) {
+      const data = buf.getChannelData(ch);
+      let last = 0;
+      if (type === 'brown') {
+        for (let i = 0; i < len; i++) {
+          const w = Math.random() * 2 - 1;
+          data[i] = (last + 0.02 * w) / 1.02;
+          last = data[i];
+          data[i] *= 3.5;
+        }
+      } else if (type === 'rain') {
+        for (let i = 0; i < len; i++) {
+          const w = Math.random() * 2 - 1;
+          data[i] = (last + 0.04 * w) / 1.04;
+          last = data[i];
+          data[i] *= 2.2;
+        }
+      } else if (type === 'ocean') {
+        for (let i = 0; i < len; i++) {
+          const t = i / sr;
+          const wave = Math.sin(2 * Math.PI * 0.12 * t) * 0.5 + 0.5;
+          const noise = Math.random() * 2 - 1;
+          data[i] = noise * wave * 0.9;
+        }
+      } else if (type === 'piano') {
+        // Soft sine tones: C-E-G chord pattern
+        const freqs = [261.63, 329.63, 392.00, 523.25];
+        for (let i = 0; i < len; i++) {
+          const t = i / sr;
+          let s = 0;
+          freqs.forEach((f, fi) => {
+            const env = Math.exp(-0.4 * ((t % (1.5 + fi * 0.3))));
+            s += Math.sin(2 * Math.PI * f * t) * env * 0.08;
+          });
+          data[i] = s;
+        }
+      }
+    }
+    return buf;
+  }
+
+  function buildFilter(type) {
+    const lpf = audioCtx.createBiquadFilter();
+    lpf.type = 'lowpass';
+    if (type === 'rain') { lpf.frequency.value = 3000; lpf.Q.value = 0.5; }
+    else if (type === 'brown') { lpf.frequency.value = 700; lpf.Q.value = 0.4; }
+    else if (type === 'ocean') { lpf.frequency.value = 800; lpf.Q.value = 0.3; }
+    else { lpf.frequency.value = 8000; lpf.Q.value = 0.1; }
+    return lpf;
+  }
+
+  function stopAmbientSound(silent) {
+    if (gainNode && audioCtx) {
+      gainNode.gain.setTargetAtTime(0, audioCtx.currentTime, 0.4);
+      setTimeout(() => {
+        try { sourceNode && sourceNode.stop(); audioCtx && audioCtx.close(); } catch (_) {}
+        audioCtx = sourceNode = gainNode = null;
+      }, 1200);
+    }
+    ambientActive = false;
+    currentSound = null;
+    document.querySelectorAll('.ambient-sound-btn').forEach(b => b.classList.remove('active'));
+    if (!silent) showToast('Sound off');
+  }
+
+  function startAmbientSound(type) {
+    if (ambientActive) stopAmbientSound(true);
+    try {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      const buf = buildSoundBuffer(type);
+      sourceNode = audioCtx.createBufferSource();
+      sourceNode.buffer = buf;
+      sourceNode.loop = true;
+      const lpf = buildFilter(type);
+      gainNode = audioCtx.createGain();
+      gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
+      gainNode.gain.linearRampToValueAtTime(type === 'piano' ? 0.9 : 0.22, audioCtx.currentTime + 1.2);
+      sourceNode.connect(lpf);
+      lpf.connect(gainNode);
+      gainNode.connect(audioCtx.destination);
+      sourceNode.start();
+      ambientActive = true;
+      currentSound = type;
+      const labels = { rain: 'Rain on', brown: 'Noise on', ocean: 'Ocean on', piano: 'Piano on' };
+      showToast(labels[type] || 'Sound on');
+    } catch (e) {
+      showToast('Audio not available in this browser');
+    }
+  }
+
+  // ── Breathing guide ──
+  const breathPhases = [
+    { name: 'Inhale',   sub: 'Breathe in slowly through your nose', dur: 4,  cls: 'inhaling',  color: 'var(--moon)' },
+    { name: 'Hold',     sub: 'Hold your breath gently',             dur: 7,  cls: 'holding',   color: 'var(--ink)'  },
+    { name: 'Exhale',   sub: 'Release slowly through your mouth',   dur: 8,  cls: 'exhaling',  color: 'var(--amber)'},
+  ];
+
+  function openBreathe() {
+    breatheOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeBreathe() {
+    breatheOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+    stopBreathing();
+  }
+
+  function startBreathing() {
+    if (breathingActive) return;
+    breathingActive = true;
+    breathPhaseIndex = 0;
+    breatheStartBtn.textContent = 'Breathing…';
+    breatheStartBtn.classList.add('running');
+    runBreathPhase();
+  }
+
+  function stopBreathing() {
+    breathingActive = false;
+    clearTimeout(breathCountTimer);
+    clearTimeout(breathProgressTimer);
+    breathPhaseIndex = 0;
+    breatheRing.className = 'breathe-ring idle';
+    breatheCount.textContent = '4';
+    breathePhaseText.textContent = 'Ready when you are';
+    breathePhaseSubtext.textContent = 'Begin to slow your breathing';
+    breatheProgressFill.style.transition = 'none';
+    breatheProgressFill.style.width = '0%';
+    breatheStartBtn.textContent = 'Begin breathing';
+    breatheStartBtn.classList.remove('running');
+  }
+
+  function runBreathPhase() {
+    if (!breathingActive) return;
+    const phase = breathPhases[breathPhaseIndex];
+    breathePhaseText.style.color = phase.color;
+    breathePhaseText.textContent = phase.name;
+    breathePhaseSubtext.textContent = phase.sub;
+    breatheRing.className = 'breathe-ring ' + phase.cls;
+
+    // set transition timing for inhale/exhale
+    if (phase.cls === 'inhaling') {
+      breatheRing.style.transition = `transform ${phase.dur}s ease-in-out, box-shadow ${phase.dur}s ease-in-out`;
+    } else if (phase.cls === 'exhaling') {
+      breatheRing.style.transition = `transform ${phase.dur}s ease-in-out, box-shadow ${phase.dur}s ease-in-out`;
+    } else {
+      breatheRing.style.transition = 'transform 0.2s ease, box-shadow 0.2s ease';
+    }
+
+    // Progress bar
+    breatheProgressFill.style.transition = 'none';
+    breatheProgressFill.style.width = '0%';
+    requestAnimationFrame(() => {
+      breatheProgressFill.style.transition = `width ${phase.dur}s linear`;
+      breatheProgressFill.style.width = '100%';
+    });
+
+    // Countdown
+    breathCurrentCount = phase.dur;
+    breatheCount.textContent = breathCurrentCount;
+    function tick() {
+      if (!breathingActive) return;
+      breathCurrentCount--;
+      breatheCount.textContent = Math.max(0, breathCurrentCount);
+      if (breathCurrentCount > 0) {
+        breathCountTimer = setTimeout(tick, 1000);
+      } else {
+        breathProgressTimer = setTimeout(() => {
+          if (!breathingActive) return;
+          breathPhaseIndex = (breathPhaseIndex + 1) % breathPhases.length;
+          runBreathPhase();
+        }, 150);
+      }
+    }
+    breathCountTimer = setTimeout(tick, 1000);
+  }
+
+  // ── 24-hour dial ──
+  function angleForDate(d) {
+    return ((d.getHours() + d.getMinutes() / 60 + d.getSeconds() / 3600) / 24) * 360;
+  }
+
+  function polar(cx, cy, r, deg) {
+    const rad = (deg - 90) * Math.PI / 180;
+    return { x: cx + r * Math.cos(rad), y: cy + r * Math.sin(rad) };
+  }
+
+  function arcPath(cx, cy, r, startDeg, endDeg) {
+    let diff = endDeg - startDeg;
+    if (diff <= 0) diff += 360;
+    const p1 = polar(cx, cy, r, startDeg);
+    const p2 = polar(cx, cy, r, endDeg);
+    const large = diff > 180 ? 1 : 0;
+    return `M ${p1.x.toFixed(2)} ${p1.y.toFixed(2)} A ${r} ${r} 0 ${large} 1 ${p2.x.toFixed(2)} ${p2.y.toFixed(2)}`;
+  }
+
+  function renderDial(now, startDate, endDate, centerValue, centerLabel) {
+    const cx = 140, cy = 140, r = 98;
+    const startDeg = angleForDate(startDate);
+    const endDeg   = angleForDate(endDate);
+    const nowDeg   = angleForDate(now);
+
+    const startPos = polar(cx, cy, r, startDeg);
+    const endPos   = polar(cx, cy, r, endDeg);
+    const nowPos   = polar(cx, cy, r, nowDeg);
+
+    let ticks = '';
+    for (let h = 0; h < 24; h++) {
+      const deg = h * 15;
+      const major = h % 6 === 0;
+      const inner = major ? 89 : 93;
+      const p1 = polar(cx, cy, inner, deg);
+      const p2 = polar(cx, cy, r, deg);
+      ticks += `<line class="dial-tick${major ? ' major' : ''}" x1="${p1.x.toFixed(1)}" y1="${p1.y.toFixed(1)}" x2="${p2.x.toFixed(1)}" y2="${p2.y.toFixed(1)}" />`;
+    }
+
+    const hourLabels = [[0, '12AM'], [6, '6AM'], [12, '12PM'], [18, '6PM']];
+    let labelHtml = '';
+    hourLabels.forEach(([h, txt]) => {
+      const p = polar(cx, cy, r + 18, h * 15);
+      labelHtml += `<text class="dial-label" x="${p.x.toFixed(1)}" y="${p.y.toFixed(1)}" text-anchor="middle" dominant-baseline="middle">${txt}</text>`;
+    });
+
+    const arc = arcPath(cx, cy, r, startDeg, endDeg);
+    const gradId = `arcG_${Date.now()}`;
+
+    // Build a gradient that spans the SVG userSpace for the arc
+    const midDeg  = startDeg + ((endDeg - startDeg + 360) % 360) / 2;
+    const gStart  = polar(cx, cy, r, startDeg);
+    const gEnd    = polar(cx, cy, r, endDeg);
+
+    dialWrap.innerHTML = `
+      <svg viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="${gradId}" gradientUnits="userSpaceOnUse"
+            x1="${gStart.x.toFixed(1)}" y1="${gStart.y.toFixed(1)}"
+            x2="${gEnd.x.toFixed(1)}"   y2="${gEnd.y.toFixed(1)}">
+            <stop offset="0%"   stop-color="#7c86ff"/>
+            <stop offset="100%" stop-color="#f5b95e"/>
+          </linearGradient>
+          <filter id="arcGlow">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <circle class="dial-track" cx="${cx}" cy="${cy}" r="${r}" />
+        ${ticks}
+        ${labelHtml}
+        <path class="dial-arc-glow" d="${arc}" stroke="url(#${gradId})" />
+        <path class="dial-arc" d="${arc}" stroke="url(#${gradId})" filter="url(#arcGlow)" />
+        <circle class="dial-icon-bg" cx="${startPos.x.toFixed(1)}" cy="${startPos.y.toFixed(1)}" r="12" />
+        <use href="#i-moon" x="${(startPos.x - 7).toFixed(1)}" y="${(startPos.y - 7).toFixed(1)}" width="14" height="14"
+             fill="none" stroke="var(--moon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        <circle class="dial-icon-bg" cx="${endPos.x.toFixed(1)}" cy="${endPos.y.toFixed(1)}" r="12" />
+        <use href="#i-sun" x="${(endPos.x - 7).toFixed(1)}" y="${(endPos.y - 7).toFixed(1)}" width="14" height="14"
+             fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        <circle class="dial-now-pulse" cx="${nowPos.x.toFixed(1)}" cy="${nowPos.y.toFixed(1)}" r="4" />
+        <circle class="dial-now" cx="${nowPos.x.toFixed(1)}" cy="${nowPos.y.toFixed(1)}" r="4.5" />
+        <text class="dial-center-value" x="${cx}" y="${cy - 6}">${centerValue}</text>
+        <text class="dial-center-label" x="${cx}" y="${cy + 14}">${centerLabel}</text>
+      </svg>`;
+  }
+
+  // ── Timeline with ripple ──
+  function attachTimelineHandlers() {
+    timeline.querySelectorAll('.timeline-item').forEach(item => {
+      item.addEventListener('click', (e) => {
+        // Ripple
+        const rect = item.getBoundingClientRect();
+        const rip  = document.createElement('span');
+        rip.className = 'ripple';
+        const size = Math.max(rect.width, rect.height);
+        rip.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX - rect.left - size/2}px;top:${e.clientY - rect.top - size/2}px;`;
+        item.appendChild(rip);
+        setTimeout(() => rip.remove(), 600);
+        selectedIndex = parseInt(item.dataset.idx, 10);
+        calculate();
+      });
+    });
+  }
+
+  // ── Reminder ──
+  function reminderDefaultLabel() {
+    return mode === 'nap' ? 'Set alarm' : 'Remind me';
+  }
+
+  function setReminderBtnLabel(text) {
+    reminderBtnLabel.textContent = text;
+    const use = reminderBtn.querySelector('.icon use');
+    if (use) use.setAttribute('href', mode === 'nap' ? '#i-alarm' : '#i-bell');
+  }
+
+  function cancelReminder(silent) {
+    if (reminderTimer) { clearTimeout(reminderTimer); reminderTimer = null; }
+    if (reminderCountdownTimer) { clearInterval(reminderCountdownTimer); reminderCountdownTimer = null; }
+    reminderActive = false;
+    reminderBtn.classList.remove('active');
+    setReminderBtnLabel(reminderDefaultLabel());
+    hideReminderRing();
+    if (!silent) showToast('Reminder cancelled.');
+  }
+
+  function startReminderCountdown(targetTime) {
+    if (reminderCountdownTimer) clearInterval(reminderCountdownTimer);
+    reminderRingTotal = targetTime - Date.now();
+
+    // Show ring, hide text label
+    reminderRingSvg.classList.add('visible');
+    reminderBtn.style.display = 'none';
+
+    // Set initial ring state (full circle)
+    const circum = 94.25;
+    reminderRingFill.style.transition = 'none';
+    reminderRingFill.setAttribute('stroke-dashoffset', '0');
+
+    function update() {
+      const msLeft = targetTime - Date.now();
+      if (msLeft <= 0) { clearInterval(reminderCountdownTimer); reminderRingFill.setAttribute('stroke-dashoffset', circum); return; }
+      const frac = msLeft / reminderRingTotal;
+      const offset = (1 - frac) * circum;
+      reminderRingFill.setAttribute('stroke-dashoffset', offset.toFixed(2));
+      // Pulse amber near end
+      if (msLeft < 10 * 60000) {
+        reminderRingSvg.style.filter = 'drop-shadow(0 0 4px rgba(245,185,94,0.6))';
+      }
+    }
+    update();
+    reminderCountdownTimer = setInterval(update, 15000);
+  }
+
+  function hideReminderRing() {
+    reminderRingSvg.classList.remove('visible');
+    reminderRingSvg.style.filter = '';
+    reminderBtn.style.display = '';
+  }
+
+  reminderRingSvg.addEventListener('click', () => {
+    if (reminderActive) cancelReminder();
+  });
+
+  reminderBtn.addEventListener('click', () => {
+    if (reminderActive) { cancelReminder(); return; }
+    const targetTime = parseFloat(reminderBtn.dataset.targetTime);
+    if (!targetTime) return;
+    const ms = targetTime - Date.now();
+    if (ms <= 0) { showToast('That time has already passed — try a later option.'); return; }
+
+    if (window.Notification && Notification.permission === 'default') Notification.requestPermission();
+
+    reminderTimer = setTimeout(() => {
+      const body = mode === 'nap' ? 'Your nap is over — time to get up.' : 'It\'s bedtime — time to wind down.';
+      if (window.Notification && Notification.permission === 'granted') {
+        new Notification('Lull', { body });
+      } else {
+        showToast(body);
+      }
+      cancelReminder(true);
+    }, ms);
+
+    reminderActive = true;
+    reminderBtn.classList.add('active');
+    startReminderCountdown(targetTime);
+    showToast(`Reminder set for ${formatTime(new Date(targetTime))} — keep this tab open.`);
+  });
+
+  // ── Mode switching ──
+  function setMode(newMode) {
+    if (mode === newMode) return;
+    mode = newMode;
+    selectedIndex = null;
+    cancelReminder(true);
+
+    const isWake = mode === 'wake', isSleep = mode === 'sleep', isNap = mode === 'nap';
+
+    modeWakeBtn.classList.toggle('active', isWake);
+    modeWakeBtn.setAttribute('aria-selected', isWake);
+    modeSleepBtn.classList.toggle('active', isSleep);
+    modeSleepBtn.setAttribute('aria-selected', isSleep);
+    modeNapBtn.classList.toggle('active', isNap);
+    modeNapBtn.setAttribute('aria-selected', isNap);
+
+    const activeBtn = isWake ? modeWakeBtn : isSleep ? modeSleepBtn : modeNapBtn;
+    updatePill(activeBtn);
+
+    pickerWrap.hidden = isNap;
+    napInfo.hidden = !isNap;
+    bufferRowWrap.style.display = isNap ? 'none' : '';
+
+    if (isWake) {
+      pickerLabel.textContent = 'When do you need to wake up?';
+      targetInput.value = '07:00';
+    } else if (isSleep) {
+      pickerLabel.textContent = 'When are you going to bed?';
+      const now = new Date();
+      targetInput.value = `${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}`;
+    }
+
+    renderTimeChips();
+    calculate();
+  }
+
+  // ── Core calculation ──
+  function calculate() {
+    const now = new Date();
+    nowDisplay.textContent = formatTime(now);
+    napNowTime.textContent = formatTime(now);
+    buffer = parseInt(bufferRange.value, 10);
+    bufferValue.textContent = buffer === 0 ? 'None' : `${buffer} min`;
+    cycleLength = parseInt(cycleRange.value, 10);
+    cycleValue.textContent = `${cycleLength} min`;
+
+    if (mode === 'wake') calcWake(now);
+    else if (mode === 'sleep') calcSleep(now);
+    else calcNap(now);
+  }
+
+  function buildHypnogram(cycles) {
+    // For each cycle: light->deep->rem proportions shift across cycles
+    // Early cycles: more deep; later cycles: more REM
+    if (typeof cycles !== 'number' || cycles < 1) {
+      // Nap: just show light bar
+      return `<div class="stage-mini-bar">
+        <div class="smb-light" style="flex:1"></div>
+      </div>
+      <div class="smb-legend">
+        <span class="smb-legend-item"><span class="smb-dot" style="background:var(--moon)"></span>Light</span>
+      </div>`;
+    }
+    const segs = [];
+    for (let c = 0; c < cycles; c++) {
+      const t = c / Math.max(cycles - 1, 1);
+      const deepFrac = Math.max(0.05, 0.45 - t * 0.35);
+      const remFrac  = Math.min(0.45, 0.05 + t * 0.40);
+      const lightFrac = 1 - deepFrac - remFrac;
+      segs.push({ l: lightFrac, d: deepFrac, r: remFrac });
+    }
+    const total = segs.reduce((a, s) => a + s.l + s.d + s.r, 0);
+    const bars = segs.map(s => {
+      const lw = (s.l / total * 100).toFixed(1);
+      const dw = (s.d / total * 100).toFixed(1);
+      const rw = (s.r / total * 100).toFixed(1);
+      return `<div class="smb-light" style="flex:${lw}"></div><div class="smb-deep" style="flex:${dw}"></div><div class="smb-rem" style="flex:${rw}"></div>`;
+    }).join('');
+    return `<div class="stage-mini-bar">${bars}</div>
+      <div class="smb-legend">
+        <span class="smb-legend-item"><span class="smb-dot" style="background:var(--moon)"></span>Light</span>
+        <span class="smb-legend-item"><span class="smb-dot" style="background:var(--rem)"></span>Deep</span>
+        <span class="smb-legend-item"><span class="smb-dot" style="background:var(--amber)"></span>REM</span>
+      </div>`;
+  }
+
+  function buildTimelineRow(timeStr, mainLabel, subLabel, durationStr, isSelected, isRecommended, idx, qualityObj, cycleCount) {
+    const selCls  = isSelected     ? ' selected'    : '';
+    const recCls  = isRecommended  ? ' recommended' : '';
+    const qBadge  = qualityObj
+      ? `<span class="quality-badge ${qualityObj.cls}">${qualityObj.label}</span>`
+      : '';
+    const hypno = buildHypnogram(cycleCount);
+    return `
+      <div class="timeline-item${selCls}${recCls}" data-idx="${idx}">
+        <div class="time-meta">
+          <span class="target-time">${timeStr}</span>
+          <span class="cycle-count">${mainLabel}${subLabel ? ` <span class="cycle-note">${subLabel}</span>` : ''}</span>
+        </div>
+        <div class="timeline-right">
+          ${qBadge}
+          <span class="duration-badge">${durationStr}</span>
+        </div>
+        <div class="stage-mini-wrap">${hypno}</div>
+      </div>`;
+  }
+
+  function calcWake(now) {
+    const [h, m] = targetInput.value.split(':').map(Number);
+    if (isNaN(h) || isNaN(m)) return;
+
+    let target = new Date(now);
+    target.setHours(h, m, 0, 0);
+    if (target <= now) target.setDate(target.getDate() + 1);
+
+    const sleepAvailable = (target - now) / 60000 - buffer;
+    recTag.textContent = 'Recommendation';
+    timelineHeading.textContent = 'Bedtime options';
+
+    const cycleOptions = [6, 5, 4, 3];
+    let closestFutureIdx = -1, closestDiff = Infinity;
+
+    const rows = cycleOptions.map((cycles, idx) => {
+      const sleepMins  = cycles * cycleLength;
+      const bedtime    = new Date(target.getTime() - (sleepMins + buffer) * 60000);
+      const minsAway   = (bedtime - now) / 60000;
+      if (minsAway >= 0 && minsAway < closestDiff) { closestDiff = minsAway; closestFutureIdx = idx; }
+      return { cycles, sleepMins, bedtime, minsAway, fallAsleepAt: new Date(bedtime.getTime() + buffer * 60000) };
+    });
+
+    let highlightIdx = -1;
+    if (sleepAvailable < 270) {
+      recText.innerHTML = `Less than ${formatDuration(270)} remain before your wake time. Go to sleep <strong>as soon as possible</strong> to protect your core deep-sleep window.${getMoodSuffix()}`;
+    } else {
+      const immediate = rows.find(r => r.minsAway >= -10 && r.minsAway <= 25);
+      if (immediate) {
+        highlightIdx = rows.indexOf(immediate);
+        if (immediate.minsAway <= 0) {
+          recText.innerHTML = `Good alignment. Head to bed <strong>now</strong> and you'll land <strong>${immediate.cycles} full cycles</strong> (${formatDuration(immediate.sleepMins)}) before your alarm.${getMoodSuffix()}`;
+        } else {
+          recText.innerHTML = `Wind down now — be asleep in <strong>${Math.ceil(immediate.minsAway)} min</strong> for a clean <strong>${immediate.cycles}-cycle</strong> night.${getMoodSuffix()}`;
+        }
+      } else if (closestFutureIdx >= 0) {
+        highlightIdx = closestFutureIdx;
+        const best = rows[closestFutureIdx];
+        recText.innerHTML = `For a clean <strong>${best.cycles}-cycle</strong> night (${formatDuration(best.sleepMins)}), aim to be asleep by <strong>${formatTime(best.bedtime)}</strong>${buffer > 0 ? ` — lights out around ${formatTime(new Date(best.bedtime.getTime() - buffer * 60000))}` : ''}.${getMoodSuffix()}`;
+      } else {
+        recText.innerHTML = `Plenty of time before your alarm. Pick a bedtime below that lines up with a full number of ${cycleLength}-minute cycles.${getMoodSuffix()}`;
+      }
+    }
+
+    const activeIdx = (selectedIndex !== null) ? selectedIndex : (highlightIdx >= 0 ? highlightIdx : 0);
+    timeline.innerHTML = rows.map((r, i) =>
+      buildTimelineRow(
+        formatTime(r.bedtime),
+        `${r.cycles} cycles`,
+        cycleNote(r.cycles),
+        formatDuration(r.sleepMins),
+        i === activeIdx, i === highlightIdx, i,
+        cycleQuality(r.cycles), r.cycles
+      )
+    ).join('');
+    attachTimelineHandlers();
+    scrollToSelected();
+
+    const active = rows[activeIdx];
+    renderDial(now, active.fallAsleepAt, target, formatDuration(active.sleepMins), `${active.cycles} cycles`);
+
+    caffeineTip.innerHTML = `<svg class="icon"><use href="#i-coffee"/></svg>Caffeine cutoff ≈ ${formatTime(new Date(active.fallAsleepAt.getTime() - 8 * 60 * 60000))}`;
+    caffeineTip.style.display = '';
+    reminderBtn.style.display = '';
+    if (!reminderActive) setReminderBtnLabel(reminderDefaultLabel());
+    reminderBtn.dataset.targetTime = active.bedtime.getTime();
+  }
+
+  function calcSleep(now) {
+    const [h, m] = targetInput.value.split(':').map(Number);
+    if (isNaN(h) || isNaN(m)) return;
+
+    let target = new Date(now);
+    target.setHours(h, m, 0, 0);
+    if (target < now && (now - target) > 6 * 60 * 60000) target.setDate(target.getDate() + 1);
+    const fallAsleepAt = new Date(target.getTime() + buffer * 60000);
+
+    recTag.textContent = "Tonight's plan";
+    timelineHeading.textContent = 'Wake-up options';
+
+    const cycleOptions = [3, 4, 5, 6];
+    const rows = cycleOptions.map(cycles => {
+      const sleepMins = cycles * cycleLength;
+      return { cycles, sleepMins, wakeTime: new Date(fallAsleepAt.getTime() + sleepMins * 60000) };
+    });
+
+    const recommendedIdx = 2;
+    const activeIdx = (selectedIndex !== null) ? selectedIndex : recommendedIdx;
+    const rec = rows[recommendedIdx];
+    const leadIn = fallAsleepAt > now
+      ? `Plan to be asleep by <strong>${formatTime(fallAsleepAt)}</strong>.`
+      : `Falling asleep around now,`;
+
+    recText.innerHTML = `${leadIn} For a balanced night, aim to wake near <strong>${formatTime(rec.wakeTime)}</strong> — that's <strong>${rec.cycles} cycles</strong> (${formatDuration(rec.sleepMins)}).${getMoodSuffix()}`;
+
+    timeline.innerHTML = rows.map((r, i) =>
+      buildTimelineRow(
+        formatTime(r.wakeTime),
+        `${r.cycles} cycles`,
+        cycleNote(r.cycles),
+        formatDuration(r.sleepMins),
+        i === activeIdx, i === recommendedIdx, i,
+        cycleQuality(r.cycles), r.cycles
+      )
+    ).join('');
+    attachTimelineHandlers();
+    scrollToSelected();
+
+    const active = rows[activeIdx];
+    renderDial(now, fallAsleepAt, active.wakeTime, formatDuration(active.sleepMins), `${active.cycles} cycles`);
+
+    caffeineTip.innerHTML = `<svg class="icon"><use href="#i-coffee"/></svg>Caffeine cutoff ≈ ${formatTime(new Date(fallAsleepAt.getTime() - 8 * 60 * 60000))}`;
+    caffeineTip.style.display = '';
+    reminderBtn.style.display = 'none';
+  }
+
+  function calcNap(now) {
+    recTag.textContent = 'Nap guide';
+    timelineHeading.textContent = 'Nap lengths';
+    caffeineTip.style.display = 'none';
+    reminderBtn.style.display = '';
+
+    const presets = [
+      { mins: 20,          name: 'Power nap',    note: '· boosts alertness, no grogginess',    quality: { label: 'Quick',    cls: 'q-adequate' } },
+      { mins: 26,          name: 'NASA nap',     note: '· NASA-tested for pilot alertness',     quality: { label: 'Balanced', cls: 'q-optimal'  } },
+      { mins: 60,          name: 'Recovery nap', note: '· deep sleep; brief grogginess on wake', quality: { label: 'Deep',    cls: 'q-extended' } },
+      { mins: cycleLength, name: 'Full cycle',   note: `· full ${cycleLength}-min REM cycle`,   quality: { label: 'Full',    cls: 'q-extended' } },
+    ];
+
+    const hour = now.getHours() + now.getMinutes() / 60;
+    const isLate = hour >= 16 || hour < 4;
+
+    const recommendedIdx = 0;
+    const activeIdx = (selectedIndex !== null) ? selectedIndex : recommendedIdx;
+    const active = presets[activeIdx];
+    const wakeTime = new Date(now.getTime() + active.mins * 60000);
+
+    const lateWarn = isLate ? ' Napping this late may push your bedtime — keep it short.' : '';
+    recText.innerHTML = `<strong>${active.name}</strong> (${active.mins} min): set your alarm for <strong>${formatTime(wakeTime)}</strong>. ${active.note.replace('· ','')}${lateWarn}`;
+
+    timeline.innerHTML = presets.map((p, i) => {
+      const wt = new Date(now.getTime() + p.mins * 60000);
+      return buildTimelineRow(
+        formatTime(wt),
+        p.name,
+        p.note,
+        formatDuration(p.mins),
+        i === activeIdx, i === recommendedIdx, i,
+        p.quality, null
+      );
+    }).join('');
+    attachTimelineHandlers();
+    scrollToSelected();
+
+    renderDial(now, now, wakeTime, formatDuration(active.mins), active.name);
+    if (!reminderActive) setReminderBtnLabel(reminderDefaultLabel());
+    reminderBtn.dataset.targetTime = wakeTime.getTime();
+  }
+
+  // ── Scroll carousel to selected card ──
+  function scrollToSelected() {
+    const selected = timeline.querySelector('.timeline-item.selected') ||
+                     timeline.querySelector('.timeline-item.recommended') ||
+                     timeline.querySelector('.timeline-item');
+    if (selected) {
+      setTimeout(() => {
+        const tRect = timeline.getBoundingClientRect();
+        const sRect = selected.getBoundingClientRect();
+        const offset = sRect.left - tRect.left - (tRect.width - sRect.width) / 2;
+        timeline.scrollBy({ left: offset, behavior: 'smooth' });
+      }, 50);
+    }
+  }
+
+  // ── Snap-select on scroll end ──
+  let snapTimer = null;
+  timeline.addEventListener('scroll', () => {
+    clearTimeout(snapTimer);
+    snapTimer = setTimeout(() => {
+      const tRect = timeline.getBoundingClientRect();
+      const center = tRect.left + tRect.width / 2;
+      let closest = null, minDist = Infinity;
+      timeline.querySelectorAll('.timeline-item').forEach(item => {
+        const r = item.getBoundingClientRect();
+        const dist = Math.abs((r.left + r.width / 2) - center);
+        if (dist < minDist) { minDist = dist; closest = item; }
+      });
+      if (closest) {
+        const newIdx = parseInt(closest.dataset.idx, 10);
+        if (newIdx !== selectedIndex) {
+          selectedIndex = newIdx;
+          calculate();
+        }
+      }
+    }, 120);
+  });
+
+  // ── Quick-tap time chips ──
+  const WAKE_CHIPS = ['05:00','05:30','06:00','06:30','07:00','07:30','08:00'];
+  const SLEEP_CHIPS = ['21:00','21:30','22:00','22:30','23:00','23:30','00:00'];
+
+  function renderTimeChips() {
+    if (!timeChips) return;
+    const chips = mode === 'sleep' ? SLEEP_CHIPS : WAKE_CHIPS;
+    const labels = mode === 'sleep'
+      ? ['9 PM','9:30','10 PM','10:30','11 PM','11:30','12 AM']
+      : ['5 AM','5:30','6 AM','6:30','7 AM','7:30','8 AM'];
+    timeChips.innerHTML = chips.map((t, i) =>
+      `<button class="time-chip${targetInput.value === t ? ' active' : ''}" data-time="${t}">${labels[i]}</button>`
+    ).join('');
+    timeChips.querySelectorAll('.time-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        targetInput.value = chip.dataset.time;
+        selectedIndex = null;
+        timeChips.querySelectorAll('.time-chip').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        calculate();
+      });
+    });
+  }
+
+  // ── Event wiring ──
+  modeWakeBtn.addEventListener('click', () => setMode('wake'));
+  modeSleepBtn.addEventListener('click', () => setMode('sleep'));
+  modeNapBtn.addEventListener('click', () => setMode('nap'));
+
+  targetInput.addEventListener('input', () => {
+    selectedIndex = null;
+    timeChips && timeChips.querySelectorAll('.time-chip').forEach(c => c.classList.remove('active'));
+    calculate();
+  });
+  bufferRange.addEventListener('input', calculate);
+  cycleRange.addEventListener('input', calculate);
+
+  advToggle.addEventListener('click', () => {
+    const open = advPanel.classList.toggle('open');
+    advToggle.setAttribute('aria-expanded', open);
+  });
+
+  // Mood chips
+  document.querySelectorAll('.mood-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      document.querySelectorAll('.mood-chip').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      mood = chip.dataset.mood;
+      calculate();
+    });
+  });
+
+  // Ambient sound strip
+  [ambientRain, ambientBrown, ambientOcean, ambientPiano].forEach(btn => {
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      const sound = btn.dataset.sound;
+      if (ambientActive && currentSound === sound) {
+        stopAmbientSound();
+      } else {
+        document.querySelectorAll('.ambient-sound-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        startAmbientSound(sound);
+      }
+    });
+  });
+
+  // Breathing
+  breatheBtn.addEventListener('click', openBreathe);
+  breatheClose.addEventListener('click', closeBreathe);
+  breatheStartBtn.addEventListener('click', () => {
+    if (breathingActive) { stopBreathing(); } else { startBreathing(); }
+  });
+  breatheOverlay.addEventListener('click', (e) => {
+    if (e.target === breatheOverlay) closeBreathe();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && breatheOverlay.classList.contains('open')) closeBreathe();
+  });
+
+  // ── Theme toggle ──
+  function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    const use = themeToggleIcon.querySelector('use');
+    if (use) use.setAttribute('href', theme === 'dark' ? '#i-sun' : '#i-moon');
+    try { localStorage.setItem('lull-theme', theme); } catch (_) {}
+  }
+
+  let savedTheme = null;
+  try { savedTheme = localStorage.getItem('lull-theme'); } catch (_) {}
+  if (!savedTheme) {
+    savedTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+  applyTheme(savedTheme);
+
+  themeToggle.addEventListener('click', () => {
+    const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+  });
+
+  // ── PWA: service worker + install prompt ──
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js').catch(() => {});
+    });
+  }
+
+  const isStandaloneDisplay = () =>
+    window.matchMedia('(display-mode: standalone)').matches ||
+    window.navigator.standalone === true; // iOS Safari flag
+
+  const isIOSDevice = () =>
+    /iphone|ipad|ipod/i.test(navigator.userAgent) && !window.MSStream;
+
+  let deferredInstallPrompt = null;
+
+  function refreshInstallButton() {
+    if (isStandaloneDisplay()) {
+      installBtn.hidden = true;
+      return;
+    }
+    installBtn.hidden = false;
+    installBtnLabel.textContent = deferredInstallPrompt ? 'Install app' : 'Install app';
+  }
+
+  // Chrome / Edge / Android: browser tells us installation is available
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredInstallPrompt = e;
+    refreshInstallButton();
+  });
+
+  installBtn.addEventListener('click', async () => {
+    if (isStandaloneDisplay()) return;
+
+    // Native install prompt is available — use it
+    if (deferredInstallPrompt) {
+      deferredInstallPrompt.prompt();
+      const { outcome } = await deferredInstallPrompt.userChoice;
+      deferredInstallPrompt = null;
+      showToast(outcome === 'accepted' ? 'Installing Lull…' : 'Install dismissed — you can try again anytime.');
+      refreshInstallButton();
+      return;
+    }
+
+    // iOS Safari doesn't support beforeinstallprompt — guide the user manually
+    if (isIOSDevice()) {
+      showToast('Tap the Share icon, then "Add to Home Screen" to install.');
+      return;
+    }
+
+    // Other browsers without native install support (e.g. Firefox desktop)
+    showToast('Check your browser menu for "Install app" or "Add to Home Screen".');
+  });
+
+  window.addEventListener('appinstalled', () => {
+    deferredInstallPrompt = null;
+    showToast('Lull installed! 🌙');
+    refreshInstallButton();
+  });
+
+  refreshInstallButton();
+
+  // ── Section nav bar ──
+  navItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const target = document.getElementById(item.dataset.target);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  const navSections = navItems
+    .map(item => ({ item, el: document.getElementById(item.dataset.target) }))
+    .filter(s => s.el);
+
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const match = navSections.find(s => s.el === entry.target);
+      if (!match) return;
+      navItems.forEach(i => i.classList.remove('active'));
+      match.item.classList.add('active');
+    });
+  }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+
+  navSections.forEach(s => navObserver.observe(s.el));
+
+  // ── Init ──
+  renderTimeChips();
+  calculate();
+  updatePill(modeWakeBtn);
+  if (copyrightYear) copyrightYear.textContent = new Date().getFullYear();
+  setInterval(calculate, 15000);
+</script>
+</body>
+</html>
