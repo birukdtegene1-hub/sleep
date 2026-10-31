@@ -1,0 +1,14 @@
+[
+  {
+    "family": "system-ui",
+    "roles": [
+      "body",
+      "display"
+    ],
+    "licence": "free",
+    "licenceName": "System font",
+    "install": null,
+    "alternative": null,
+    "note": "Ships with the operating system; nothing to install."
+  }
+]

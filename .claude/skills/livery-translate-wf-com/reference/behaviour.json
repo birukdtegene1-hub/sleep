@@ -1,0 +1,2274 @@
+{
+ "url": "https://www.translate-wf.com/",
+ "idle": [
+  {
+   "path": "div#newweb > div.webis-bg:nth-of-type(1) > div.webis-ill-wrapper:nth-of-type(2) > div.webis-ill.ill2:nth-of-type(2)",
+   "property": "transform",
+   "changes": 29,
+   "from": "translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(-65.9988deg) skew(0deg, 0deg)",
+   "to": "translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(-140.994deg) skew(0deg, 0deg)",
+   "settleMs": 1211,
+   "lerp": 0.067,
+   "range": 70.992
+  },
+  {
+   "path": "div.webis-ill-wrapper:nth-of-type(2) > div.webis-ill.ill3:nth-of-type(3) > div.webis-ill-circles-wrapper.cw1:nth-of-type(1) > div.webis-ill-circle.c1:nth-of-type(1) > div.webis-ill-compl-wrapper.cw1",
+   "property": "transform",
+   "changes": 29,
+   "from": "translate3d(0px, 0px, 0px) scale3d(0, 0, 1) rotateX(0deg) rotateY(0deg) rotateZ(-290.988deg) skew(0deg, 0deg)",
+   "to": "translate3d(0px, 0px, 0px) scale3d(0, 0, 1) rotateX(0deg) rotateY(0deg) rotateZ(-37.494deg) skew(0deg, 0deg)",
+   "settleMs": 1211,
+   "lerp": 0.131,
+   "range": 360
+  },
+  {
+   "path": "div.webis-ill-wrapper:nth-of-type(2) > div.webis-ill.ill3:nth-of-type(3) > div.webis-ill-circles-wrapper.sw2:nth-of-type(2) > div.webis-ill-circle.c7:nth-of-type(3) > div.webis-ill-compl-wrapper.cw4",
+   "property": "transform",
+   "changes": 29,
+   "from": "translate3d(0px, 0px, 0px) scale3d(0, 0, 1) rotateX(0deg) rotateY(0deg) rotateZ(-290.988deg) skew(0deg, 0deg)",
+   "to": "translate3d(0px, 0px, 0px) scale3d(0, 0, 1) rotateX(0deg) rotateY(0deg) rotateZ(-37.494deg) skew(0deg, 0deg)",
+   "settleMs": 1211,
+   "lerp": 0.131,
+   "range": 360
+  },
+  {
+   "path": "div.webis-ill-wrapper:nth-of-type(2) > div.webis-ill.ill3:nth-of-type(3) > div.webis-ill-circles-wrapper.sw2:nth-of-type(2) > div.webis-ill-circle.c8:nth-of-type(4) > div.webis-ill-compl-wrapper.cw2",
+   "property": "transform",
+   "changes": 29,
+   "from": "translate3d(0px, 0px, 0px) scale3d(0, 0, 1) rotateX(0deg) rotateY(0deg) rotateZ(290.988deg) skew(0deg, 0deg)",
+   "to": "translate3d(0px, 0px, 0px) scale3d(0, 0, 1) rotateX(0deg) rotateY(0deg) rotateZ(37.494deg) skew(0deg, 0deg)",
+   "settleMs": 1211,
+   "lerp": 0.131,
+   "range": 360
+  },
+  {
+   "path": "div.webis-ill-wrapper:nth-of-type(2) > div.webis-ill.ill3:nth-of-type(3) > div.webis-ill-circles-wrapper.sw2:nth-of-type(2) > div.webis-ill-circle.c6:nth-of-type(2) > div.webis-ill-compl-wrapper.cw3",
+   "property": "transform",
+   "changes": 29,
+   "from": "translate3d(0px, 0px, 0px) scale3d(0, 0, 1) rotateX(0deg) rotateY(0deg) rotateZ(290.988deg) skew(0deg, 0deg)",
+   "to": "translate3d(0px, 0px, 0px) scale3d(0, 0, 1) rotateX(0deg) rotateY(0deg) rotateZ(37.494deg) skew(0deg, 0deg)",
+   "settleMs": 1211,
+   "lerp": 0.131,
+   "range": 360
+  },
+  {
+   "path": "div.webis-ill.ill3:nth-of-type(3) > div.webis-ill-circles-wrapper.cw1:nth-of-type(1) > div.webis-ill-circle.c1:nth-of-type(1) > div.webis-ill-compl-wrapper.cw1 > div.webis-compl-3:nth-of-type(3)",
+   "property": "transform",
+   "changes": 29,
+   "from": "translate3d(0px, 0px, 0px) scale3d(0, 0, 1) rotateX(0deg) rotateY(0deg) rotateZ(-290.988deg) skew(0deg, 0deg)",
+   "to": "translate3d(0px, 0px, 0px) scale3d(0, 0, 1) rotateX(0deg) rotateY(0deg) rotateZ(-37.494deg) skew(0deg, 0deg)",
+   "settleMs": 1211,
+   "lerp": 0.131,
+   "range": 360
+  },
+  {
+   "path": "div#newweb > div.webis-bg:nth-of-type(1) > div.webis-ill-wrapper:nth-of-type(2) > div.webis-ill.ill3:nth-of-type(3)",
+   "property": "transform",
+   "changes": 29,
+   "from": "translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(87.1956deg) skew(0deg, 0deg)",
+   "to": "translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(102.197deg) skew(0deg, 0deg)",
+   "settleMs": 1211,
+   "lerp": 0.067,
+   "range": 14.199
+  },
+  {
+   "path": "div.browser-globe-scene-wrapper:nth-of-type(5) > div.browser-overflow-wrapper:nth-of-type(1) > div.globe > div.browser-window-wrapper > div.browser-window-inner-wrapper",
+   "property": "transform",
+   "changes": 29,
+   "from": "translate3d(-0.7488%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "to": "translate3d(-0.0354%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "settleMs": 1211,
+   "lerp": 0.119,
+   "range": 0.638
+  },
+  {
+   "path": "div.main-content:nth-of-type(5) > div.scene-1:nth-of-type(1) > div.language-barrier-wrapper:nth-of-type(6) > div.barrier-text-overflow:nth-of-type(2) > div.barrier-text-wrapper",
+   "property": "transform",
+   "changes": 29,
+   "from": "translate3d(97.504%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "to": "translate3d(99.882%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "settleMs": 1211,
+   "lerp": 0.119,
+   "range": 2.128
+  },
+  {
+   "path": "div.main-content:nth-of-type(5) > div.scene-1:nth-of-type(1) > div.language-barrier-wrapper:nth-of-type(6) > div.barrier-darkness:nth-of-type(1)",
+   "property": "transform",
+   "changes": 29,
+   "from": "translate3d(97.504%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "to": "translate3d(99.882%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "settleMs": 1211,
+   "lerp": 0.119,
+   "range": 2.128
+  },
+  {
+   "path": "div.browser-window-inner-wrapper > div.browser-window > div.triangles-wrapper:nth-of-type(5) > div.triangles-2:nth-of-type(2) > img.img-triangles-2",
+   "property": "transform",
+   "changes": 29,
+   "from": "translate3d(0px, -6.1314vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "to": "translate3d(0px, -1.3854vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "settleMs": 1211,
+   "lerp": 0.093,
+   "range": 4.439
+  },
+  {
+   "path": "div.browser-window-inner-wrapper > div.browser-window > div.triangles-wrapper:nth-of-type(5) > div.triangles-1:nth-of-type(1) > img.img-triangles-1",
+   "property": "transform",
+   "changes": 29,
+   "from": "translate3d(0px, -8.1752vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "to": "translate3d(0px, -1.8472vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "settleMs": 1211,
+   "lerp": 0.093,
+   "range": 5.919
+  },
+  {
+   "path": "div.scene-1:nth-of-type(1) > div.browser-globe-scene-wrapper:nth-of-type(5) > div.browser-overflow-wrapper:nth-of-type(1) > div.globe > div.browser-window-wrapper",
+   "property": "transform",
+   "changes": 29,
+   "from": "translate3d(1.335%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "to": "translate3d(0.063%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "settleMs": 1211,
+   "lerp": 0.12,
+   "range": 1.139
+  },
+  {
+   "path": "div.globe > div.browser-window-wrapper > div.browser-window-inner-wrapper > div.browser-window > div.triangles-wrapper:nth-of-type(5)",
+   "property": "transform",
+   "changes": 29,
+   "from": "translate3d(2.225%, 0px, 0px) scale3d(0.9911, 0.9911, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "to": "translate3d(0.105%, 0px, 0px) scale3d(0.99958, 0.99958, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "settleMs": 1211,
+   "lerp": 0.12,
+   "range": 1.898
+  },
+  {
+   "path": "div.globe > div.browser-window-wrapper > div.browser-window-inner-wrapper > div.browser-window > div.browser-btns-wrapper:nth-of-type(1)",
+   "property": "transform",
+   "changes": 29,
+   "from": "translate3d(0px, 0px, 0px) scale3d(0.822, 0.822, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "to": "translate3d(0px, 0px, 0px) scale3d(0.9916, 0.9916, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "settleMs": 1211,
+   "lerp": 0.12,
+   "range": 0.152
+  },
+  {
+   "path": "div.webis-content-col > div.webis-urready-section:nth-of-type(3) > div.webis-globe-wrapper > div.webis-globe > div.hemisphere-east:nth-of-type(2)",
+   "property": "transform",
+   "changes": 29,
+   "from": "translate3d(19.11%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "to": "translate3d(19.958%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "settleMs": 1211,
+   "lerp": 0.12,
+   "range": 0.759
+  },
+  {
+   "path": "div.globe > div.browser-window-wrapper > div.browser-window-inner-wrapper > div.browser-window > div.hemisphere-east:nth-of-type(3)",
+   "property": "transform",
+   "changes": 29,
+   "from": "translate3d(19.11%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "to": "translate3d(19.958%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "settleMs": 1211,
+   "lerp": 0.12,
+   "range": 0.759
+  },
+  {
+   "path": "div.webis-content-col > div.webis-urready-section:nth-of-type(3) > div.webis-globe-wrapper > div.webis-globe > div.hemisphere-west:nth-of-type(1)",
+   "property": "transform",
+   "changes": 29,
+   "from": "translate3d(-19.11%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "to": "translate3d(-19.958%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "settleMs": 1211,
+   "lerp": 0.12,
+   "range": 0.759
+  },
+  {
+   "path": "div.globe > div.browser-window-wrapper > div.browser-window-inner-wrapper > div.browser-window > div.hemisphere-west:nth-of-type(2)",
+   "property": "transform",
+   "changes": 29,
+   "from": "translate3d(-19.11%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "to": "translate3d(-19.958%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "settleMs": 1211,
+   "lerp": 0.12,
+   "range": 0.759
+  },
+  {
+   "path": "div.browser-overflow-wrapper:nth-of-type(1) > div.globe > div.browser-window-wrapper > div.browser-window-inner-wrapper > div.browser-window",
+   "property": "transform",
+   "changes": 29,
+   "from": "translate3d(0px, -2.0025%, 0px) scale3d(0.9911, 0.9911, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "to": "translate3d(0px, -0.0945%, 0px) scale3d(0.99958, 0.99958, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "settleMs": 1211,
+   "lerp": 0.12,
+   "range": 1.708
+  },
+  {
+   "path": "div.browser-window > div.lottie-globe:nth-of-type(4) > svg > g > g",
+   "property": "transform",
+   "changes": 29,
+   "from": "matrix(1,0,0,1,300,302)",
+   "to": "matrix(1,0,0,1,300,302)",
+   "settleMs": 1211,
+   "lerp": null,
+   "range": 0
+  },
+  {
+   "path": "div.lottie-globe:nth-of-type(4) > svg > g > g > path",
+   "property": "d",
+   "changes": 29,
+   "from": " M-298.91,281.15 C-298.91,281.15 -298.91,-285.52 -298.91,-285.52 C-298.91,-294.28 -291.8,-301.4 -283.03,-301.4 C-283.03,",
+   "to": " M-298.91,296.2 C-298.91,296.2 -298.91,-300.57 -298.91,-300.57 C-298.91,-301.03 -298.54,-301.4 -298.08,-301.4 C-298.08,-",
+   "settleMs": 1211,
+   "lerp": 0.12,
+   "range": 15.05
+  },
+  {
+   "path": "svg > g > g > g > path",
+   "property": "d",
+   "changes": 29,
+   "from": " M378.5,-358.40338134765625 C378.5,-358.40338134765625 378.5,358.40338134765625 378.5,358.40338134765625 C378.5,369.4947",
+   "to": " M378.5,-377.4441833496094 C378.5,-377.4441833496094 378.5,377.4441833496094 378.5,377.4441833496094 C378.5,378.02688598",
+   "settleMs": 1211,
+   "lerp": null,
+   "range": 373.21
+  },
+  {
+   "path": "div.barrier-breaker-overflow:nth-of-type(3) > div.barrier-breaker-wrapper > div.barrier-breaker-para:nth-of-type(3) > div.barrier-breaker > div.p-huge.p-bold:nth-of-type(1)",
+   "property": "transform",
+   "changes": 29,
+   "from": "translate3d(-1.11042vw, -1.11042vw, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "to": "translate3d(-1.5882vw, -1.5882vw, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "settleMs": 1211,
+   "lerp": 0.072,
+   "range": 0.459
+  },
+  {
+   "path": "div.barrier-breaker-overflow:nth-of-type(3) > div.barrier-breaker-wrapper > div.barrier-breaker-para:nth-of-type(3) > div.barrier-breaker > div.p-oversized.break:nth-of-type(2)",
+   "property": "transform",
+   "changes": 29,
+   "from": "translate3d(-2.26098vw, -2.26098vw, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "to": "translate3d(-2.69442vw, -2.69442vw, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "settleMs": 1211,
+   "lerp": 0.082,
+   "range": 0.411
+  },
+  {
+   "path": "div.barrier-breaker-overflow:nth-of-type(3) > div.barrier-breaker-wrapper > div.barrier-breaker-para:nth-of-type(3) > div.barrier-breaker > img.img",
+   "property": "transform",
+   "changes": 29,
+   "from": "translate3d(0.14172vw, -0.90552vw, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(-9.62208deg) skew(0deg, 0deg)",
+   "to": "translate3d(0.03204vw, -0.97864vw, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(-9.91456deg) skew(0deg, 0deg)",
+   "settleMs": 1211,
+   "lerp": 0.093,
+   "range": 0.274
+  },
+  {
+   "path": "div.scene-1:nth-of-type(1) > div.scroll-prompt-wrapper-initial:nth-of-type(1) > div.scroll-prompt-intro-initial > div.scroll-prompt-btn.initial > div.scroll-prompt-ico.initial:nth-of-type(2)",
+   "property": "transform",
+   "changes": 27,
+   "from": "translate3d(0px, 0rem, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "to": "translate3d(0px, 0rem, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "settleMs": 1211,
+   "lerp": 0.5,
+   "range": 2
+  },
+  {
+   "path": "div.main-content:nth-of-type(5) > div.scene-1:nth-of-type(1) > div.scroll-prompt-wrapper-initial:nth-of-type(1)",
+   "property": "opacity",
+   "changes": 25,
+   "from": "0",
+   "to": "1",
+   "settleMs": 1054,
+   "lerp": 0.011,
+   "range": 0.999
+  },
+  {
+   "path": "div.scene-1:nth-of-type(1) > div.scroll-prompt-wrapper-initial:nth-of-type(1) > div.scroll-prompt-intro-initial > div.scroll-prompt-btn.initial > div.scroll-prompt-ico.initial:nth-of-type(2)",
+   "property": "opacity",
+   "changes": 25,
+   "from": "0.99845",
+   "to": "0.99902",
+   "settleMs": 1145,
+   "lerp": 0.372,
+   "range": 0.999
+  },
+  {
+   "path": "div.scene-1:nth-of-type(1) > div.scroll-prompt-wrapper-initial:nth-of-type(1) > div.scroll-prompt-intro-initial > div.scroll-prompt-btn.initial > div.scroll-prompt-ico.initial:nth-of-type(2)",
+   "property": "will-change",
+   "changes": 10,
+   "from": "",
+   "to": "",
+   "settleMs": 1211,
+   "lerp": null,
+   "range": 0
+  },
+  {
+   "path": "div.weglot-is-ill-wrapper.iw4 > div.weglot-is-ll-row > div.weglot-ill-col.ill:nth-of-type(2) > div.weglot-ill > div.weglot-ill-4.ob3:nth-of-type(3)",
+   "property": "will-change",
+   "changes": 8,
+   "from": "",
+   "to": "",
+   "settleMs": 1014,
+   "lerp": null,
+   "range": 0
+  },
+  {
+   "path": "div.custom-pointer-wrapper.no-events:nth-of-type(4) > div.power-of-lang-pointer > div.pointer.p3:nth-of-type(3)",
+   "property": "transform",
+   "changes": 7,
+   "from": "translate3d(-49.971vw, -49.971vh, 0px) scale3d(0.7, 0.7, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "to": "translate3d(-50vw, -50vh, 0px) scale3d(0.7, 0.7, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "settleMs": 271,
+   "lerp": 0.154,
+   "range": 0.025
+  },
+  {
+   "path": "div.weglot-is-ill-wrapper.iw4 > div.weglot-is-ll-row > div.weglot-ill-col.ill:nth-of-type(2) > div.weglot-ill > div.weglot-ill-4.ob3:nth-of-type(3)",
+   "property": "opacity",
+   "changes": 7,
+   "from": "1",
+   "to": "1",
+   "settleMs": 974,
+   "lerp": null,
+   "range": 1
+  },
+  {
+   "path": "div.webis-ill-wrapper:nth-of-type(2) > div.webis-ill.ill3:nth-of-type(3) > div.webis-ill-circles-wrapper.cw1:nth-of-type(1) > div.webis-ill-circle.c1:nth-of-type(1) > div.webis-ill-compl-wrapper.cw1",
+   "property": "will-change",
+   "changes": 4,
+   "from": "transform",
+   "to": "transform",
+   "settleMs": 811,
+   "lerp": null,
+   "range": 0
+  },
+  {
+   "path": "div.webis-ill-wrapper:nth-of-type(2) > div.webis-ill.ill3:nth-of-type(3) > div.webis-ill-circles-wrapper.sw2:nth-of-type(2) > div.webis-ill-circle.c7:nth-of-type(3) > div.webis-ill-compl-wrapper.cw4",
+   "property": "will-change",
+   "changes": 4,
+   "from": "transform",
+   "to": "transform",
+   "settleMs": 811,
+   "lerp": null,
+   "range": 0
+  },
+  {
+   "path": "div.webis-ill-wrapper:nth-of-type(2) > div.webis-ill.ill3:nth-of-type(3) > div.webis-ill-circles-wrapper.sw2:nth-of-type(2) > div.webis-ill-circle.c8:nth-of-type(4) > div.webis-ill-compl-wrapper.cw2",
+   "property": "will-change",
+   "changes": 4,
+   "from": "transform",
+   "to": "transform",
+   "settleMs": 811,
+   "lerp": null,
+   "range": 0
+  },
+  {
+   "path": "div.webis-ill-wrapper:nth-of-type(2) > div.webis-ill.ill3:nth-of-type(3) > div.webis-ill-circles-wrapper.sw2:nth-of-type(2) > div.webis-ill-circle.c6:nth-of-type(2) > div.webis-ill-compl-wrapper.cw3",
+   "property": "will-change",
+   "changes": 4,
+   "from": "transform",
+   "to": "transform",
+   "settleMs": 811,
+   "lerp": null,
+   "range": 0
+  },
+  {
+   "path": "div.webis-ill.ill3:nth-of-type(3) > div.webis-ill-circles-wrapper.cw1:nth-of-type(1) > div.webis-ill-circle.c1:nth-of-type(1) > div.webis-ill-compl-wrapper.cw1 > div.webis-compl-3:nth-of-type(3)",
+   "property": "will-change",
+   "changes": 4,
+   "from": "transform",
+   "to": "transform",
+   "settleMs": 811,
+   "lerp": null,
+   "range": 0
+  }
+ ],
+ "scroll": {
+  "movers": [
+   {
+    "path": "div.scene-1:nth-of-type(1) > div.browser-globe-scene-wrapper:nth-of-type(5) > div.browser-overflow-wrapper:nth-of-type(1) > div.globe > div.browser-window-wrapper",
+    "property": "transform",
+    "changes": 42,
+    "from": "translate3d(0.0372%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+    "to": "translate3d(29.6415%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+    "settleMs": 1936,
+    "lerp": 0.106,
+    "range": 26.608
+   },
+   {
+    "path": "div.globe > div.browser-window-wrapper > div.browser-window-inner-wrapper > div.browser-window > div.triangles-wrapper:nth-of-type(5)",
+    "property": "transform",
+    "changes": 42,
+    "from": "translate3d(0.062%, 0px, 0px) scale3d(0.999752, 0.999752, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+    "to": "translate3d(49.4025%, 0px, 0px) scale3d(0.80239, 0.80239, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+    "settleMs": 1936,
+    "lerp": 0.106,
+    "range": 44.347
+   },
+   {
+    "path": "div.webis-content-col > div.webis-urready-section:nth-of-type(3) > div.webis-globe-wrapper > div.webis-globe > div.hemisphere-east:nth-of-type(2)",
+    "property": "transform",
+    "changes": 42,
+    "from": "translate3d(19.9752%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+    "to": "translate3d(0.239%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+    "settleMs": 1936,
+    "lerp": 0.106,
+    "range": 17.739
+   },
+   {
+    "path": "div.globe > div.browser-window-wrapper > div.browser-window-inner-wrapper > div.browser-window > div.hemisphere-east:nth-of-type(3)",
+    "property": "transform",
+    "changes": 42,
+    "from": "translate3d(19.9752%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+    "to": "translate3d(0.239%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+    "settleMs": 1936,
+    "lerp": 0.106,
+    "range": 17.739
+   },
+   {
+    "path": "div.webis-content-col > div.webis-urready-section:nth-of-type(3) > div.webis-globe-wrapper > div.webis-globe > div.hemisphere-west:nth-of-type(1)",
+    "property": "transform",
+    "changes": 42,
+    "from": "translate3d(-19.9752%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+    "to": "translate3d(-0.239%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+    "settleMs": 1936,
+    "lerp": 0.106,
+    "range": 17.739
+   },
+   {
+    "path": "div.globe > div.browser-window-wrapper > div.browser-window-inner-wrapper > div.browser-window > div.hemisphere-west:nth-of-type(2)",
+    "property": "transform",
+    "changes": 42,
+    "from": "translate3d(-19.9752%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+    "to": "translate3d(-0.239%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+    "settleMs": 1936,
+    "lerp": 0.106,
+    "range": 17.739
+   },
+   {
+    "path": "div.browser-overflow-wrapper:nth-of-type(1) > div.globe > div.browser-window-wrapper > div.browser-window-inner-wrapper > div.browser-window",
+    "property": "transform",
+    "changes": 42,
+    "from": "translate3d(0px, -0.0558%, 0px) scale3d(0.999752, 0.999752, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+    "to": "translate3d(0px, -44.4622%, 0px) scale3d(0.80239, 0.80239, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+    "settleMs": 1936,
+    "lerp": 0.106,
+    "range": 39.912
+   },
+   {
+    "path": "div.lottie-globe:nth-of-type(4) > svg > g > g > path",
+    "property": "d",
+    "changes": 16,
+    "from": " M-298.91,256.92 C-298.91,256.92 -298.91,-261.29 -298.91,-261.29 C-298.91,-283.43 -280.94,-301.4 -258.8,-301.4 C-258.8,-",
+    "to": " M-298.91,-2.18 C-298.91,-2.18 -298.91,-2.18 -298.91,-2.18 C-298.91,-167.32 -164.83,-301.4 0.31,-301.4 C0.31,-301.4 0.31",
+    "settleMs": 902,
+    "lerp": 0.206,
+    "range": 259.11
+   },
+   {
+    "path": "svg > g > g > g > path",
+    "property": "d",
+    "changes": 16,
+    "from": " M378.5,-327.75665283203125 C378.5,-327.75665283203125 378.5,327.75665283203125 378.5,327.75665283203125 C378.5,355.7619",
+    "to": " M378.5,0 C378.5,0 378.5,0 378.5,0 C378.5,208.89414978027344 208.89414978027344,378.5 0,378.5 C0,378.5 0,378.5 0,378.5 C",
+    "settleMs": 902,
+    "lerp": 0.206,
+    "range": 327.757
+   },
+   {
+    "path": "div.weglot-is-ill-wrapper.iw4 > div.weglot-is-ll-row > div.weglot-ill-col.ill:nth-of-type(2) > div.weglot-ill > div.weglot-ill-4.ob3:nth-of-type(3)",
+    "property": "opacity",
+    "changes": 9,
+    "from": "1",
+    "to": "1",
+    "settleMs": 902,
+    "lerp": 0.492,
+    "range": 1
+   },
+   {
+    "path": "div.main-content:nth-of-type(5) > div.scene-1:nth-of-type(1) > div.browser-globe-scene-wrapper:nth-of-type(5) > div.intro-text-wrapper:nth-of-type(2) > div.intro-subtitle-wrapper:nth-of-type(2)",
+    "property": "will-change",
+    "changes": 8,
+    "from": "",
+    "to": "",
+    "settleMs": 565,
+    "lerp": null,
+    "range": 0
+   },
+   {
+    "path": "div.weglot-is-ill-wrapper.iw4 > div.weglot-is-ll-row > div.weglot-ill-col.ill:nth-of-type(2) > div.weglot-ill > div.weglot-ill-4.ob4:nth-of-type(4)",
+    "property": "opacity",
+    "changes": 8,
+    "from": "0.34553",
+    "to": "1",
+    "settleMs": 1700,
+    "lerp": 0.709,
+    "range": 0.42
+   },
+   {
+    "path": "div.main-content:nth-of-type(5) > div.scene-1:nth-of-type(1) > div.browser-globe-scene-wrapper:nth-of-type(5) > div.intro-text-wrapper:nth-of-type(2) > div.intro-title-wrapper.intro:nth-of-type(1)",
+    "property": "will-change",
+    "changes": 8,
+    "from": "",
+    "to": "",
+    "settleMs": 565,
+    "lerp": null,
+    "range": 0
+   },
+   {
+    "path": "div.main-content:nth-of-type(5) > div.scene-1:nth-of-type(1) > div.browser-globe-scene-wrapper:nth-of-type(5) > div.intro-text-wrapper:nth-of-type(2) > div.intro-title-wrapper.intro:nth-of-type(1)",
+    "property": "transform",
+    "changes": 7,
+    "from": "translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+    "to": "translate3d(0px, 0px, 0px) scale3d(0.5, 0.5, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+    "settleMs": 565,
+    "lerp": null,
+    "range": 1
+   },
+   {
+    "path": "div.main-content:nth-of-type(5) > div.scene-1:nth-of-type(1) > div.browser-globe-scene-wrapper:nth-of-type(5) > div.intro-text-wrapper:nth-of-type(2) > div.intro-title-wrapper.intro:nth-of-type(1)",
+    "property": "opacity",
+    "changes": 6,
+    "from": "1",
+    "to": "0",
+    "settleMs": 511,
+    "lerp": 0.811,
+    "range": 0.779
+   },
+   {
+    "path": "div.main-content:nth-of-type(5) > div.scene-1:nth-of-type(1) > div.browser-globe-scene-wrapper:nth-of-type(5) > div.intro-text-wrapper:nth-of-type(2) > div.intro-subtitle-wrapper:nth-of-type(2)",
+    "property": "transform",
+    "changes": 5,
+    "from": "translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+    "to": "translate3d(0px, 0px, 0px) scale3d(0.5, 0.5, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+    "settleMs": 565,
+    "lerp": null,
+    "range": 1
+   },
+   {
+    "path": "div.weglot-is-ill-wrapper.iw4 > div.weglot-is-ll-row > div.weglot-ill-col.ill:nth-of-type(2) > div.weglot-ill > div.weglot-ill-4.ob4:nth-of-type(4)",
+    "property": "will-change",
+    "changes": 5,
+    "from": "transform, opacity",
+    "to": "transform",
+    "settleMs": 1700,
+    "lerp": null,
+    "range": 0
+   },
+   {
+    "path": "div.main-content:nth-of-type(5) > div.scene-1:nth-of-type(1) > div.browser-globe-scene-wrapper:nth-of-type(5) > div.intro-text-wrapper:nth-of-type(2) > div.intro-subtitle-wrapper:nth-of-type(2)",
+    "property": "opacity",
+    "changes": 4,
+    "from": "1",
+    "to": "0",
+    "settleMs": 337,
+    "lerp": null,
+    "range": 0.654
+   },
+   {
+    "path": "div#power",
+    "property": "position",
+    "changes": 4,
+    "from": "",
+    "to": "",
+    "settleMs": 229,
+    "lerp": null,
+    "range": 0
+   },
+   {
+    "path": "div#power",
+    "property": "visibility",
+    "changes": 4,
+    "from": "",
+    "to": "",
+    "settleMs": 229,
+    "lerp": null,
+    "range": 0
+   }
+  ],
+  "settleMs": 1936,
+  "lerp": 0.106
+ },
+ "pointer": [
+  {
+   "path": "div.custom-pointer-wrapper.no-events:nth-of-type(4) > div.power-of-lang-pointer > div.pointer.p2:nth-of-type(2)",
+   "property": "transform",
+   "changes": 57,
+   "from": "translate3d(-50vw, -50vh, 0px) scale3d(0.7, 0.7, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "to": "translate3d(-0.038vw, 0.024vh, 0px) scale3d(0.7, 0.7, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "settleMs": 2498,
+   "lerp": 0.06,
+   "range": 65.827
+  },
+  {
+   "path": "div#imagine > div.imagine-bg:nth-of-type(1) > div.intro-title-wrapper.lennon:nth-of-type(1) > div.h-oversized.intro-3:nth-of-type(3)",
+   "property": "transform",
+   "changes": 55,
+   "from": "translate3d(0%, 25%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "to": "translate3d(0.2878%, 26.236%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "settleMs": 2498,
+   "lerp": 0.134,
+   "range": 9.867
+  },
+  {
+   "path": "div.scene-1:nth-of-type(1) > div.browser-globe-scene-wrapper:nth-of-type(5) > div.intro-text-wrapper:nth-of-type(2) > div.intro-title-wrapper.intro:nth-of-type(1) > div.h-oversized.intro-3:nth-of-type(3)",
+   "property": "transform",
+   "changes": 55,
+   "from": "translate3d(0%, 25%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "to": "translate3d(0.2878%, 26.236%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "settleMs": 2498,
+   "lerp": 0.134,
+   "range": 9.867
+  },
+  {
+   "path": "div#imagine > div.imagine-bg:nth-of-type(1) > div.intro-title-wrapper.lennon:nth-of-type(1) > div.h-oversized.intro-2:nth-of-type(2)",
+   "property": "transform",
+   "changes": 55,
+   "from": "translate3d(0%, 15%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "to": "translate3d(0.1439%, 15.5768%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "settleMs": 2498,
+   "lerp": 0.134,
+   "range": 4.605
+  },
+  {
+   "path": "div.scene-1:nth-of-type(1) > div.browser-globe-scene-wrapper:nth-of-type(5) > div.intro-text-wrapper:nth-of-type(2) > div.intro-title-wrapper.intro:nth-of-type(1) > div.h-oversized.intro-2:nth-of-type(2)",
+   "property": "transform",
+   "changes": 55,
+   "from": "translate3d(0%, 15%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "to": "translate3d(0.1439%, 15.5768%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "settleMs": 2498,
+   "lerp": 0.134,
+   "range": 4.605
+  },
+  {
+   "path": "div.browser-window-wrapper > div.browser-window-inner-wrapper > div.browser-window > div.triangles-wrapper:nth-of-type(5) > div.triangles-2:nth-of-type(2)",
+   "property": "transform",
+   "changes": 55,
+   "from": "translate3d(0%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "to": "translate3d(-0.06208%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "settleMs": 2498,
+   "lerp": 0.146,
+   "range": 0.923
+  },
+  {
+   "path": "div.browser-window-wrapper > div.browser-window-inner-wrapper > div.browser-window > div.triangles-wrapper:nth-of-type(5) > div.triangles-1:nth-of-type(1)",
+   "property": "transform",
+   "changes": 55,
+   "from": "translate3d(0%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "to": "translate3d(-0.1552%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "settleMs": 2498,
+   "lerp": 0.146,
+   "range": 2.307
+  },
+  {
+   "path": "div.custom-pointer-wrapper.no-events:nth-of-type(4) > div.power-of-lang-pointer > div.pointer.p1:nth-of-type(1)",
+   "property": "transform",
+   "changes": 30,
+   "from": "translate3d(-50vw, -50vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "to": "translate3d(0vw, 0vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "settleMs": 1881,
+   "lerp": 0.137,
+   "range": 65
+  },
+  {
+   "path": "div.main-content:nth-of-type(5) > div.scene-1:nth-of-type(1) > div.browser-globe-scene-wrapper:nth-of-type(5) > div.intro-text-wrapper:nth-of-type(2) > div.intro-subtitle-wrapper:nth-of-type(2)",
+   "property": "opacity",
+   "changes": 20,
+   "from": "0.0011",
+   "to": "1",
+   "settleMs": 946,
+   "lerp": 0.017,
+   "range": 0.998
+  },
+  {
+   "path": "div.main-content:nth-of-type(5) > div.scene-1:nth-of-type(1) > div.browser-globe-scene-wrapper:nth-of-type(5) > div.intro-text-wrapper:nth-of-type(2) > div.intro-subtitle-wrapper:nth-of-type(2)",
+   "property": "transform",
+   "changes": 20,
+   "from": "translate3d(0px, 0px, 0px) scale3d(0.51646, 0.51646, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "to": "translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "settleMs": 946,
+   "lerp": 0.169,
+   "range": 0.42
+  },
+  {
+   "path": "div.main-content:nth-of-type(5) > div.scene-1:nth-of-type(1) > div.browser-globe-scene-wrapper:nth-of-type(5) > div.intro-text-wrapper:nth-of-type(2) > div.intro-title-wrapper.intro:nth-of-type(1)",
+   "property": "transform",
+   "changes": 20,
+   "from": "translate3d(0px, 0px, 0px) scale3d(0.785095, 0.785095, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "to": "translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+   "settleMs": 946,
+   "lerp": 0.169,
+   "range": 0.187
+  }
+ ],
+ "header": {
+  "path": "nav.nav",
+  "behaviour": "stays in place while you scroll",
+  "changes": []
+ },
+ "navigation": [],
+ "menu": {
+  "button": "div#w-dropdown-toggle-0",
+  "changes": [
+   {
+    "path": "div.main-content:nth-of-type(5) > div.scene-1:nth-of-type(1) > div.browser-globe-scene-wrapper:nth-of-type(5) > div.intro-text-wrapper:nth-of-type(2)",
+    "property": "opacity",
+    "from": "0.57866",
+    "to": "1",
+    "atMs": 8,
+    "count": 35
+   },
+   {
+    "path": "div.main-content:nth-of-type(5) > div.scene-1:nth-of-type(1) > div.browser-globe-scene-wrapper:nth-of-type(5) > div.intro-text-wrapper:nth-of-type(2)",
+    "property": "transform",
+    "from": "translate3d(0px, 42.134px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+    "to": "translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+    "atMs": 8,
+    "count": 35
+   },
+   {
+    "path": "div.main-content:nth-of-type(5) > div.scene-1:nth-of-type(1) > div.browser-globe-scene-wrapper:nth-of-type(5)",
+    "property": "opacity",
+    "from": "0.65428",
+    "to": "1",
+    "atMs": 8,
+    "count": 27
+   },
+   {
+    "path": "nav.nav > div.nav-btns-wrapper > div.btn-wrapper:nth-of-type(1) > div.wg-element-wrapper-2.sw4",
+    "property": "opacity",
+    "from": "0.77733",
+    "to": "1",
+    "atMs": 8,
+    "count": 2
+   },
+   {
+    "path": "div.col.nopad:nth-of-type(2) > div.half-page.uielements > div.uielement-col-wrapper > div.uielement-wrapper.weglot-exclude:nth-of-type(9) > div.wg-element-wrapper",
+    "property": "opacity",
+    "from": "0.38867",
+    "to": "1",
+    "atMs": 8,
+    "count": 14
+   },
+   {
+    "path": "div.col.nopad:nth-of-type(2) > div.half-page.uielements > div.uielement-col-wrapper > div.uielement-wrapper.weglot-exclude:nth-of-type(7) > div.wg-element-wrapper",
+    "property": "opacity",
+    "from": "0.77733",
+    "to": "1",
+    "atMs": 8,
+    "count": 2
+   },
+   {
+    "path": "div.col.nopad:nth-of-type(2) > div.half-page.uielements > div.uielement-col-wrapper > div.uielement-wrapper.weglot-exclude:nth-of-type(6) > div.wg-element-wrapper",
+    "property": "opacity",
+    "from": "0.77733",
+    "to": "1",
+    "atMs": 8,
+    "count": 2
+   },
+   {
+    "path": "div.col.nopad:nth-of-type(2) > div.half-page.uielements > div.uielement-col-wrapper > div.uielement-wrapper.weglot-exclude:nth-of-type(5) > div.wg-element-wrapper",
+    "property": "opacity",
+    "from": "0.77733",
+    "to": "1",
+    "atMs": 8,
+    "count": 2
+   },
+   {
+    "path": "div.col.nopad:nth-of-type(2) > div.half-page.uielements > div.uielement-col-wrapper > div.uielement-wrapper.weglot-exclude:nth-of-type(4) > div.wg-element-wrapper",
+    "property": "opacity",
+    "from": "0.77733",
+    "to": "1",
+    "atMs": 8,
+    "count": 2
+   },
+   {
+    "path": "div.col.nopad:nth-of-type(2) > div.half-page.uielements > div.uielement-col-wrapper > div.uielement-wrapper.weglot-exclude:nth-of-type(1) > div.wg-element-wrapper",
+    "property": "opacity",
+    "from": "0.77733",
+    "to": "1",
+    "atMs": 8,
+    "count": 2
+   },
+   {
+    "path": "div.main-content:nth-of-type(5) > div.scene-1:nth-of-type(1) > div.browser-globe-scene-wrapper:nth-of-type(5) > div.intro-text-wrapper:nth-of-type(2) > div.intro-title-wrapper.intro:nth-of-type(1)",
+    "property": "transform",
+    "from": "translate3d(0px, 0px, 0px) scale3d(0.747095, 0.747095, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+    "to": "translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+    "atMs": 8,
+    "count": 44
+   },
+   {
+    "path": "div.main-content:nth-of-type(5) > div.scene-1:nth-of-type(1) > div.browser-globe-scene-wrapper:nth-of-type(5) > div.intro-text-wrapper:nth-of-type(2) > div.intro-title-wrapper.intro:nth-of-type(1)",
+    "property": "opacity",
+    "from": "0.01967",
+    "to": "1",
+    "atMs": 8,
+    "count": 24
+   },
+   {
+    "path": "div.weglot-intro-wrapper:nth-of-type(1) > div.weglot-intro > div.weglot-megatalkbox-wrapper:nth-of-type(2) > div.weglot-intro-megatalkbox:nth-of-type(2) > div.intro-talkbox.tb10:nth-of-type(11)",
+    "property": "transform",
+    "from": "translate3d(1.30825vw, 2.6165vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(-4.81436deg) skew(0deg, 0deg)",
+    "to": "translate3d(0.0025vw, 0.005vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(-0.0092deg) skew(0deg, 0deg)",
+    "atMs": 8,
+    "count": 59
+   },
+   {
+    "path": "div.weglot-intro-wrapper:nth-of-type(1) > div.weglot-intro > div.weglot-megatalkbox-wrapper:nth-of-type(2) > div.weglot-intro-megatalkbox:nth-of-type(2) > div.intro-talkbox.tb9:nth-of-type(10)",
+    "property": "transform",
+    "from": "translate3d(3.50611vw, 0.88961vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(3.76776deg) skew(0deg, 0deg)",
+    "to": "translate3d(0.0067vw, 0.0017vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0.0072deg) skew(0deg, 0deg)",
+    "atMs": 8,
+    "count": 59
+   },
+   {
+    "path": "div.weglot-intro-wrapper:nth-of-type(1) > div.weglot-intro > div.weglot-megatalkbox-wrapper:nth-of-type(2) > div.weglot-intro-megatalkbox:nth-of-type(2) > div.intro-talkbox.tb8:nth-of-type(9)",
+    "property": "transform",
+    "from": "translate3d(-2.77349vw, 3.50611vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(-4.97135deg) skew(0deg, 0deg)",
+    "to": "translate3d(-0.0053vw, 0.0067vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(-0.0095deg) skew(0deg, 0deg)",
+    "atMs": 8,
+    "count": 59
+   },
+   {
+    "path": "div.weglot-intro-wrapper:nth-of-type(1) > div.weglot-intro > div.weglot-megatalkbox-wrapper:nth-of-type(2) > div.weglot-intro-megatalkbox:nth-of-type(2) > div.intro-talkbox.tb7:nth-of-type(8)",
+    "property": "transform",
+    "from": "translate3d(0.68029vw, -3.40145vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(4.97135deg) skew(0deg, 0deg)",
+    "to": "translate3d(0.0013vw, -0.0065vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0.0095deg) skew(0deg, 0deg)",
+    "atMs": 8,
+    "count": 59
+   },
+   {
+    "path": "div.weglot-intro-wrapper:nth-of-type(1) > div.weglot-intro > div.weglot-megatalkbox-wrapper:nth-of-type(2) > div.weglot-intro-megatalkbox:nth-of-type(2) > div.intro-talkbox.tb6:nth-of-type(7)",
+    "property": "transform",
+    "from": "translate3d(2.98281vw, -0.41864vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(-2.56417deg) skew(0deg, 0deg)",
+    "to": "translate3d(0.0057vw, -0.0008vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(-0.0049deg) skew(0deg, 0deg)",
+    "atMs": 8,
+    "count": 59
+   },
+   {
+    "path": "div.weglot-intro-wrapper:nth-of-type(1) > div.weglot-intro > div.weglot-megatalkbox-wrapper:nth-of-type(2) > div.weglot-intro-megatalkbox:nth-of-type(2) > div.intro-talkbox.tb5:nth-of-type(6)",
+    "property": "transform",
+    "from": "translate3d(1.5699vw, 2.04087vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(2.72116deg) skew(0deg, 0deg)",
+    "to": "translate3d(0.003vw, 0.0039vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0.0052deg) skew(0deg, 0deg)",
+    "atMs": 8,
+    "count": 59
+   },
+   {
+    "path": "div.weglot-intro-wrapper:nth-of-type(1) > div.weglot-intro > div.weglot-megatalkbox-wrapper:nth-of-type(2) > div.weglot-intro-megatalkbox:nth-of-type(2) > div.intro-talkbox.tb4:nth-of-type(5)",
+    "property": "transform",
+    "from": "translate3d(-3.24446vw, -1.20359vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(5.49465deg) skew(0deg, 0deg)",
+    "to": "translate3d(-0.0062vw, -0.0023vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0.0105deg) skew(0deg, 0deg)",
+    "atMs": 8,
+    "count": 59
+   },
+   {
+    "path": "div.weglot-intro-wrapper:nth-of-type(1) > div.weglot-intro > div.weglot-megatalkbox-wrapper:nth-of-type(2) > div.weglot-intro-megatalkbox:nth-of-type(2) > div.intro-talkbox.tb3:nth-of-type(4)",
+    "property": "transform",
+    "from": "translate3d(-2.25019vw, 1.0466vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(7.37853deg) skew(0deg, 0deg)",
+    "to": "translate3d(-0.0043vw, 0.002vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0.0141deg) skew(0deg, 0deg)",
+    "atMs": 8,
+    "count": 59
+   },
+   {
+    "path": "div.weglot-intro-wrapper:nth-of-type(1) > div.weglot-intro > div.weglot-megatalkbox-wrapper:nth-of-type(2) > div.weglot-intro-megatalkbox:nth-of-type(2) > div.intro-talkbox.tb2:nth-of-type(3)",
+    "property": "transform",
+    "from": "translate3d(-2.51184vw, 0.31398vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(-5.28533deg) skew(0deg, 0deg)",
+    "to": "translate3d(-0.0048vw, 0.0006vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(-0.0101deg) skew(0deg, 0deg)",
+    "atMs": 8,
+    "count": 59
+   },
+   {
+    "path": "div.weglot-intro-wrapper:nth-of-type(1) > div.weglot-intro > div.weglot-megatalkbox-wrapper:nth-of-type(2) > div.weglot-intro-megatalkbox:nth-of-type(2) > div.intro-talkbox.tb1:nth-of-type(2)",
+    "property": "transform",
+    "from": "translate3d(-2.14553vw, 1.77922vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(2.93048deg) skew(0deg, 0deg)",
+    "to": "translate3d(-0.0041vw, 0.0034vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0.0056deg) skew(0deg, 0deg)",
+    "atMs": 8,
+    "count": 59
+   },
+   {
+    "path": "div.weglot-intro-wrapper:nth-of-type(1) > div.weglot-intro > div.weglot-logo-wrapper:nth-of-type(1) > div.weglot-letters > div.weglot-logo-letter.wl-t:nth-of-type(6)",
+    "property": "opacity",
+    "from": "0.94767",
+    "to": "0.9999",
+    "atMs": 8,
+    "count": 59
+   },
+   {
+    "path": "div.weglot-intro-wrapper:nth-of-type(1) > div.weglot-intro > div.weglot-logo-wrapper:nth-of-type(1) > div.weglot-letters > div.weglot-logo-letter.wl-o:nth-of-type(5)",
+    "property": "opacity",
+    "from": "0.94767",
+    "to": "0.9999",
+    "atMs": 8,
+    "count": 59
+   },
+   {
+    "path": "div.weglot-intro-wrapper:nth-of-type(1) > div.weglot-intro > div.weglot-logo-wrapper:nth-of-type(1) > div.weglot-letters > div.weglot-logo-letter.wl-l:nth-of-type(4)",
+    "property": "opacity",
+    "from": "0.94767",
+    "to": "0.9999",
+    "atMs": 8,
+    "count": 59
+   },
+   {
+    "path": "div.weglot-intro-wrapper:nth-of-type(1) > div.weglot-intro > div.weglot-logo-wrapper:nth-of-type(1) > div.weglot-letters > div.weglot-logo-letter.wl-g:nth-of-type(3)",
+    "property": "opacity",
+    "from": "0.94767",
+    "to": "0.9999",
+    "atMs": 8,
+    "count": 59
+   },
+   {
+    "path": "div.weglot-intro-wrapper:nth-of-type(1) > div.weglot-intro > div.weglot-logo-wrapper:nth-of-type(1) > div.weglot-letters > div.weglot-logo-letter.wl-e:nth-of-type(2)",
+    "property": "opacity",
+    "from": "0.94767",
+    "to": "0.9999",
+    "atMs": 8,
+    "count": 59
+   },
+   {
+    "path": "div.weglot-intro-wrapper:nth-of-type(1) > div.weglot-intro > div.weglot-logo-wrapper:nth-of-type(1) > div.weglot-letters > div.weglot-logo-letter:nth-of-type(1)",
+    "property": "opacity",
+    "from": "0.94767",
+    "to": "0.9999",
+    "atMs": 8,
+    "count": 59
+   },
+   {
+    "path": "div.weglot-intro-wrapper:nth-of-type(1) > div.weglot-intro > div.weglot-logo-wrapper:nth-of-type(1) > div.weglot-letters > div.weglot-logo-letter.wl-t:nth-of-type(6)",
+    "property": "transform",
+    "from": "translate3d(0px, 0px, 0px) scale3d(0.94767, 0.94767, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+    "to": "translate3d(0px, 0px, 0px) scale3d(0.9999, 0.9999, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+    "atMs": 8,
+    "count": 59
+   },
+   {
+    "path": "div.weglot-intro-wrapper:nth-of-type(1) > div.weglot-intro > div.weglot-logo-wrapper:nth-of-type(1) > div.weglot-letters > div.weglot-logo-letter.wl-o:nth-of-type(5)",
+    "property": "transform",
+    "from": "translate3d(0px, 0px, 0px) scale3d(0.94767, 0.94767, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+    "to": "translate3d(0px, 0px, 0px) scale3d(0.9999, 0.9999, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+    "atMs": 8,
+    "count": 59
+   },
+   {
+    "path": "div.weglot-intro-wrapper:nth-of-type(1) > div.weglot-intro > div.weglot-logo-wrapper:nth-of-type(1) > div.weglot-letters > div.weglot-logo-letter.wl-l:nth-of-type(4)",
+    "property": "transform",
+    "from": "translate3d(0px, 0px, 0px) scale3d(0.94767, 0.94767, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+    "to": "translate3d(0px, 0px, 0px) scale3d(0.9999, 0.9999, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+    "atMs": 8,
+    "count": 59
+   },
+   {
+    "path": "div.weglot-intro-wrapper:nth-of-type(1) > div.weglot-intro > div.weglot-logo-wrapper:nth-of-type(1) > div.weglot-letters > div.weglot-logo-letter.wl-g:nth-of-type(3)",
+    "property": "transform",
+    "from": "translate3d(0px, 0px, 0px) scale3d(0.94767, 0.94767, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+    "to": "translate3d(0px, 0px, 0px) scale3d(0.9999, 0.9999, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+    "atMs": 8,
+    "count": 59
+   },
+   {
+    "path": "div.weglot-intro-wrapper:nth-of-type(1) > div.weglot-intro > div.weglot-logo-wrapper:nth-of-type(1) > div.weglot-letters > div.weglot-logo-letter.wl-e:nth-of-type(2)",
+    "property": "transform",
+    "from": "translate3d(0px, 0px, 0px) scale3d(0.94767, 0.94767, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+    "to": "translate3d(0px, 0px, 0px) scale3d(0.9999, 0.9999, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+    "atMs": 8,
+    "count": 59
+   },
+   {
+    "path": "div.weglot-intro-wrapper:nth-of-type(1) > div.weglot-intro > div.weglot-logo-wrapper:nth-of-type(1) > div.weglot-letters > div.weglot-logo-letter:nth-of-type(1)",
+    "property": "transform",
+    "from": "translate3d(0px, 0px, 0px) scale3d(0.94767, 0.94767, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+    "to": "translate3d(0px, 0px, 0px) scale3d(0.9999, 0.9999, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+    "atMs": 8,
+    "count": 59
+   },
+   {
+    "path": "div.imagine-pie-scroll:nth-of-type(3) > div.imagine-pie-wrapper:nth-of-type(1) > div.imagine-pie-col.pie:nth-of-type(2) > div.imagine-pie:nth-of-type(2) > div.pie-part.pp8:nth-of-type(8)",
+    "property": "transform",
+    "from": "translate3d(-25.7571%, -43.7871%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+    "to": "translate3d(-29.9919%, -50.9862%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+    "atMs": 8,
+    "count": 59
+   },
+   {
+    "path": "div#imagine > div.imagine-pie-scroll:nth-of-type(3) > div.imagine-pie-wrapper:nth-of-type(1) > div.imagine-pie-col.pie:nth-of-type(2) > div.imagine-pie:nth-of-type(2)",
+    "property": "transform",
+    "from": "translate3d(0px, 0px, 0px) scale3d(0, 0, 1) rotateX(0deg) rotateY(0deg) rotateZ(341.161deg) skew(0deg, 0deg)",
+    "to": "translate3d(0px, 0px, 0px) scale3d(0, 0, 1) rotateX(0deg) rotateY(0deg) rotateZ(359.964deg) skew(0deg, 0deg)",
+    "atMs": 8,
+    "count": 59
+   },
+   {
+    "path": "nav.nav > div.nav-btns-wrapper > div.btn-wrapper:nth-of-type(1) > div.wg-element-wrapper-2.sw4",
+    "property": "will-change",
+    "from": "opacity",
+    "to": "",
+    "atMs": 34,
+    "count": 1
+   },
+   {
+    "path": "div.col.nopad:nth-of-type(2) > div.half-page.uielements > div.uielement-col-wrapper > div.uielement-wrapper.weglot-exclude:nth-of-type(8) > div.wg-element-wrapper",
+    "property": "will-change",
+    "from": "",
+    "to": "",
+    "atMs": 34,
+    "count": 2
+   },
+   {
+    "path": "div.col.nopad:nth-of-type(2) > div.half-page.uielements > div.uielement-col-wrapper > div.uielement-wrapper.weglot-exclude:nth-of-type(8) > div.wg-element-wrapper",
+    "property": "opacity",
+    "from": "0",
+    "to": "1",
+    "atMs": 34,
+    "count": 13
+   },
+   {
+    "path": "div.col.nopad:nth-of-type(2) > div.half-page.uielements > div.uielement-col-wrapper > div.uielement-wrapper.weglot-exclude:nth-of-type(7) > div.wg-element-wrapper",
+    "property": "will-change",
+    "from": "opacity",
+    "to": "",
+    "atMs": 34,
+    "count": 1
+   }
+  ],
+  "animations": [
+   {
+    "path": "div#w-dropdown-toggle-0",
+    "kind": "transition",
+    "name": "background-color",
+    "property": "backgroundColor",
+    "durationMs": 100,
+    "delayMs": 0,
+    "easing": "ease",
+    "keyframes": "[{\"offset\":0,\"easing\":\"linear\",\"backgroundColor\":\"rgb(60, 70, 251)\"},{\"offset\":1,\"easing\":\"linear\",\"backgroundColor\":\"rgb(51, 61, 240)\"}]",
+    "infinite": false,
+    "startedAt": 74
+   },
+   {
+    "path": "div#w-dropdown-toggle-0",
+    "kind": "transition",
+    "name": "box-shadow",
+    "property": "boxShadow",
+    "durationMs": 100,
+    "delayMs": 0,
+    "easing": "ease",
+    "keyframes": "[{\"offset\":0,\"easing\":\"linear\",\"boxShadow\":\"rgb(255, 129, 119) 0px 0px 0px 0px\"},{\"offset\":1,\"easing\":\"linear\",\"boxShadow\":\"rgb(255, 129, 119) 0px 0px 0px 4px\"}]",
+    "infinite": false,
+    "startedAt": 74
+   }
+  ],
+  "staggerMs": null,
+  "film": {
+   "frames": [
+    0,
+    226,
+    431,
+    697,
+    895,
+    1078
+   ]
+  }
+ },
+ "hovers": [
+  {
+   "path": "div.weglot-is-ill-wrapper.iw4 > div.weglot-is-ll-row > div.weglot-ill-col.ill:nth-of-type(2) > div.weglot-ill > div.weglot-ill-4.ob4:nth-of-type(4)",
+   "label": "a.progress-wf.w-inline-block",
+   "changes": [
+    {
+     "path": "div.weglot-is-ill-wrapper.iw4 > div.weglot-is-ll-row > div.weglot-ill-col.ill:nth-of-type(2) > div.weglot-ill > div.weglot-ill-4.ob4:nth-of-type(4)",
+     "property": "will-change",
+     "from": "transform",
+     "to": "transform",
+     "atMs": 64,
+     "count": 4
+    },
+    {
+     "path": "div.weglot-is-ill-wrapper.iw4 > div.weglot-is-ll-row > div.weglot-ill-col.ill:nth-of-type(2) > div.weglot-ill > div.weglot-ill-4.ob4:nth-of-type(4)",
+     "property": "opacity",
+     "from": "1",
+     "to": "1",
+     "atMs": 64,
+     "count": 5
+    },
+    {
+     "path": "div#imagine > div.imagine-bg:nth-of-type(1) > div.intro-title-wrapper.lennon:nth-of-type(1) > div.h-oversized.intro-3:nth-of-type(3)",
+     "property": "transform",
+     "from": "translate3d(0.2212%, 25.951%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(0.1568%, 25.468%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 64,
+     "count": 24
+    },
+    {
+     "path": "div.scene-1:nth-of-type(1) > div.browser-globe-scene-wrapper:nth-of-type(5) > div.intro-text-wrapper:nth-of-type(2) > div.intro-title-wrapper.intro:nth-of-type(1) > div.h-oversized.intro-3:nth-of-type(3)",
+     "property": "transform",
+     "from": "translate3d(0.2212%, 25.951%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(0.1568%, 25.468%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 64,
+     "count": 24
+    },
+    {
+     "path": "div#imagine > div.imagine-bg:nth-of-type(1) > div.intro-title-wrapper.lennon:nth-of-type(1) > div.h-oversized.intro-2:nth-of-type(2)",
+     "property": "transform",
+     "from": "translate3d(0.1106%, 15.4438%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(0.0784%, 15.2184%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 64,
+     "count": 24
+    },
+    {
+     "path": "div.scene-1:nth-of-type(1) > div.browser-globe-scene-wrapper:nth-of-type(5) > div.intro-text-wrapper:nth-of-type(2) > div.intro-title-wrapper.intro:nth-of-type(1) > div.h-oversized.intro-2:nth-of-type(2)",
+     "property": "transform",
+     "from": "translate3d(0.1106%, 15.4438%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(0.0784%, 15.2184%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 64,
+     "count": 24
+    },
+    {
+     "path": "div.custom-pointer-wrapper.no-events:nth-of-type(4) > div.power-of-lang-pointer > div.pointer.p2:nth-of-type(2)",
+     "property": "transform",
+     "from": "translate3d(-43.812vw, -43.626vh, 0px) scale3d(0.7, 0.7, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(41.294vw, 42.864vh, 0px) scale3d(0.7, 0.7, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 64,
+     "count": 24
+    },
+    {
+     "path": "div.custom-pointer-wrapper.no-events:nth-of-type(4) > div.power-of-lang-pointer > div.pointer.p1:nth-of-type(1)",
+     "property": "transform",
+     "from": "translate3d(-49.653vw, -49.444vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(41.319vw, 42.889vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 64,
+     "count": 3
+    },
+    {
+     "path": "div.browser-window-wrapper > div.browser-window-inner-wrapper > div.browser-window > div.triangles-wrapper:nth-of-type(5) > div.triangles-2:nth-of-type(2)",
+     "property": "transform",
+     "from": "translate3d(-0.01576%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(-0.00376%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 64,
+     "count": 24
+    },
+    {
+     "path": "div.browser-window-wrapper > div.browser-window-inner-wrapper > div.browser-window > div.triangles-wrapper:nth-of-type(5) > div.triangles-1:nth-of-type(1)",
+     "property": "transform",
+     "from": "translate3d(-0.0394%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(-0.0094%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 64,
+     "count": 24
+    }
+   ],
+   "text": [],
+   "animations": [],
+   "film": {
+    "frames": [
+     0,
+     150,
+     274,
+     567,
+     686,
+     812
+    ]
+   }
+  },
+  {
+   "path": "div.main-content:nth-of-type(5) > div.scene-1:nth-of-type(1) > div.browser-globe-scene-wrapper:nth-of-type(5) > div.intro-text-wrapper:nth-of-type(2) > div.intro-title-wrapper.intro:nth-of-type(1)",
+   "label": "div.browser-globe-scene-wrapper",
+   "changes": [
+    {
+     "path": "div.main-content:nth-of-type(5) > div.scene-1:nth-of-type(1) > div.browser-globe-scene-wrapper:nth-of-type(5) > div.intro-text-wrapper:nth-of-type(2) > div.intro-title-wrapper.intro:nth-of-type(1)",
+     "property": "opacity",
+     "from": "0.96189",
+     "to": "0",
+     "atMs": 15,
+     "count": 4
+    },
+    {
+     "path": "div.main-content:nth-of-type(5) > div.scene-1:nth-of-type(1) > div.browser-globe-scene-wrapper:nth-of-type(5) > div.intro-text-wrapper:nth-of-type(2) > div.intro-title-wrapper.intro:nth-of-type(1)",
+     "property": "transform",
+     "from": "translate3d(0px, 0px, 0px) scale3d(1.00153, 1.00153, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(0px, 0px, 0px) scale3d(0.5, 0.5, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 15,
+     "count": 5
+    },
+    {
+     "path": "div.main-content:nth-of-type(5) > div.scene-1:nth-of-type(1) > div.browser-globe-scene-wrapper:nth-of-type(5) > div.intro-text-wrapper:nth-of-type(2) > div.intro-subtitle-wrapper:nth-of-type(2)",
+     "property": "transform",
+     "from": "translate3d(0px, 0px, 0px) scale3d(1.26064, 1.26064, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(0px, 0px, 0px) scale3d(0.5, 0.5, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 15,
+     "count": 3
+    },
+    {
+     "path": "div.main-content:nth-of-type(5) > div.scene-1:nth-of-type(1) > div.browser-globe-scene-wrapper:nth-of-type(5) > div.intro-text-wrapper:nth-of-type(2) > div.intro-subtitle-wrapper:nth-of-type(2)",
+     "property": "opacity",
+     "from": "0.04998",
+     "to": "0",
+     "atMs": 15,
+     "count": 2
+    },
+    {
+     "path": "div.browser-window-inner-wrapper > div.browser-window > div.hemisphere-east:nth-of-type(3) > div.hemisphere-east-continents > div.globe-stat.germ:nth-of-type(3)",
+     "property": "opacity",
+     "from": "0.95002",
+     "to": "1",
+     "atMs": 15,
+     "count": 2
+    },
+    {
+     "path": "div.browser-window-inner-wrapper > div.browser-window > div.hemisphere-east:nth-of-type(3) > div.hemisphere-east-continents > div.globe-stat.rus:nth-of-type(2)",
+     "property": "opacity",
+     "from": "0.95002",
+     "to": "1",
+     "atMs": 15,
+     "count": 2
+    },
+    {
+     "path": "div.browser-window-inner-wrapper > div.browser-window > div.hemisphere-east:nth-of-type(3) > div.hemisphere-east-continents > div.globe-stat.norway:nth-of-type(1)",
+     "property": "opacity",
+     "from": "0.95002",
+     "to": "1",
+     "atMs": 15,
+     "count": 2
+    },
+    {
+     "path": "div.browser-window-wrapper > div.browser-window-inner-wrapper > div.browser-window > div.hemisphere-west:nth-of-type(2) > div.globe-stat.latin",
+     "property": "opacity",
+     "from": "0.95002",
+     "to": "1",
+     "atMs": 15,
+     "count": 2
+    },
+    {
+     "path": "div.browser-window > div.hemisphere-east:nth-of-type(3) > div.hemisphere-east-continents > div.globe-stat.rus:nth-of-type(2) > div.stat-ping.large:nth-of-type(2)",
+     "property": "transform",
+     "from": "translate3d(0px, 0px, 0px) scale3d(1.09999, 1.09999, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 15,
+     "count": 2
+    },
+    {
+     "path": "div.weglot-is-ill-wrapper.iw4 > div.weglot-is-ll-row > div.weglot-ill-col.ill:nth-of-type(2) > div.weglot-ill > div.weglot-ill-4.ob4:nth-of-type(4)",
+     "property": "opacity",
+     "from": "0.85238",
+     "to": "1",
+     "atMs": 15,
+     "count": 5
+    },
+    {
+     "path": "div#imagine > div.imagine-bg:nth-of-type(1) > div.intro-title-wrapper.lennon:nth-of-type(1) > div.h-oversized.intro-3:nth-of-type(3)",
+     "property": "transform",
+     "from": "translate3d(0.8344%, 19.312%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(0.8408%, 19.3885%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 15,
+     "count": 19
+    },
+    {
+     "path": "div.scene-1:nth-of-type(1) > div.browser-globe-scene-wrapper:nth-of-type(5) > div.intro-text-wrapper:nth-of-type(2) > div.intro-title-wrapper.intro:nth-of-type(1) > div.h-oversized.intro-3:nth-of-type(3)",
+     "property": "transform",
+     "from": "translate3d(0.8344%, 19.312%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(0.8408%, 19.3885%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 15,
+     "count": 19
+    },
+    {
+     "path": "div#imagine > div.imagine-bg:nth-of-type(1) > div.intro-title-wrapper.lennon:nth-of-type(1) > div.h-oversized.intro-2:nth-of-type(2)",
+     "property": "transform",
+     "from": "translate3d(0.4172%, 12.3456%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(0.4204%, 12.3813%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 15,
+     "count": 19
+    },
+    {
+     "path": "div.scene-1:nth-of-type(1) > div.browser-globe-scene-wrapper:nth-of-type(5) > div.intro-text-wrapper:nth-of-type(2) > div.intro-title-wrapper.intro:nth-of-type(1) > div.h-oversized.intro-2:nth-of-type(2)",
+     "property": "transform",
+     "from": "translate3d(0.4172%, 12.3456%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(0.4204%, 12.3813%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 15,
+     "count": 19
+    },
+    {
+     "path": "div.custom-pointer-wrapper.no-events:nth-of-type(4) > div.power-of-lang-pointer > div.pointer.p2:nth-of-type(2)",
+     "property": "transform",
+     "from": "translate3d(-27.812vw, -27.277vh, 0px) scale3d(0.7, 0.7, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(-42.77vw, -0.094vh, 0px) scale3d(0.7, 0.7, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 15,
+     "count": 19
+    },
+    {
+     "path": "div.browser-window-wrapper > div.browser-window-inner-wrapper > div.browser-window > div.triangles-wrapper:nth-of-type(5) > div.triangles-2:nth-of-type(2)",
+     "property": "transform",
+     "from": "translate3d(-0.6834%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(-1.58116%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 15,
+     "count": 19
+    },
+    {
+     "path": "div.browser-window-wrapper > div.browser-window-inner-wrapper > div.browser-window > div.triangles-wrapper:nth-of-type(5) > div.triangles-1:nth-of-type(1)",
+     "property": "transform",
+     "from": "translate3d(-1.7085%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(-3.9529%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 15,
+     "count": 19
+    },
+    {
+     "path": "div.main-content:nth-of-type(5) > div.scene-1:nth-of-type(1) > div.scroll-prompt-wrapper-initial:nth-of-type(1)",
+     "property": "will-change",
+     "from": "opacity",
+     "to": "",
+     "atMs": 119,
+     "count": 1
+    },
+    {
+     "path": "div.main-content:nth-of-type(5) > div.scene-1:nth-of-type(1) > div.browser-globe-scene-wrapper:nth-of-type(5) > div.intro-text-wrapper:nth-of-type(2) > div.intro-subtitle-wrapper:nth-of-type(2)",
+     "property": "will-change",
+     "from": "transform, opacity",
+     "to": "",
+     "atMs": 119,
+     "count": 6
+    },
+    {
+     "path": "div.browser-window-inner-wrapper > div.browser-window > div.hemisphere-east:nth-of-type(3) > div.hemisphere-east-continents > div.globe-stat.germ:nth-of-type(3)",
+     "property": "will-change",
+     "from": "opacity",
+     "to": "",
+     "atMs": 119,
+     "count": 1
+    },
+    {
+     "path": "div.browser-window-inner-wrapper > div.browser-window > div.hemisphere-east:nth-of-type(3) > div.hemisphere-east-continents > div.globe-stat.rus:nth-of-type(2)",
+     "property": "will-change",
+     "from": "opacity",
+     "to": "",
+     "atMs": 119,
+     "count": 1
+    },
+    {
+     "path": "div.browser-window-inner-wrapper > div.browser-window > div.hemisphere-east:nth-of-type(3) > div.hemisphere-east-continents > div.globe-stat.norway:nth-of-type(1)",
+     "property": "will-change",
+     "from": "opacity",
+     "to": "",
+     "atMs": 119,
+     "count": 1
+    },
+    {
+     "path": "div.browser-window-wrapper > div.browser-window-inner-wrapper > div.browser-window > div.hemisphere-west:nth-of-type(2) > div.globe-stat.latin",
+     "property": "will-change",
+     "from": "opacity",
+     "to": "",
+     "atMs": 119,
+     "count": 1
+    },
+    {
+     "path": "div.browser-window > div.hemisphere-east:nth-of-type(3) > div.hemisphere-east-continents > div.globe-stat.rus:nth-of-type(2) > div.stat-ping.large:nth-of-type(2)",
+     "property": "will-change",
+     "from": "transform",
+     "to": "",
+     "atMs": 119,
+     "count": 1
+    },
+    {
+     "path": "div.weglot-is-ill-wrapper.iw4 > div.weglot-is-ll-row > div.weglot-ill-col.ill:nth-of-type(2) > div.weglot-ill > div.weglot-ill-4.ob4:nth-of-type(4)",
+     "property": "will-change",
+     "from": "transform, opacity",
+     "to": "transform",
+     "atMs": 119,
+     "count": 5
+    },
+    {
+     "path": "div.custom-pointer-wrapper.no-events:nth-of-type(4) > div.power-of-lang-pointer > div.pointer.p1:nth-of-type(1)",
+     "property": "transform",
+     "from": "translate3d(-49.653vw, -49.444vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(-42.778vw, 0vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 119,
+     "count": 3
+    },
+    {
+     "path": "div.browser-window > div.hemisphere-east:nth-of-type(3) > div.hemisphere-east-continents > div.globe-stat.rus:nth-of-type(2) > div.stat-line.rus:nth-of-type(3)",
+     "property": "will-change",
+     "from": "",
+     "to": "",
+     "atMs": 196,
+     "count": 2
+    },
+    {
+     "path": "div.browser-window > div.hemisphere-east:nth-of-type(3) > div.hemisphere-east-continents > div.globe-stat.rus:nth-of-type(2) > div.stat-line.rus:nth-of-type(3)",
+     "property": "transform",
+     "from": "translate3d(0px, 0px, 0px) scale3d(1, 0, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 196,
+     "count": 4
+    },
+    {
+     "path": "div.hemisphere-east:nth-of-type(3) > div.hemisphere-east-continents > div.globe-stat.rus:nth-of-type(2) > div.stat-line.rus:nth-of-type(3) > div.stat-number.ml-tiny",
+     "property": "will-change",
+     "from": "",
+     "to": "",
+     "atMs": 249,
+     "count": 4
+    },
+    {
+     "path": "div.hemisphere-east:nth-of-type(3) > div.hemisphere-east-continents > div.globe-stat.rus:nth-of-type(2) > div.stat-line.rus:nth-of-type(3) > div.stat-number.ml-tiny",
+     "property": "transform",
+     "from": "translate3d(0px, 1rem, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(0px, 0rem, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 249,
+     "count": 4
+    },
+    {
+     "path": "div.hemisphere-east:nth-of-type(3) > div.hemisphere-east-continents > div.globe-stat.rus:nth-of-type(2) > div.stat-line.rus:nth-of-type(3) > div.stat-number.ml-tiny",
+     "property": "opacity",
+     "from": "0",
+     "to": "1",
+     "atMs": 249,
+     "count": 4
+    },
+    {
+     "path": "div.main-content:nth-of-type(5) > div.scene-1:nth-of-type(1) > div.browser-globe-scene-wrapper:nth-of-type(5) > div.intro-text-wrapper:nth-of-type(2) > div.intro-title-wrapper.intro:nth-of-type(1)",
+     "property": "will-change",
+     "from": "opacity, transform",
+     "to": "",
+     "atMs": 249,
+     "count": 6
+    }
+   ],
+   "text": [],
+   "animations": [],
+   "film": {
+    "frames": [
+     0,
+     181,
+     335,
+     504,
+     648,
+     805
+    ]
+   }
+  },
+  {
+   "path": "div#imagine > div.imagine-bg:nth-of-type(1) > div.intro-title-wrapper.lennon:nth-of-type(1) > div.h-oversized.intro-3:nth-of-type(3)",
+   "label": "div.browser-overflow-wrapper",
+   "changes": [
+    {
+     "path": "div#imagine > div.imagine-bg:nth-of-type(1) > div.intro-title-wrapper.lennon:nth-of-type(1) > div.h-oversized.intro-3:nth-of-type(3)",
+     "property": "transform",
+     "from": "translate3d(0.3594%, 22.72%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(3.6262%, 22.5595%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 35,
+     "count": 22
+    },
+    {
+     "path": "div.scene-1:nth-of-type(1) > div.browser-globe-scene-wrapper:nth-of-type(5) > div.intro-text-wrapper:nth-of-type(2) > div.intro-title-wrapper.intro:nth-of-type(1) > div.h-oversized.intro-3:nth-of-type(3)",
+     "property": "transform",
+     "from": "translate3d(0.3594%, 22.72%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(3.6262%, 22.5595%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 35,
+     "count": 22
+    },
+    {
+     "path": "div#imagine > div.imagine-bg:nth-of-type(1) > div.intro-title-wrapper.lennon:nth-of-type(1) > div.h-oversized.intro-2:nth-of-type(2)",
+     "property": "transform",
+     "from": "translate3d(0.1797%, 13.936%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(1.8131%, 13.8611%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 35,
+     "count": 22
+    },
+    {
+     "path": "div.scene-1:nth-of-type(1) > div.browser-globe-scene-wrapper:nth-of-type(5) > div.intro-text-wrapper:nth-of-type(2) > div.intro-title-wrapper.intro:nth-of-type(1) > div.h-oversized.intro-2:nth-of-type(2)",
+     "property": "transform",
+     "from": "translate3d(0.1797%, 13.936%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(1.8131%, 13.8611%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 35,
+     "count": 22
+    },
+    {
+     "path": "div.custom-pointer-wrapper.no-events:nth-of-type(4) > div.power-of-lang-pointer > div.pointer.p2:nth-of-type(2)",
+     "property": "transform",
+     "from": "translate3d(-48.845vw, -43.628vh, 0px) scale3d(0.7, 0.7, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(-47.231vw, -0.027vh, 0px) scale3d(0.7, 0.7, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 35,
+     "count": 22
+    },
+    {
+     "path": "div.custom-pointer-wrapper.no-events:nth-of-type(4) > div.power-of-lang-pointer > div.pointer.p1:nth-of-type(1)",
+     "property": "transform",
+     "from": "translate3d(-49.653vw, -49.444vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(-47.222vw, 0vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 35,
+     "count": 3
+    },
+    {
+     "path": "div.browser-window-wrapper > div.browser-window-inner-wrapper > div.browser-window > div.triangles-wrapper:nth-of-type(5) > div.triangles-2:nth-of-type(2)",
+     "property": "transform",
+     "from": "translate3d(-0.896%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(-1.7922%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 35,
+     "count": 22
+    },
+    {
+     "path": "div.browser-window-wrapper > div.browser-window-inner-wrapper > div.browser-window > div.triangles-wrapper:nth-of-type(5) > div.triangles-1:nth-of-type(1)",
+     "property": "transform",
+     "from": "translate3d(-2.24%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(-4.4805%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 35,
+     "count": 22
+    },
+    {
+     "path": "div.weglot-is-ill-wrapper.iw4 > div.weglot-is-ll-row > div.weglot-ill-col.ill:nth-of-type(2) > div.weglot-ill > div.weglot-ill-4.ob4:nth-of-type(4)",
+     "property": "will-change",
+     "from": "transform",
+     "to": "transform, opacity",
+     "atMs": 836,
+     "count": 1
+    },
+    {
+     "path": "div.weglot-is-ill-wrapper.iw4 > div.weglot-is-ll-row > div.weglot-ill-col.ill:nth-of-type(2) > div.weglot-ill > div.weglot-ill-4.ob4:nth-of-type(4)",
+     "property": "opacity",
+     "from": "1",
+     "to": "0.58084",
+     "atMs": 836,
+     "count": 2
+    }
+   ],
+   "text": [],
+   "animations": [],
+   "film": {
+    "frames": [
+     0,
+     184,
+     320,
+     472,
+     625,
+     770
+    ]
+   }
+  },
+  {
+   "path": "div#imagine > div.imagine-bg:nth-of-type(1) > div.intro-title-wrapper.lennon:nth-of-type(1) > div.h-oversized.intro-3:nth-of-type(3)",
+   "label": "div.browser-window-wrapper",
+   "changes": [
+    {
+     "path": "div#imagine > div.imagine-bg:nth-of-type(1) > div.intro-title-wrapper.lennon:nth-of-type(1) > div.h-oversized.intro-3:nth-of-type(3)",
+     "property": "transform",
+     "from": "translate3d(5.6106%, 23.53%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(3.5976%, 24.0565%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 6,
+     "count": 22
+    },
+    {
+     "path": "div.scene-1:nth-of-type(1) > div.browser-globe-scene-wrapper:nth-of-type(5) > div.intro-text-wrapper:nth-of-type(2) > div.intro-title-wrapper.intro:nth-of-type(1) > div.h-oversized.intro-3:nth-of-type(3)",
+     "property": "transform",
+     "from": "translate3d(5.6106%, 23.53%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(3.5976%, 24.0565%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 6,
+     "count": 22
+    },
+    {
+     "path": "div#imagine > div.imagine-bg:nth-of-type(1) > div.intro-title-wrapper.lennon:nth-of-type(1) > div.h-oversized.intro-2:nth-of-type(2)",
+     "property": "transform",
+     "from": "translate3d(2.8053%, 14.314%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(1.7988%, 14.5597%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 6,
+     "count": 22
+    },
+    {
+     "path": "div.scene-1:nth-of-type(1) > div.browser-globe-scene-wrapper:nth-of-type(5) > div.intro-text-wrapper:nth-of-type(2) > div.intro-title-wrapper.intro:nth-of-type(1) > div.h-oversized.intro-2:nth-of-type(2)",
+     "property": "transform",
+     "from": "translate3d(2.8053%, 14.314%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(1.7988%, 14.5597%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 6,
+     "count": 22
+    },
+    {
+     "path": "div.custom-pointer-wrapper.no-events:nth-of-type(4) > div.power-of-lang-pointer > div.pointer.p2:nth-of-type(2)",
+     "property": "transform",
+     "from": "translate3d(-49.368vw, -43.628vh, 0px) scale3d(0.7, 0.7, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(-7.327vw, 39.928vh, 0px) scale3d(0.7, 0.7, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 6,
+     "count": 22
+    },
+    {
+     "path": "div.browser-window-wrapper > div.browser-window-inner-wrapper > div.browser-window > div.triangles-wrapper:nth-of-type(5) > div.triangles-2:nth-of-type(2)",
+     "property": "transform",
+     "from": "translate3d(-0.98812%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(-0.3784%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 6,
+     "count": 22
+    },
+    {
+     "path": "div.browser-window-wrapper > div.browser-window-inner-wrapper > div.browser-window > div.triangles-wrapper:nth-of-type(5) > div.triangles-1:nth-of-type(1)",
+     "property": "transform",
+     "from": "translate3d(-2.4703%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(-0.946%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 6,
+     "count": 22
+    },
+    {
+     "path": "div.custom-pointer-wrapper.no-events:nth-of-type(4) > div.power-of-lang-pointer > div.pointer.p1:nth-of-type(1)",
+     "property": "transform",
+     "from": "translate3d(-49.653vw, -49.444vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(-7.292vw, 40vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 40,
+     "count": 3
+    },
+    {
+     "path": "div.weglot-is-ill-wrapper.iw4 > div.weglot-is-ll-row > div.weglot-ill-col.ill:nth-of-type(2) > div.weglot-ill > div.weglot-ill-4.ob4:nth-of-type(4)",
+     "property": "will-change",
+     "from": "transform",
+     "to": "transform, opacity",
+     "atMs": 449,
+     "count": 3
+    },
+    {
+     "path": "div.weglot-is-ill-wrapper.iw4 > div.weglot-is-ll-row > div.weglot-ill-col.ill:nth-of-type(2) > div.weglot-ill > div.weglot-ill-4.ob4:nth-of-type(4)",
+     "property": "opacity",
+     "from": "1",
+     "to": "0.89253",
+     "atMs": 449,
+     "count": 9
+    }
+   ],
+   "text": [],
+   "animations": [],
+   "film": null
+  },
+  {
+   "path": "div#imagine > div.imagine-bg:nth-of-type(1) > div.intro-title-wrapper.lennon:nth-of-type(1) > div.h-oversized.intro-3:nth-of-type(3)",
+   "label": "div.browser-window-inner-wrapper",
+   "changes": [
+    {
+     "path": "div#imagine > div.imagine-bg:nth-of-type(1) > div.intro-title-wrapper.lennon:nth-of-type(1) > div.h-oversized.intro-3:nth-of-type(3)",
+     "property": "transform",
+     "from": "translate3d(2.9992%, 24.214%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(1.8848%, 24.505%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 10,
+     "count": 23
+    },
+    {
+     "path": "div.scene-1:nth-of-type(1) > div.browser-globe-scene-wrapper:nth-of-type(5) > div.intro-text-wrapper:nth-of-type(2) > div.intro-title-wrapper.intro:nth-of-type(1) > div.h-oversized.intro-3:nth-of-type(3)",
+     "property": "transform",
+     "from": "translate3d(2.9992%, 24.214%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(1.8848%, 24.505%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 10,
+     "count": 23
+    },
+    {
+     "path": "div#imagine > div.imagine-bg:nth-of-type(1) > div.intro-title-wrapper.lennon:nth-of-type(1) > div.h-oversized.intro-2:nth-of-type(2)",
+     "property": "transform",
+     "from": "translate3d(1.4996%, 14.6332%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(0.9424%, 14.769%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 10,
+     "count": 23
+    },
+    {
+     "path": "div.scene-1:nth-of-type(1) > div.browser-globe-scene-wrapper:nth-of-type(5) > div.intro-text-wrapper:nth-of-type(2) > div.intro-title-wrapper.intro:nth-of-type(1) > div.h-oversized.intro-2:nth-of-type(2)",
+     "property": "transform",
+     "from": "translate3d(1.4996%, 14.6332%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(0.9424%, 14.769%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 10,
+     "count": 23
+    },
+    {
+     "path": "div.custom-pointer-wrapper.no-events:nth-of-type(4) > div.power-of-lang-pointer > div.pointer.p2:nth-of-type(2)",
+     "property": "transform",
+     "from": "translate3d(-44.67vw, -38.924vh, 0px) scale3d(0.7, 0.7, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(-7.316vw, 39.951vh, 0px) scale3d(0.7, 0.7, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 10,
+     "count": 23
+    },
+    {
+     "path": "div.browser-window-wrapper > div.browser-window-inner-wrapper > div.browser-window > div.triangles-wrapper:nth-of-type(5) > div.triangles-2:nth-of-type(2)",
+     "property": "transform",
+     "from": "translate3d(-0.18856%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(-0.29888%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 10,
+     "count": 23
+    },
+    {
+     "path": "div.browser-window-wrapper > div.browser-window-inner-wrapper > div.browser-window > div.triangles-wrapper:nth-of-type(5) > div.triangles-1:nth-of-type(1)",
+     "property": "transform",
+     "from": "translate3d(-0.4714%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(-0.7472%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 10,
+     "count": 23
+    },
+    {
+     "path": "div.custom-pointer-wrapper.no-events:nth-of-type(4) > div.power-of-lang-pointer > div.pointer.p1:nth-of-type(1)",
+     "property": "transform",
+     "from": "translate3d(-49.653vw, -49.444vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(-7.292vw, 40vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 42,
+     "count": 3
+    }
+   ],
+   "text": [],
+   "animations": [],
+   "film": null
+  },
+  {
+   "path": "div#imagine > div.imagine-bg:nth-of-type(1) > div.intro-title-wrapper.lennon:nth-of-type(1) > div.h-oversized.intro-3:nth-of-type(3)",
+   "label": "div.browser-window",
+   "changes": [
+    {
+     "path": "div#imagine > div.imagine-bg:nth-of-type(1) > div.intro-title-wrapper.lennon:nth-of-type(1) > div.h-oversized.intro-3:nth-of-type(3)",
+     "property": "transform",
+     "from": "translate3d(1.5716%, 24.5875%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(1.008%, 24.736%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 15,
+     "count": 22
+    },
+    {
+     "path": "div.scene-1:nth-of-type(1) > div.browser-globe-scene-wrapper:nth-of-type(5) > div.intro-text-wrapper:nth-of-type(2) > div.intro-title-wrapper.intro:nth-of-type(1) > div.h-oversized.intro-3:nth-of-type(3)",
+     "property": "transform",
+     "from": "translate3d(1.5716%, 24.5875%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(1.008%, 24.736%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 15,
+     "count": 22
+    },
+    {
+     "path": "div#imagine > div.imagine-bg:nth-of-type(1) > div.intro-title-wrapper.lennon:nth-of-type(1) > div.h-oversized.intro-2:nth-of-type(2)",
+     "property": "transform",
+     "from": "translate3d(0.7858%, 14.8075%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(0.504%, 14.8768%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 15,
+     "count": 22
+    },
+    {
+     "path": "div.scene-1:nth-of-type(1) > div.browser-globe-scene-wrapper:nth-of-type(5) > div.intro-text-wrapper:nth-of-type(2) > div.intro-title-wrapper.intro:nth-of-type(1) > div.h-oversized.intro-2:nth-of-type(2)",
+     "property": "transform",
+     "from": "translate3d(0.7858%, 14.8075%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(0.504%, 14.8768%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 15,
+     "count": 22
+    },
+    {
+     "path": "div.custom-pointer-wrapper.no-events:nth-of-type(4) > div.power-of-lang-pointer > div.pointer.p2:nth-of-type(2)",
+     "property": "transform",
+     "from": "translate3d(-44.67vw, -38.923vh, 0px) scale3d(0.7, 0.7, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(-2.329vw, 3.959vh, 0px) scale3d(0.7, 0.7, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 15,
+     "count": 22
+    },
+    {
+     "path": "div.browser-window-wrapper > div.browser-window-inner-wrapper > div.browser-window > div.triangles-wrapper:nth-of-type(5) > div.triangles-2:nth-of-type(2)",
+     "property": "transform",
+     "from": "translate3d(-0.15784%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(-0.121%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 15,
+     "count": 22
+    },
+    {
+     "path": "div.browser-window-wrapper > div.browser-window-inner-wrapper > div.browser-window > div.triangles-wrapper:nth-of-type(5) > div.triangles-1:nth-of-type(1)",
+     "property": "transform",
+     "from": "translate3d(-0.3946%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(-0.3025%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 15,
+     "count": 22
+    },
+    {
+     "path": "div.custom-pointer-wrapper.no-events:nth-of-type(4) > div.power-of-lang-pointer > div.pointer.p1:nth-of-type(1)",
+     "property": "transform",
+     "from": "translate3d(-49.653vw, -49.444vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(-2.292vw, 4vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 44,
+     "count": 3
+    },
+    {
+     "path": "div.weglot-is-ill-wrapper.iw4 > div.weglot-is-ll-row > div.weglot-ill-col.ill:nth-of-type(2) > div.weglot-ill > div.weglot-ill-4.ob4:nth-of-type(4)",
+     "property": "will-change",
+     "from": "transform",
+     "to": "transform, opacity",
+     "atMs": 446,
+     "count": 3
+    },
+    {
+     "path": "div.weglot-is-ill-wrapper.iw4 > div.weglot-is-ll-row > div.weglot-ill-col.ill:nth-of-type(2) > div.weglot-ill > div.weglot-ill-4.ob4:nth-of-type(4)",
+     "property": "opacity",
+     "from": "1",
+     "to": "0.99829",
+     "atMs": 446,
+     "count": 11
+    }
+   ],
+   "text": [],
+   "animations": [],
+   "film": null
+  },
+  {
+   "path": "div#newweb > div.webis-bg:nth-of-type(1) > div.webis-ill-wrapper:nth-of-type(2) > div.webis-ill.ill3:nth-of-type(3)",
+   "label": "div.browser-btns-wrapper",
+   "changes": [
+    {
+     "path": "div#newweb > div.webis-bg:nth-of-type(1) > div.webis-ill-wrapper:nth-of-type(2) > div.webis-ill.ill3:nth-of-type(3)",
+     "property": "will-change",
+     "from": "transform",
+     "to": "transform",
+     "atMs": 7,
+     "count": 4
+    },
+    {
+     "path": "div#imagine > div.imagine-bg:nth-of-type(1) > div.intro-title-wrapper.lennon:nth-of-type(1) > div.h-oversized.intro-3:nth-of-type(3)",
+     "property": "transform",
+     "from": "translate3d(0.8574%, 24.7735%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(0.5498%, 24.853%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 7,
+     "count": 22
+    },
+    {
+     "path": "div.scene-1:nth-of-type(1) > div.browser-globe-scene-wrapper:nth-of-type(5) > div.intro-text-wrapper:nth-of-type(2) > div.intro-title-wrapper.intro:nth-of-type(1) > div.h-oversized.intro-3:nth-of-type(3)",
+     "property": "transform",
+     "from": "translate3d(0.8574%, 24.7735%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(0.5498%, 24.853%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 7,
+     "count": 22
+    },
+    {
+     "path": "div#imagine > div.imagine-bg:nth-of-type(1) > div.intro-title-wrapper.lennon:nth-of-type(1) > div.h-oversized.intro-2:nth-of-type(2)",
+     "property": "transform",
+     "from": "translate3d(0.4287%, 14.8943%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(0.2749%, 14.9314%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 7,
+     "count": 22
+    },
+    {
+     "path": "div.scene-1:nth-of-type(1) > div.browser-globe-scene-wrapper:nth-of-type(5) > div.intro-text-wrapper:nth-of-type(2) > div.intro-title-wrapper.intro:nth-of-type(1) > div.h-oversized.intro-2:nth-of-type(2)",
+     "property": "transform",
+     "from": "translate3d(0.4287%, 14.8943%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(0.2749%, 14.9314%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 7,
+     "count": 22
+    },
+    {
+     "path": "div.custom-pointer-wrapper.no-events:nth-of-type(4) > div.power-of-lang-pointer > div.pointer.p2:nth-of-type(2)",
+     "property": "transform",
+     "from": "translate3d(-41.695vw, -40.464vh, 0px) scale3d(0.7, 0.7, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(-2.119vw, -26.015vh, 0px) scale3d(0.7, 0.7, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 7,
+     "count": 22
+    },
+    {
+     "path": "div.browser-window-wrapper > div.browser-window-inner-wrapper > div.browser-window > div.triangles-wrapper:nth-of-type(5) > div.triangles-2:nth-of-type(2)",
+     "property": "transform",
+     "from": "translate3d(-0.06676%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(-0.08832%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 7,
+     "count": 22
+    },
+    {
+     "path": "div.browser-window-wrapper > div.browser-window-inner-wrapper > div.browser-window > div.triangles-wrapper:nth-of-type(5) > div.triangles-1:nth-of-type(1)",
+     "property": "transform",
+     "from": "translate3d(-0.1669%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(-0.2208%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 7,
+     "count": 22
+    },
+    {
+     "path": "div.custom-pointer-wrapper.no-events:nth-of-type(4) > div.power-of-lang-pointer > div.pointer.p1:nth-of-type(1)",
+     "property": "transform",
+     "from": "translate3d(-49.653vw, -49.444vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(-2.083vw, -26vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 34,
+     "count": 3
+    },
+    {
+     "path": "div#newweb > div.webis-bg:nth-of-type(1) > div.webis-ill-wrapper:nth-of-type(2) > div.webis-ill.ill2:nth-of-type(2)",
+     "property": "will-change",
+     "from": "transform",
+     "to": "transform",
+     "atMs": 404,
+     "count": 4
+    }
+   ],
+   "text": [],
+   "animations": [],
+   "film": null
+  },
+  {
+   "path": "div#imagine > div.imagine-bg:nth-of-type(1) > div.intro-title-wrapper.lennon:nth-of-type(1) > div.h-oversized.intro-3:nth-of-type(3)",
+   "label": "div.grid-row.facts",
+   "changes": [
+    {
+     "path": "div#imagine > div.imagine-bg:nth-of-type(1) > div.intro-title-wrapper.lennon:nth-of-type(1) > div.h-oversized.intro-3:nth-of-type(3)",
+     "property": "transform",
+     "from": "translate3d(0.4674%, 24.877%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(0.4176%, 24.2755%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 9,
+     "count": 23
+    },
+    {
+     "path": "div.scene-1:nth-of-type(1) > div.browser-globe-scene-wrapper:nth-of-type(5) > div.intro-text-wrapper:nth-of-type(2) > div.intro-title-wrapper.intro:nth-of-type(1) > div.h-oversized.intro-3:nth-of-type(3)",
+     "property": "transform",
+     "from": "translate3d(0.4674%, 24.877%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(0.4176%, 24.2755%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 9,
+     "count": 23
+    },
+    {
+     "path": "div#imagine > div.imagine-bg:nth-of-type(1) > div.intro-title-wrapper.lennon:nth-of-type(1) > div.h-oversized.intro-2:nth-of-type(2)",
+     "property": "transform",
+     "from": "translate3d(0.2337%, 14.9426%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(0.2088%, 14.6619%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 9,
+     "count": 23
+    },
+    {
+     "path": "div.scene-1:nth-of-type(1) > div.browser-globe-scene-wrapper:nth-of-type(5) > div.intro-text-wrapper:nth-of-type(2) > div.intro-title-wrapper.intro:nth-of-type(1) > div.h-oversized.intro-2:nth-of-type(2)",
+     "property": "transform",
+     "from": "translate3d(0.2337%, 14.9426%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(0.2088%, 14.6619%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 9,
+     "count": 23
+    },
+    {
+     "path": "div.custom-pointer-wrapper.no-events:nth-of-type(4) > div.power-of-lang-pointer > div.pointer.p2:nth-of-type(2)",
+     "property": "transform",
+     "from": "translate3d(-44.058vw, -46.687vh, 0px) scale3d(0.7, 0.7, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(-42.788vw, -0.028vh, 0px) scale3d(0.7, 0.7, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 9,
+     "count": 23
+    },
+    {
+     "path": "div.browser-window-wrapper > div.browser-window-inner-wrapper > div.browser-window > div.triangles-wrapper:nth-of-type(5) > div.triangles-2:nth-of-type(2)",
+     "property": "transform",
+     "from": "translate3d(-0.04644%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(-1.54988%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 9,
+     "count": 23
+    },
+    {
+     "path": "div.browser-window-wrapper > div.browser-window-inner-wrapper > div.browser-window > div.triangles-wrapper:nth-of-type(5) > div.triangles-1:nth-of-type(1)",
+     "property": "transform",
+     "from": "translate3d(-0.1161%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(-3.8747%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 9,
+     "count": 23
+    },
+    {
+     "path": "div.custom-pointer-wrapper.no-events:nth-of-type(4) > div.power-of-lang-pointer > div.pointer.p1:nth-of-type(1)",
+     "property": "transform",
+     "from": "translate3d(-49.653vw, -49.444vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(-42.778vw, 0vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 40,
+     "count": 3
+    }
+   ],
+   "text": [],
+   "animations": [],
+   "film": null
+  },
+  {
+   "path": "div.intro-webflow-facts-wrapper:nth-of-type(5) > div.grid-row.facts:nth-of-type(7) > div.webflow-facts > div.webflow-facts-title:nth-of-type(1) > div.webflow-facts-title-wrapper.mb-normal:nth-of-type(1)",
+   "label": "div.grid-row.barrier",
+   "changes": [
+    {
+     "path": "div.intro-webflow-facts-wrapper:nth-of-type(5) > div.grid-row.facts:nth-of-type(7) > div.webflow-facts > div.webflow-facts-title:nth-of-type(1) > div.webflow-facts-title-wrapper.mb-normal:nth-of-type(1)",
+     "property": "will-change",
+     "from": "",
+     "to": "",
+     "atMs": 49,
+     "count": 2
+    },
+    {
+     "path": "div.intro-webflow-facts-wrapper:nth-of-type(5) > div.grid-row.facts:nth-of-type(7) > div.webflow-facts > div.webflow-facts-title:nth-of-type(1) > div.webflow-facts-title-wrapper.mb-normal:nth-of-type(1)",
+     "property": "transform",
+     "from": "translate3d(0px, 0rem, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(0px, -2rem, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 49,
+     "count": 1
+    },
+    {
+     "path": "div.intro-webflow-facts-wrapper:nth-of-type(5) > div.grid-row.facts:nth-of-type(7) > div.webflow-facts > div.webflow-facts-content:nth-of-type(2) > div.fact2:nth-of-type(2)",
+     "property": "opacity",
+     "from": "0.01653",
+     "to": "0",
+     "atMs": 49,
+     "count": 1
+    },
+    {
+     "path": "div.intro-webflow-facts-wrapper:nth-of-type(5) > div.grid-row.facts:nth-of-type(7) > div.webflow-facts > div.webflow-facts-content:nth-of-type(2) > div.fact2:nth-of-type(2)",
+     "property": "will-change",
+     "from": "opacity",
+     "to": "",
+     "atMs": 49,
+     "count": 3
+    },
+    {
+     "path": "div.browser-window-inner-wrapper > div.browser-window > div.hemisphere-east:nth-of-type(3) > div.hemisphere-east-continents > div.globe-stat.germ:nth-of-type(3)",
+     "property": "opacity",
+     "from": "0.01653",
+     "to": "0",
+     "atMs": 49,
+     "count": 1
+    },
+    {
+     "path": "div.browser-window-inner-wrapper > div.browser-window > div.hemisphere-east:nth-of-type(3) > div.hemisphere-east-continents > div.globe-stat.germ:nth-of-type(3)",
+     "property": "will-change",
+     "from": "opacity",
+     "to": "",
+     "atMs": 49,
+     "count": 1
+    },
+    {
+     "path": "div.browser-window-inner-wrapper > div.browser-window > div.hemisphere-east:nth-of-type(3) > div.hemisphere-east-continents > div.globe-stat.rus:nth-of-type(2)",
+     "property": "opacity",
+     "from": "0.01653",
+     "to": "0",
+     "atMs": 49,
+     "count": 1
+    },
+    {
+     "path": "div.browser-window-inner-wrapper > div.browser-window > div.hemisphere-east:nth-of-type(3) > div.hemisphere-east-continents > div.globe-stat.rus:nth-of-type(2)",
+     "property": "will-change",
+     "from": "opacity",
+     "to": "",
+     "atMs": 49,
+     "count": 1
+    },
+    {
+     "path": "div.browser-window-inner-wrapper > div.browser-window > div.hemisphere-east:nth-of-type(3) > div.hemisphere-east-continents > div.globe-stat.norway:nth-of-type(1)",
+     "property": "opacity",
+     "from": "0.01653",
+     "to": "0",
+     "atMs": 49,
+     "count": 1
+    },
+    {
+     "path": "div.browser-window-inner-wrapper > div.browser-window > div.hemisphere-east:nth-of-type(3) > div.hemisphere-east-continents > div.globe-stat.norway:nth-of-type(1)",
+     "property": "will-change",
+     "from": "opacity",
+     "to": "",
+     "atMs": 49,
+     "count": 1
+    },
+    {
+     "path": "div.browser-window-wrapper > div.browser-window-inner-wrapper > div.browser-window > div.hemisphere-west:nth-of-type(2) > div.globe-stat.latin",
+     "property": "opacity",
+     "from": "0.01653",
+     "to": "0",
+     "atMs": 49,
+     "count": 1
+    },
+    {
+     "path": "div.browser-window-wrapper > div.browser-window-inner-wrapper > div.browser-window > div.hemisphere-west:nth-of-type(2) > div.globe-stat.latin",
+     "property": "will-change",
+     "from": "opacity",
+     "to": "",
+     "atMs": 49,
+     "count": 1
+    },
+    {
+     "path": "div#imagine > div.imagine-bg:nth-of-type(1) > div.intro-title-wrapper.lennon:nth-of-type(1) > div.h-oversized.intro-3:nth-of-type(3)",
+     "property": "transform",
+     "from": "translate3d(1.1336%, 18.613%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(0.7724%, 20.6485%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 49,
+     "count": 19
+    },
+    {
+     "path": "div.scene-1:nth-of-type(1) > div.browser-globe-scene-wrapper:nth-of-type(5) > div.intro-text-wrapper:nth-of-type(2) > div.intro-title-wrapper.intro:nth-of-type(1) > div.h-oversized.intro-3:nth-of-type(3)",
+     "property": "transform",
+     "from": "translate3d(1.1336%, 18.613%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(0.7724%, 20.6485%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 49,
+     "count": 19
+    },
+    {
+     "path": "div#imagine > div.imagine-bg:nth-of-type(1) > div.intro-title-wrapper.lennon:nth-of-type(1) > div.h-oversized.intro-2:nth-of-type(2)",
+     "property": "transform",
+     "from": "translate3d(0.5668%, 12.0194%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(0.3862%, 12.9693%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 49,
+     "count": 19
+    },
+    {
+     "path": "div.scene-1:nth-of-type(1) > div.browser-globe-scene-wrapper:nth-of-type(5) > div.intro-text-wrapper:nth-of-type(2) > div.intro-title-wrapper.intro:nth-of-type(1) > div.h-oversized.intro-2:nth-of-type(2)",
+     "property": "transform",
+     "from": "translate3d(0.5668%, 12.0194%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(0.3862%, 12.9693%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 49,
+     "count": 19
+    },
+    {
+     "path": "div.custom-pointer-wrapper.no-events:nth-of-type(4) > div.power-of-lang-pointer > div.pointer.p2:nth-of-type(2)",
+     "property": "transform",
+     "from": "translate3d(-48.005vw, -37.575vh, 0px) scale3d(0.7, 0.7, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(7.128vw, -0.181vh, 0px) scale3d(0.7, 0.7, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 49,
+     "count": 19
+    },
+    {
+     "path": "div.custom-pointer-wrapper.no-events:nth-of-type(4) > div.power-of-lang-pointer > div.pointer.p1:nth-of-type(1)",
+     "property": "transform",
+     "from": "translate3d(-49.653vw, -49.444vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(7.222vw, -0.111vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 49,
+     "count": 3
+    },
+    {
+     "path": "div.browser-window-wrapper > div.browser-window-inner-wrapper > div.browser-window > div.triangles-wrapper:nth-of-type(5) > div.triangles-2:nth-of-type(2)",
+     "property": "transform",
+     "from": "translate3d(-1.72852%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(-0.01904%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 49,
+     "count": 19
+    },
+    {
+     "path": "div.browser-window-wrapper > div.browser-window-inner-wrapper > div.browser-window > div.triangles-wrapper:nth-of-type(5) > div.triangles-1:nth-of-type(1)",
+     "property": "transform",
+     "from": "translate3d(-4.3213%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(-0.0476%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 49,
+     "count": 19
+    },
+    {
+     "path": "div.intro-webflow-facts-wrapper:nth-of-type(5) > div.grid-row.facts:nth-of-type(7) > div.webflow-facts > div.webflow-facts-content:nth-of-type(2) > div.fact2:nth-of-type(2)",
+     "property": "transform",
+     "from": "translate3d(0px, 0rem, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(0px, 2rem, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 105,
+     "count": 1
+    },
+    {
+     "path": "div.weglot-is-ill-wrapper.iw4 > div.weglot-is-ll-row > div.weglot-ill-col.ill:nth-of-type(2) > div.weglot-ill > div.weglot-ill-4.ob4:nth-of-type(4)",
+     "property": "will-change",
+     "from": "transform",
+     "to": "transform",
+     "atMs": 820,
+     "count": 2
+    },
+    {
+     "path": "div.weglot-is-ill-wrapper.iw4 > div.weglot-is-ll-row > div.weglot-ill-col.ill:nth-of-type(2) > div.weglot-ill > div.weglot-ill-4.ob4:nth-of-type(4)",
+     "property": "opacity",
+     "from": "1",
+     "to": "0",
+     "atMs": 820,
+     "count": 3
+    }
+   ],
+   "text": [],
+   "animations": [],
+   "film": null
+  },
+  {
+   "path": "div.weglot-is-ill-wrapper.iw4 > div.weglot-is-ll-row > div.weglot-ill-col.ill:nth-of-type(2) > div.weglot-ill > div.weglot-ill-4.ob4:nth-of-type(4)",
+   "label": "a.w-webflow-badge",
+   "changes": [
+    {
+     "path": "div.weglot-is-ill-wrapper.iw4 > div.weglot-is-ll-row > div.weglot-ill-col.ill:nth-of-type(2) > div.weglot-ill > div.weglot-ill-4.ob4:nth-of-type(4)",
+     "property": "opacity",
+     "from": "0.95016",
+     "to": "1",
+     "atMs": 16,
+     "count": 4
+    },
+    {
+     "path": "div.main-content:nth-of-type(5) > div.scene-1:nth-of-type(1) > div.language-barrier-wrapper:nth-of-type(6) > div.barrier-breaker-overflow:nth-of-type(3)",
+     "property": "transform",
+     "from": "translate3d(-89.367%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(-33.146%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 16,
+     "count": 21
+    },
+    {
+     "path": "div#imagine > div.imagine-bg:nth-of-type(1) > div.intro-title-wrapper.lennon:nth-of-type(1) > div.h-oversized.intro-3:nth-of-type(3)",
+     "property": "transform",
+     "from": "translate3d(0.6842%, 21.1465%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(0.447%, 22.477%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 16,
+     "count": 21
+    },
+    {
+     "path": "div.scene-1:nth-of-type(1) > div.browser-globe-scene-wrapper:nth-of-type(5) > div.intro-text-wrapper:nth-of-type(2) > div.intro-title-wrapper.intro:nth-of-type(1) > div.h-oversized.intro-3:nth-of-type(3)",
+     "property": "transform",
+     "from": "translate3d(0.6842%, 21.1465%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(0.447%, 22.477%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 16,
+     "count": 21
+    },
+    {
+     "path": "div#imagine > div.imagine-bg:nth-of-type(1) > div.intro-title-wrapper.lennon:nth-of-type(1) > div.h-oversized.intro-2:nth-of-type(2)",
+     "property": "transform",
+     "from": "translate3d(0.3421%, 13.2017%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(0.2235%, 13.8226%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 16,
+     "count": 21
+    },
+    {
+     "path": "div.scene-1:nth-of-type(1) > div.browser-globe-scene-wrapper:nth-of-type(5) > div.intro-text-wrapper:nth-of-type(2) > div.intro-title-wrapper.intro:nth-of-type(1) > div.h-oversized.intro-2:nth-of-type(2)",
+     "property": "transform",
+     "from": "translate3d(0.3421%, 13.2017%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(0.2235%, 13.8226%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 16,
+     "count": 21
+    },
+    {
+     "path": "div.custom-pointer-wrapper.no-events:nth-of-type(4) > div.power-of-lang-pointer > div.pointer.p2:nth-of-type(2)",
+     "property": "transform",
+     "from": "translate3d(-40.106vw, -41.161vh, 0px) scale3d(0.7, 0.7, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(40.731vw, 47.001vh, 0px) scale3d(0.7, 0.7, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 16,
+     "count": 21
+    },
+    {
+     "path": "div.browser-window-wrapper > div.browser-window-inner-wrapper > div.browser-window > div.triangles-wrapper:nth-of-type(5) > div.triangles-2:nth-of-type(2)",
+     "property": "transform",
+     "from": "translate3d(0.007%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(-0.0034%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 16,
+     "count": 21
+    },
+    {
+     "path": "div.browser-window-wrapper > div.browser-window-inner-wrapper > div.browser-window > div.triangles-wrapper:nth-of-type(5) > div.triangles-1:nth-of-type(1)",
+     "property": "transform",
+     "from": "translate3d(0.0175%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(-0.0085%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 16,
+     "count": 21
+    },
+    {
+     "path": "div.weglot-is-ill-wrapper.iw4 > div.weglot-is-ll-row > div.weglot-ill-col.ill:nth-of-type(2) > div.weglot-ill > div.weglot-ill-4.ob4:nth-of-type(4)",
+     "property": "will-change",
+     "from": "transform, opacity",
+     "to": "transform",
+     "atMs": 66,
+     "count": 5
+    },
+    {
+     "path": "div.custom-pointer-wrapper.no-events:nth-of-type(4) > div.power-of-lang-pointer > div.pointer.p1:nth-of-type(1)",
+     "property": "transform",
+     "from": "translate3d(-49.653vw, -49.444vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(40.833vw, 47.111vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 66,
+     "count": 3
+    },
+    {
+     "path": "div.barrier-breaker-overflow:nth-of-type(3) > div.barrier-breaker-wrapper > div.barrier-breaker-para:nth-of-type(3) > div.barrier-breaker > div.barrier-breaker-ping:nth-of-type(3)",
+     "property": "will-change",
+     "from": "",
+     "to": "opacity, transform",
+     "atMs": 426,
+     "count": 2
+    },
+    {
+     "path": "div.barrier-breaker-overflow:nth-of-type(3) > div.barrier-breaker-wrapper > div.barrier-breaker-para:nth-of-type(3) > div.barrier-breaker > div.barrier-breaker-ping:nth-of-type(3)",
+     "property": "opacity",
+     "from": "0.32",
+     "to": "0.0064832",
+     "atMs": 426,
+     "count": 11
+    },
+    {
+     "path": "div.barrier-breaker-overflow:nth-of-type(3) > div.barrier-breaker-wrapper > div.barrier-breaker-para:nth-of-type(3) > div.barrier-breaker > div.barrier-breaker-ping:nth-of-type(3)",
+     "property": "transform",
+     "from": "translate3d(0px, 0px, 0px) scale3d(0, 0, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "to": "translate3d(0px, 0px, 0px) scale3d(0.97974, 0.97974, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
+     "atMs": 426,
+     "count": 11
+    }
+   ],
+   "text": [],
+   "animations": [],
+   "film": null
+  }
+ ],
+ "clicks": [],
+ "canvases": [],
+ "text": [],
+ "notes": []
+}

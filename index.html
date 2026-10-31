@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lull — A little rhythm. A better rest.</title>
+<meta name="description" content="Plan your bedtime, wake-up, or nap with Lull. Compare sleep windows, set a reminder, and wind down with ambient sounds.">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<meta name="theme-color" content="#19251f" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f5f2e9" media="(prefers-color-scheme: light)">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Lull">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></symbol>
+  <symbol id="i-nap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18h4l2-3 2 5 2-4 2 2h6"/><circle cx="12" cy="7" r="3"/></symbol>
+  <symbol id="i-exhausted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 10l2 2M10 10l-2 2M14 10l2 2M16 10l-2 2"/><path d="M9 16c1.2-1 4.8-1 6 0"/></symbol>
+  <symbol id="i-tired" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 10h2M14 10h2"/><path d="M9 15.5c1.2-1 4.8-1 6 0"/></symbol>
+  <symbol id="i-wired" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></symbol>
+  <symbol id="i-alarm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2"/><path d="M5 3 2 6M19 3l3 3"/></symbol>
+  <symbol id="i-lungs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v9"/><path d="M12 11c-1.5-1-3-1-4.5.5C5.5 13.5 5 17 6 20c.7 2 3 1.5 3.5-.5.4-1.6.5-4.4.5-6"/><path d="M12 11c1.5-1 3-1 4.5.5 2 2 2.5 5.5 1.5 8.5-.7 2-3 1.5-3.5-.5-.4-1.6-.5-4.4-.5-6"/></symbol>
+  <symbol id="i-rain" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 13a5 5 0 0 0-9.6-2 4 4 0 0 0 .6 8h9a3.5 3.5 0 0 0 0-7Z"/><path d="M8 19l-1 2M12 19l-1 2M16 19l-1 2"/></symbol>
+  <symbol id="i-noise" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 13c1-4 2-4 3 0s2 4 3 0 2-4 3 0"/></symbol>
+  <symbol id="i-ocean" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8c2-1.5 4-1.5 6 0s4 1.5 6 0 4-1.5 6 0"/><path d="M2 14c2-1.5 4-1.5 6 0s4 1.5 6 0 4-1.5 6 0"/><path d="M2 20c2-1.5 4-1.5 6 0s4 1.5 6 0 4-1.5 6 0"/></symbol>
+  <symbol id="i-piano" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M7 4v10M11 4v10M15 4v10M19 4v10"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13M7 11l5 5 5-5"/><path d="M4 20h16"/></symbol>
+  <symbol id="i-coffee" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h13a3 3 0 0 1 0 6h-1"/><path d="M4 9v6a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4V9"/><path d="M8 3c0 1-1 1-1 2M12 3c0 1-1 1-1 2"/></symbol>
+  <symbol id="i-compass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15 9l-2 6-6 2 2-6 6-2Z"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13"/><path d="M3 6h.01M3 12h.01M3 18h.01"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15.5H6.5A2.5 2.5 0 0 0 4 21V5.5Z"/><path d="M4 18.5A2.5 2.5 0 0 1 6.5 16H20"/></symbol>
+</svg>
+
+<a class="skip-link" href="#planSection">Skip to sleep planner</a>
+<noscript><p class="noscript-note">Enable JavaScript to calculate sleep windows and use the planner.</p></noscript>
+<div class="app" id="appShell">
+  <header class="masthead">
+    <a class="brand" href="#" aria-label="Lull home"><svg class="icon" aria-hidden="true"><use href="#i-moon"/></svg><span class="wordmark">lull</span><span class="brand-note">A daily ritual<br>for better rest</span></a>
+    <div class="header-actions">
+      <a class="desktop-link" href="#nightStory">The story of rest</a>
+      <button class="install-btn" id="installBtn" type="button"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg><span id="installBtnLabel">Install app</span></button>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark theme"><svg class="icon" id="themeToggleIcon" aria-hidden="true"><use href="#i-moon"/></svg></button>
+    </div>
+  </header>
+  <main>
+    <div class="intro">
+      <div><p class="eyebrow">Your personal sleep planner</p><h1>A little rhythm.<br><em>A better rest.</em></h1></div>
+      <div class="intro-note"><p>Find a little room for rest.<br>Your next sleep plan starts here.</p><a class="intro-plan-link" href="#planSection">Open the planner <span aria-hidden="true">↗</span></a><p class="intro-action-note">Choose a time. We’ll work out the rest.</p></div>
+    </div>
+    <section class="night-story" id="nightStory" aria-labelledby="storyTitle">
+      <div class="story-opening">
+        <div><p class="eyebrow">An evening in four movements</p><h2 id="storyTitle">The space between<br><em>today &amp; tomorrow.</em></h2></div>
+        <a class="story-skip" href="#planSection">Skip to planner <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="story-layout">
+        <div class="story-visual" aria-hidden="true">
+          <div class="story-visual-top"><span>A small atlas of rest</span><span><span id="storyChapterNumber">01</span> / 04</span></div>
+          <div class="night-instrument" data-chapter="0" id="nightInstrument">
+            <svg class="night-orbits" viewBox="0 0 520 520" fill="none">
+              <defs>
+                <radialGradient id="nightPaper" cx=".32" cy=".25" r=".9"><stop stop-color="var(--result-bg)"/><stop offset="1" stop-color="var(--moon-soft)"/></radialGradient>
+                <clipPath id="nightDiscClip"><circle cx="260" cy="260" r="108"/></clipPath>
+              </defs>
+              <circle class="orbit-track orbit-outer" cx="260" cy="260" r="223"/>
+              <g id="storyTicks" class="orbit-ticks"></g>
+              <g class="night-layer night-layer-outer"><circle cx="260" cy="260" r="187"/><circle class="orbit-cycle" id="storyCycleRing" cx="260" cy="260" r="187" pathLength="100"/></g>
+              <g class="night-layer night-layer-inner"><circle cx="260" cy="260" r="148"/><circle class="orbit-buffer" cx="260" cy="260" r="148" pathLength="100"/></g>
+              <circle class="night-disc" cx="260" cy="260" r="108" fill="url(#nightPaper)"/>
+              <g clip-path="url(#nightDiscClip)"><circle class="night-shadow" cx="303" cy="235" r="100"/><path class="night-horizon" d="M140 294Q260 257 380 294V380H140Z"/></g>
+              <path class="orbit-cross" d="M252 260h16m-8-8v16"/>
+              <g class="night-hand"><circle cx="260" cy="37" r="7"/><circle class="orbit-marker-halo" cx="260" cy="37" r="13"/></g>
+              <text class="orbit-label" x="260" y="15" text-anchor="middle">NIGHT</text>
+              <text class="orbit-label" x="260" y="511" text-anchor="middle">MORNING</text>
+            </svg>
+            <div class="story-readout"><span id="storyMetricLabel">Time to settle</span><span id="storyMetric">15 <small>min</small></span></div>
+            <span class="orbit-side-label">A little room</span><span class="orbit-side-label orbit-side-right">For yourself</span>
+          </div>
+          <div class="story-visual-bottom"><span id="storyVisualCaption">Leave the day at the door.</span><span class="story-scroll-cue">Scroll to unfold <span aria-hidden="true">↓</span></span></div>
+          <div class="story-progress-track"><span id="storyProgress"></span></div>
+        </div>
+        <div class="story-chapters">
+          <nav class="story-chapter-nav" aria-label="Sleep story chapters">
+            <a href="#storySettle" aria-label="Chapter 1: Settle in" aria-current="step">01</a>
+            <a href="#storyRhythm" aria-label="Chapter 2: Find your rhythm">02</a>
+            <a href="#storyWindow" aria-label="Chapter 3: Make room for rest">03</a>
+            <a href="#storyMorning" aria-label="Chapter 4: Meet the morning">04</a>
+          </nav>
+          <article class="story-step is-current" id="storySettle" tabindex="-1">
+            <p class="eyebrow"><span>01</span> / The pause</p>
+            <h3>Let the day<br><em>settle.</em></h3>
+            <p>You don’t have to go from everything to asleep in an instant. Leave a small space between getting into bed and drifting off.</p>
+            <p class="story-setting"><span data-story-buffer>15 min</span> <span data-story-buffer-label>to fall asleep</span><span class="story-setting-note" data-story-buffer-note>Adjustable in your planner</span></p>
+          </article>
+          <article class="story-step" id="storyRhythm" tabindex="-1">
+            <p class="eyebrow"><span>02</span> / The rhythm</p>
+            <h3>A night is made<br>of <em>small returns.</em></h3>
+            <p>Lull builds your plan one cycle at a time. Change the cycle length, and the whole window shifts with it.</p>
+            <p class="story-setting"><span data-story-cycle>90 min</span> per estimated cycle <span class="story-setting-note">A planning model. Your actual cycles vary.</span></p>
+          </article>
+          <article class="story-step" id="storyWindow" tabindex="-1">
+            <p class="eyebrow"><span>03</span> / The space</p>
+            <h3>Make room<br>for <em>the night.</em></h3>
+            <p>A time on the clock becomes a stretch of rest. Compare the options below and choose the window that fits your day.</p>
+            <p class="story-setting"><span data-story-duration>Your window</span><span class="story-setting-note" data-story-window>Choose a time in the planner</span></p>
+          </article>
+          <article class="story-step" id="storyMorning" tabindex="-1">
+            <p class="eyebrow"><span>04</span> / The return</p>
+            <h3>Tomorrow begins<br>with <em>tonight.</em></h3>
+            <p>Your plan can start with a wake-up time, a bedtime, or a short nap. Find your starting point. Make it your own.</p>
+            <p class="story-setting"><span data-story-wake>—</span> <span data-story-end-label>your planned wake-up</span><span class="story-setting-note">An estimate to plan around, not a promise.</span></p>
+            <a class="story-plan-link" href="#planSection">Make time for rest <span aria-hidden="true">↘</span></a>
+          </article>
+        </div>
+      </div>
+      <div class="story-closing"><span>The story becomes your plan.</span><a href="#planSection">Start here <span aria-hidden="true">↓</span></a></div>
+    </section>
+    <section class="planner" id="planSection" aria-labelledby="plannerHeading" tabindex="-1">
+      <div class="planner-intro"><h2 id="plannerHeading">Your next rest, made simple.</h2><p>Choose a time. Your plan updates automatically.</p></div>
+      <div class="planner-layout">
+      <section class="planner-panel" aria-label="Choose your time">
+        <div class="mode-toggle" role="group" aria-label="Plan your sleep">
+          <button id="modeWake" class="active" type="button" aria-pressed="true"><svg class="icon" aria-hidden="true"><use href="#i-sun"/></svg>Wake up</button>
+          <button id="modeSleep" type="button" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-moon"/></svg>Sleep</button>
+          <button id="modeNap" type="button" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-nap"/></svg>Nap</button>
+        </div>
+    <div id="pickerWrap">
+      <label for="targetTime" id="pickerLabel" class="picker-label">When do you need to wake up?</label>
+      <div class="time-row">
+        <input type="time" id="targetTime" value="07:00" required aria-describedby="timeError">
+      </div>
+      <p class="field-error" id="timeError" role="alert" hidden>Enter a time to see your sleep options.</p>
+
+    </div>
+
+    <div id="napInfo" class="nap-info" hidden>
+      <p class="picker-label">Starting your nap now</p>
+      <p class="nap-now"><strong id="napNowTime">--:--</strong></p>
+    </div>
+
+    <button class="adv-toggle" id="advToggle" aria-expanded="false" aria-controls="advPanel" type="button">
+      <span>Customize your plan <span class="optional-label">Optional</span></span>
+      <span class="chev">⌄</span>
+    </button>
+    <div class="advanced-panel" id="advPanel">
+      <div class="quick-times" id="quickTimes"><p class="mood-label">Quick times</p>      <div class="time-chips" id="timeChips">
+        <!-- populated by JS -->
+      </div></div>
+    <div class="mood-row" id="moodRow">
+      <span class="mood-label">How are you feeling?</span>
+      <div class="mood-chips">
+        <button type="button" class="mood-chip" data-mood="exhausted" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-exhausted"/></svg>Exhausted</button>
+        <button type="button" class="mood-chip active" data-mood="tired" aria-pressed="true"><svg class="icon" aria-hidden="true"><use href="#i-tired"/></svg>Tired</button>
+        <button type="button" class="mood-chip" data-mood="wired" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-wired"/></svg>Wired</button>
+      </div>
+    </div>
+
+    <p class="now-chip"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg> Your local time <strong id="nowDisplay">--:--</strong></p>
+
+
+      <div class="buffer-row" id="bufferRowWrap">
+        <label for="bufferRange">Time to fall asleep</label>
+        <input type="range" id="bufferRange" min="0" max="30" step="5" value="15">
+        <span class="buffer-value" id="bufferValue">15 min</span>
+      </div>
+      <div class="buffer-row">
+        <label for="cycleRange">Cycle length</label>
+        <input type="range" id="cycleRange" min="80" max="110" step="5" value="90">
+        <span class="buffer-value" id="cycleValue">90 min</span>
+      </div>
+    </div>
+
+      </section>
+      <section class="result-panel" id="recommendationBox" aria-labelledby="resultHeading" tabindex="-1">
+        <div class="result-heading"><h2 class="section-heading" id="resultHeading">Your suggested plan</h2></div>
+        <div class="result-main">
+          <div class="recommendation"><span class="rec-tag" id="recTag">Head to bed at</span><p class="plan-time" id="planTime">—</p><p class="plan-meta" id="planMeta">Choose a time to begin</p></div>
+
+        </div>
+        <p class="rec-text" id="recText" aria-live="polite" aria-atomic="true">Calculating your sleep window…</p>
+        <div class="rec-foot">
+
+          <div class="reminder-row">
+        <div class="reminder-ring-wrap">
+          <svg aria-hidden="true" class="reminder-ring-svg" id="reminderRingSvg" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+            <circle class="reminder-ring-track" cx="18" cy="18" r="15"/>
+            <circle class="reminder-ring-fill" id="reminderRingFill" cx="18" cy="18" r="15" stroke-dasharray="94.25" stroke-dashoffset="0"/>
+            <use href="#i-bell" class="reminder-ring-icon-svg" x="10.5" y="10.5" width="15" height="15"/>
+          </svg>
+          <button class="reminder-btn" id="reminderBtn" type="button"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg><span id="reminderBtnLabel">Remind me</span></button>
+        </div>
+            <p class="reminder-note" id="reminderNote">Keep this tab open for your reminder.</p>
+          </div>
+        </div>
+        <details class="plan-explanation" id="planExplanation">
+          <summary>See your sleep window <span class="disclosure-chevron" aria-hidden="true">+</span></summary>
+          <div class="plan-explanation-body">          <div class="dial-card" id="dialSection" tabindex="-1" role="img" aria-label="Your selected sleep window"><div class="dial-wrap" id="dialWrap"></div></div>
+            <span class="caffeine-tip" id="caffeineTip"></span>
+            <p class="plan-estimate-note">These times are estimates. Actual sleep cycles vary.</p>
+          </div>
+        </details>
+      </section>
+    </div>
+    <details class="planner-disclosure alternatives-section" id="timelineSection">
+      <summary><span>Compare other times</span><span class="disclosure-chevron" aria-hidden="true">+</span></summary>
+      <div class="disclosure-body">
+        <h3 class="section-heading" id="timelineHeading">Bedtime options</h3>
+        <div class="timeline" id="timeline" role="group" aria-labelledby="timelineHeading"></div>
+      </div>
+    </details>
+    </section>
+    <details class="planner-disclosure" id="windDownSection">
+      <summary><span>Help me wind down</span><span class="disclosure-chevron" aria-hidden="true">+</span></summary>
+      <div class="wind-down disclosure-body">
+      <p class="wind-copy">Choose a sound or try the breathing guide.</p>
+      <div class="wind-actions">
+        <div class="ambient-strip" id="ambientStrip">
+          <button class="ambient-sound-btn" id="ambientRain" aria-pressed="false" data-sound="rain" title="Rain sounds"><svg class="icon" aria-hidden="true"><use href="#i-rain"/></svg>Rain</button>
+          <button class="ambient-sound-btn" id="ambientBrown" aria-pressed="false" data-sound="brown" title="Brown noise"><svg class="icon" aria-hidden="true"><use href="#i-noise"/></svg>Noise</button>
+          <button class="ambient-sound-btn" id="ambientOcean" aria-pressed="false" data-sound="ocean" title="Ocean waves"><svg class="icon" aria-hidden="true"><use href="#i-ocean"/></svg>Ocean</button>
+          <button class="ambient-sound-btn" id="ambientPiano" aria-pressed="false" data-sound="piano" title="Soft piano"><svg class="icon" aria-hidden="true"><use href="#i-piano"/></svg>Piano</button>
+        </div>
+        <button class="breathe-btn" id="breatheBtn" title="4-7-8 breathing guide" aria-label="Open breathing guide"><svg class="icon" aria-hidden="true"><use href="#i-lungs"/></svg><span>Breathing guide</span></button>
+
+      </div>
+      </div>
+    </details>
+    <details class="planner-disclosure" id="infoSection">
+      <summary><span>How does this work?</span><span class="disclosure-chevron" aria-hidden="true">+</span></summary>
+      <div class="info-section disclosure-body" aria-labelledby="infoHeading">
+      <div><p class="eyebrow">A note on rest</p><h2 class="info-title" id="infoHeading">Sleep has a rhythm<br>of its own.</h2><p class="info-footnote-standalone">Lull uses your cycle length and time to fall asleep to estimate sleep windows. Actual sleep cycles vary; these times are a starting point, not a measurement of your sleep.</p></div>
+    <div class="stage-cards">
+      <div class="stage-card">
+        <div class="stage-card-header">
+          <span class="stage-card-dot" style="background:var(--moon)"></span>
+          <span class="stage-card-name">Light Sleep</span>
+        </div>
+        <svg aria-hidden="true" class="stage-wave" viewBox="0 0 120 28" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <polyline points="0,20 10,16 20,12 30,16 40,10 50,16 60,14 70,12 80,16 90,10 100,15 110,13 120,16" fill="none" stroke="var(--moon)" stroke-width="2" opacity="0.7"/>
+        </svg>
+        <p>Entry point of every cycle. Heart rate slows, muscles relax — easy to wake without grogginess.</p>
+      </div>
+      <div class="stage-card">
+        <div class="stage-card-header">
+          <span class="stage-card-dot" style="background:var(--rem)"></span>
+          <span class="stage-card-name">Deep Sleep</span>
+        </div>
+        <svg aria-hidden="true" class="stage-wave" viewBox="0 0 120 28" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <polyline points="0,6 8,20 18,4 28,22 38,3 48,22 58,5 68,21 78,4 88,22 98,5 108,20 120,7" fill="none" stroke="var(--rem)" stroke-width="2" opacity="0.7"/>
+        </svg>
+        <p>Body repairs tissue and strengthens immunity. Heaviest in early cycles — waking here causes grogginess.</p>
+      </div>
+      <div class="stage-card">
+        <div class="stage-card-header">
+          <span class="stage-card-dot" style="background:var(--amber)"></span>
+          <span class="stage-card-name">REM Sleep</span>
+        </div>
+        <svg aria-hidden="true" class="stage-wave" viewBox="0 0 120 28" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <polyline points="0,14 6,8 12,18 18,6 24,20 30,5 36,19 42,7 48,21 60,14 72,9 84,17 96,7 108,18 120,12" fill="none" stroke="var(--amber)" stroke-width="2" opacity="0.7"/>
+        </svg>
+        <p>Dreams and emotional processing. REM windows grow longer each cycle — why mornings feel dream-heavy.</p>
+      </div>
+    </div>
+
+      </div>
+    </details>
+  </main>
+  <footer>
+    <div class="moon-calendar-section" id="moonCalendarSection"><span>Tonight’s moon</span><span aria-hidden="true">/</span><div class="moon-chip"><svg class="phase-icon" id="moonIcon" width="18" height="18" viewBox="0 0 32 32" aria-hidden="true"></svg><span id="moonName">Loading…</span></div></div>
+    <p class="footer-copyright">Rest, at your own pace. &nbsp; © <span id="copyrightYear"></span> Biruk Daniel</p>
+  </footer>
+</div>
+
+<nav class="app-nav" id="appNav" aria-label="Jump to section">
+  <button class="nav-item active" data-target="planSection" type="button"><svg class="icon" aria-hidden="true"><use href="#i-compass"/></svg><span>Planner</span></button>
+  <button class="nav-item" data-target="windDownSection" type="button"><svg class="icon" aria-hidden="true"><use href="#i-moon"/></svg><span>Wind down</span></button>
+  <button class="nav-item" data-target="infoSection" type="button"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg><span>Learn</span></button>
+</nav>
+
+<!-- Breathing modal -->
+<div class="breathe-overlay" id="breatheOverlay" inert aria-modal="true" role="dialog" aria-label="Breathing guide">
+  <div class="breathe-card">
+    <button class="breathe-close" id="breatheClose" aria-label="Close"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
+    <h3 class="breathe-title">Wind Down</h3>
+    <p class="breathe-subtitle">4 seconds in · 7 hold · 8 out</p>
+
+    <div class="breathe-ring-wrap">
+      <div class="breathe-outer" id="breatheOuter"></div>
+      <div class="breathe-ring idle" id="breatheRing">
+        <div class="breathe-inner">
+          <span class="breathe-count" id="breatheCount">4</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="breathe-phase-text" id="breathePhaseText">Ready when you are</p>
+    <p class="breathe-phase-sub" id="breathePhaseSubtext">Begin to slow your breathing</p>
+
+    <div class="breathe-progress-track">
+      <div class="breathe-progress-fill" id="breatheProgressFill"></div>
+    </div>
+
+    <button class="breathe-start-btn" id="breatheStartBtn">Begin breathing</button>
+    <p class="breathe-tip">Follow at your own pace. Stop whenever you like.</p>
+  </div>
+</div>
+
+<div class="toast" id="toastEl" role="status" aria-live="polite"></div>
+
+<script>
+  // ── Element references ──
+  const targetInput    = document.getElementById('targetTime');
+  const pickerWrap     = document.getElementById('pickerWrap');
+  const pickerLabel    = document.getElementById('pickerLabel');
+  const napInfo        = document.getElementById('napInfo');
+  const napNowTime     = document.getElementById('napNowTime');
+  const recTag         = document.getElementById('recTag');
+  const recText        = document.getElementById('recText');
+  const timeline       = document.getElementById('timeline');
+  const timelineHeading= document.getElementById('timelineHeading');
+  const nowDisplay     = document.getElementById('nowDisplay');
+  const bufferRange    = document.getElementById('bufferRange');
+  const bufferValue    = document.getElementById('bufferValue');
+  const bufferRowWrap  = document.getElementById('bufferRowWrap');
+  const cycleRange     = document.getElementById('cycleRange');
+  const cycleValue     = document.getElementById('cycleValue');
+  const advToggle      = document.getElementById('advToggle');
+  const advPanel       = document.getElementById('advPanel');
+  const dialWrap       = document.getElementById('dialWrap');
+  const caffeineTip    = document.getElementById('caffeineTip');
+  const reminderBtn    = document.getElementById('reminderBtn');
+  const reminderBtnLabel = document.getElementById('reminderBtnLabel');
+  const toastEl        = document.getElementById('toastEl');
+  const modeWakeBtn    = document.getElementById('modeWake');
+  const modeSleepBtn   = document.getElementById('modeSleep');
+  const modeNapBtn     = document.getElementById('modeNap');
+  const breatheBtn     = document.getElementById('breatheBtn');
+  const ambientRain    = document.getElementById('ambientRain');
+  const ambientBrown   = document.getElementById('ambientBrown');
+  const ambientOcean   = document.getElementById('ambientOcean');
+  const ambientPiano   = document.getElementById('ambientPiano');
+  const reminderRingSvg= document.getElementById('reminderRingSvg');
+  const reminderRingFill= document.getElementById('reminderRingFill');
+  const timeChips      = document.getElementById('timeChips');
+  const breatheOverlay = document.getElementById('breatheOverlay');
+  const breatheClose   = document.getElementById('breatheClose');
+  const breatheRing    = document.getElementById('breatheRing');
+  const breatheOuter   = document.getElementById('breatheOuter');
+  const breatheCount   = document.getElementById('breatheCount');
+  const breathePhaseText   = document.getElementById('breathePhaseText');
+  const breathePhaseSubtext= document.getElementById('breathePhaseSubtext');
+  const breatheProgressFill= document.getElementById('breatheProgressFill');
+  const breatheStartBtn    = document.getElementById('breatheStartBtn');
+  const moonIcon       = document.getElementById('moonIcon');
+  const moonName       = document.getElementById('moonName');
+  const themeToggle    = document.getElementById('themeToggle');
+  const themeToggleIcon= document.getElementById('themeToggleIcon');
+  const installBtn     = document.getElementById('installBtn');
+  const installBtnLabel= document.getElementById('installBtnLabel');
+  const copyrightYear  = document.getElementById('copyrightYear');
+  const appNav         = document.getElementById('appNav');
+  const navItems       = Array.from(document.querySelectorAll('.nav-item'));
+
+  // ── State ──
+  let mode          = 'wake';
+  let cycleLength   = 90;
+  let buffer        = 15;
+  let selectedIndex = null;
+  let reminderTimer = null;
+  let reminderActive= false;
+  let toastTimer    = null;
+  let mood          = 'tired';
+  let ambientActive  = false;
+  let currentSound   = null; // 'rain' | 'brown' | 'ocean' | 'piano'
+  let audioCtx       = null;
+  let sourceNode     = null;
+  let gainNode       = null;
+  let reminderRingTotal = 0;
+  let breathingActive    = false;
+  let breathPhaseIndex   = 0;
+  let breathCountTimer   = null;
+  let breathProgressTimer= null;
+  let breathCurrentCount = 0;
+  let reminderCountdownTimer = null;
+
+  // ── Moon phase (vector icon, same two-arc technique as the header logo) ──
+  (function () {
+    const knownNewMoon = new Date('2000-01-06T18:14:00Z');
+    const cycle = 29.530589;
+    const days = (Date.now() - knownNewMoon) / 86400000;
+    const pct  = (((days % cycle) + cycle) % cycle) / cycle;
+
+    const ring       = `<circle cx="16" cy="16" r="13" fill="none" stroke="var(--moon)" stroke-width="1.5" opacity="0.55"/>`;
+    const fullDisc    = `<circle cx="16" cy="16" r="13" fill="var(--moon)"/>`;
+    const rightHalf   = `<circle cx="16" cy="16" r="13" fill="none" stroke="var(--moon)" stroke-width="1" opacity="0.4"/><path d="M16 3 A13 13 0 0 1 16 29 Z" fill="var(--moon)"/>`;
+    const leftHalf    = `<circle cx="16" cy="16" r="13" fill="none" stroke="var(--moon)" stroke-width="1" opacity="0.4"/><path d="M16 3 A13 13 0 0 0 16 29 Z" fill="var(--moon)"/>`;
+    const crescentR   = `<circle cx="16" cy="16" r="13" fill="var(--card-line)" opacity="0.5"/><path d="M16 3 A13 13 0 1 0 16 29 A8 13 0 1 1 16 3 Z" fill="var(--moon)"/>`;
+    const crescentL   = `<circle cx="16" cy="16" r="13" fill="var(--card-line)" opacity="0.5"/><path d="M16 3 A13 13 0 1 1 16 29 A8 13 0 1 0 16 3 Z" fill="var(--moon)"/>`;
+    const gibbousR    = `${fullDisc}<path d="M16 3 A13 13 0 1 0 16 29 A8 13 0 1 1 16 3 Z" fill="var(--card-line)" opacity="0.5"/>`;
+    const gibbousL    = `${fullDisc}<path d="M16 3 A13 13 0 1 1 16 29 A8 13 0 1 0 16 3 Z" fill="var(--card-line)" opacity="0.5"/>`;
+
+    const phases = [
+      { max: 0.04,  svg: ring,      name: 'New Moon'        },
+      { max: 0.19,  svg: crescentR, name: 'Waxing Crescent'  },
+      { max: 0.31,  svg: rightHalf, name: 'First Quarter'    },
+      { max: 0.44,  svg: gibbousR,  name: 'Waxing Gibbous'   },
+      { max: 0.56,  svg: fullDisc,  name: 'Full Moon'        },
+      { max: 0.69,  svg: gibbousL,  name: 'Waning Gibbous'   },
+      { max: 0.81,  svg: leftHalf,  name: 'Last Quarter'     },
+      { max: 1.00,  svg: crescentL, name: 'Waning Crescent'  },
+    ];
+
+    const phase = phases.find(p => pct < p.max) || phases[7];
+    moonIcon.innerHTML   = phase.svg;
+    moonName.textContent  = phase.name;
+  })();
+
+  // ── Formatting helpers ──
+  function formatTime(date) {
+    let h = date.getHours(), m = date.getMinutes();
+    const ap = h >= 12 ? 'PM' : 'AM';
+    h = h % 12 || 12;
+    return `${h}:${m < 10 ? '0' + m : m} ${ap}`;
+  }
+
+  function formatDuration(mins) {
+    const h = Math.floor(mins / 60), m = mins % 60;
+    if (h === 0) return `${m} min`;
+    return m === 0 ? `${h} hr` : `${h}h ${m}m`;
+  }
+
+  function cycleNote(cycles) {
+    switch (cycles) {
+      case 3: return '· short night';
+      case 4: return '· light recovery';
+      case 5: return '· ideal for most';
+      case 6: return '· longer recovery';
+      default: return '';
+    }
+  }
+
+  function cycleQuality(cycles) {
+    switch (cycles) {
+      case 3: return { label: 'Short',    cls: 'q-short'    };
+      case 4: return { label: 'Adequate', cls: 'q-adequate' };
+      case 5: return { label: 'Optimal',  cls: 'q-optimal'  };
+      case 6: return { label: 'Extended', cls: 'q-extended' };
+      default: return null;
+    }
+  }
+
+  function getMoodSuffix() {
+    if (mode === 'nap') return '';
+    switch (mood) {
+      case 'exhausted': return ' Since you\'re exhausted, aim for the 5–6 cycle option if you possibly can.';
+      case 'wired': return ' If your mind is racing, open the breathing guide below for a quick breathing exercise before bed.';
+      default: return '';
+    }
+  }
+
+  // ── Toast ──
+  function showToast(msg) {
+    toastEl.textContent = msg;
+    toastEl.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toastEl.classList.remove('show'), 3200);
+  }
+
+  // ── Ambient sound ──
+  function buildSoundBuffer(type) {
+    const sr = audioCtx.sampleRate;
+    const len = sr * 4;
+    const buf = audioCtx.createBuffer(2, len, sr);
+    for (let ch = 0; ch < 2; ch++) {
+      const data = buf.getChannelData(ch);
+      let last = 0;
+      if (type === 'brown') {
+        for (let i = 0; i < len; i++) {
+          const w = Math.random() * 2 - 1;
+          data[i] = (last + 0.02 * w) / 1.02;
+          last = data[i];
+          data[i] *= 3.5;
+        }
+      } else if (type === 'rain') {
+        for (let i = 0; i < len; i++) {
+          const w = Math.random() * 2 - 1;
+          data[i] = (last + 0.04 * w) / 1.04;
+          last = data[i];
+          data[i] *= 2.2;
+        }
+      } else if (type === 'ocean') {
+        for (let i = 0; i < len; i++) {
+          const t = i / sr;
+          const wave = Math.sin(2 * Math.PI * 0.12 * t) * 0.5 + 0.5;
+          const noise = Math.random() * 2 - 1;
+          data[i] = noise * wave * 0.9;
+        }
+      } else if (type === 'piano') {
+        // Soft sine tones: C-E-G chord pattern
+        const freqs = [261.63, 329.63, 392.00, 523.25];
+        for (let i = 0; i < len; i++) {
+          const t = i / sr;
+          let s = 0;
+          freqs.forEach((f, fi) => {
+            const env = Math.exp(-0.4 * ((t % (1.5 + fi * 0.3))));
+            s += Math.sin(2 * Math.PI * f * t) * env * 0.08;
+          });
+          data[i] = s;
+        }
+      }
+    }
+    return buf;
+  }
+
+  function buildFilter(type) {
+    const lpf = audioCtx.createBiquadFilter();
+    lpf.type = 'lowpass';
+    if (type === 'rain') { lpf.frequency.value = 3000; lpf.Q.value = 0.5; }
+    else if (type === 'brown') { lpf.frequency.value = 700; lpf.Q.value = 0.4; }
+    else if (type === 'ocean') { lpf.frequency.value = 800; lpf.Q.value = 0.3; }
+    else { lpf.frequency.value = 8000; lpf.Q.value = 0.1; }
+    return lpf;
+  }
+
+  function stopAmbientSound(silent) {
+    if (gainNode && audioCtx) {
+      const oldContext = audioCtx, oldSource = sourceNode;
+      gainNode.gain.setTargetAtTime(0, oldContext.currentTime, 0.4);
+      audioCtx = sourceNode = gainNode = null;
+      setTimeout(() => {
+        try { oldSource?.stop(); oldContext.close().catch(() => {}); } catch (_) {}
+      }, 1200);
+    }
+    ambientActive = false;
+    currentSound = null;
+    document.querySelectorAll('.ambient-sound-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
+    if (!silent) showToast('Sound off');
+  }
+
+  function startAmbientSound(type) {
+    if (ambientActive) stopAmbientSound(true);
+    try {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      const buf = buildSoundBuffer(type);
+      sourceNode = audioCtx.createBufferSource();
+      sourceNode.buffer = buf;
+      sourceNode.loop = true;
+      const lpf = buildFilter(type);
+      gainNode = audioCtx.createGain();
+      gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
+      gainNode.gain.linearRampToValueAtTime(type === 'piano' ? 0.9 : 0.22, audioCtx.currentTime + 1.2);
+      sourceNode.connect(lpf);
+      lpf.connect(gainNode);
+      gainNode.connect(audioCtx.destination);
+      sourceNode.start();
+      ambientActive = true;
+      currentSound = type;
+      document.querySelectorAll('.ambient-sound-btn').forEach(b => { const active = b.dataset.sound === type; b.classList.toggle('active', active); b.setAttribute('aria-pressed', String(active)); });
+      const labels = { rain: 'Rain on', brown: 'Noise on', ocean: 'Ocean on', piano: 'Piano on' };
+      showToast(labels[type] || 'Sound on');
+    } catch (e) {
+      stopAmbientSound(true);
+      showToast('Audio is unavailable. Try the breathing guide instead.');
+    }
+  }
+
+  // ── Breathing guide ──
+  const breathPhases = [
+    { name: 'Inhale',   sub: 'Breathe in slowly through your nose', dur: 4,  cls: 'inhaling',  color: 'var(--moon)' },
+    { name: 'Hold',     sub: 'Hold your breath gently',             dur: 7,  cls: 'holding',   color: 'var(--ink)'  },
+    { name: 'Exhale',   sub: 'Release slowly through your mouth',   dur: 8,  cls: 'exhaling',  color: 'var(--amber)'},
+  ];
+
+  function openBreathe() {
+    breatheOverlay.inert = false;
+    breatheOverlay.classList.add('open');
+    document.getElementById('appShell').inert = true;
+    appNav.inert = true;
+    breatheClose.focus();
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeBreathe() {
+    breatheOverlay.classList.remove('open');
+    breatheOverlay.inert = true;
+    document.getElementById('appShell').inert = false;
+    appNav.inert = false;
+    breatheBtn.focus();
+    document.body.style.overflow = '';
+    stopBreathing();
+  }
+
+  function startBreathing() {
+    if (breathingActive) return;
+    breathingActive = true;
+    breathPhaseIndex = 0;
+    breatheStartBtn.textContent = 'Stop breathing guide';
+    breatheStartBtn.classList.add('running');
+    runBreathPhase();
+  }
+
+  function stopBreathing() {
+    breathingActive = false;
+    clearTimeout(breathCountTimer);
+    clearTimeout(breathProgressTimer);
+    breathPhaseIndex = 0;
+    breatheRing.className = 'breathe-ring idle';
+    breatheCount.textContent = '4';
+    breathePhaseText.textContent = 'Ready when you are';
+    breathePhaseSubtext.textContent = 'Begin to slow your breathing';
+    breatheProgressFill.style.transition = 'none';
+    breatheProgressFill.style.width = '0%';
+    breatheStartBtn.textContent = 'Begin breathing';
+    breatheStartBtn.classList.remove('running');
+  }
+
+  function runBreathPhase() {
+    if (!breathingActive) return;
+    const phase = breathPhases[breathPhaseIndex];
+    breathePhaseText.style.color = phase.color;
+    breathePhaseText.textContent = phase.name;
+    breathePhaseSubtext.textContent = phase.sub;
+    breatheRing.className = 'breathe-ring ' + phase.cls;
+
+    // set transition timing for inhale/exhale
+    if (phase.cls === 'inhaling') {
+      breatheRing.style.transition = `transform ${phase.dur}s ease-in-out, box-shadow ${phase.dur}s ease-in-out`;
+    } else if (phase.cls === 'exhaling') {
+      breatheRing.style.transition = `transform ${phase.dur}s ease-in-out, box-shadow ${phase.dur}s ease-in-out`;
+    } else {
+      breatheRing.style.transition = 'transform 0.2s ease, box-shadow 0.2s ease';
+    }
+
+    // Progress bar
+    breatheProgressFill.style.transition = 'none';
+    breatheProgressFill.style.width = '0%';
+    requestAnimationFrame(() => {
+      breatheProgressFill.style.transition = `width ${phase.dur}s linear`;
+      breatheProgressFill.style.width = '100%';
+    });
+
+    // Countdown
+    breathCurrentCount = phase.dur;
+    breatheCount.textContent = breathCurrentCount;
+    function tick() {
+      if (!breathingActive) return;
+      breathCurrentCount--;
+      breatheCount.textContent = Math.max(0, breathCurrentCount);
+      if (breathCurrentCount > 0) {
+        breathCountTimer = setTimeout(tick, 1000);
+      } else {
+        breathProgressTimer = setTimeout(() => {
+          if (!breathingActive) return;
+          breathPhaseIndex = (breathPhaseIndex + 1) % breathPhases.length;
+          runBreathPhase();
+        }, 150);
+      }
+    }
+    breathCountTimer = setTimeout(tick, 1000);
+  }
+
+  // ── 24-hour dial ──
+  function angleForDate(d) {
+    return ((d.getHours() + d.getMinutes() / 60 + d.getSeconds() / 3600) / 24) * 360;
+  }
+
+  function polar(cx, cy, r, deg) {
+    const rad = (deg - 90) * Math.PI / 180;
+    return { x: cx + r * Math.cos(rad), y: cy + r * Math.sin(rad) };
+  }
+
+  function arcPath(cx, cy, r, startDeg, endDeg) {
+    let diff = endDeg - startDeg;
+    if (diff <= 0) diff += 360;
+    const p1 = polar(cx, cy, r, startDeg);
+    const p2 = polar(cx, cy, r, endDeg);
+    const large = diff > 180 ? 1 : 0;
+    return `M ${p1.x.toFixed(2)} ${p1.y.toFixed(2)} A ${r} ${r} 0 ${large} 1 ${p2.x.toFixed(2)} ${p2.y.toFixed(2)}`;
+  }
+
+  function renderDial(now, startDate, endDate, centerValue, centerLabel) {
+    const cx = 140, cy = 140, r = 98;
+    const startDeg = angleForDate(startDate);
+    const endDeg   = angleForDate(endDate);
+    const nowDeg   = angleForDate(now);
+
+    const startPos = polar(cx, cy, r, startDeg);
+    const endPos   = polar(cx, cy, r, endDeg);
+    const nowPos   = polar(cx, cy, r, nowDeg);
+
+    let ticks = '';
+    for (let h = 0; h < 24; h++) {
+      const deg = h * 15;
+      const major = h % 6 === 0;
+      const inner = major ? 89 : 93;
+      const p1 = polar(cx, cy, inner, deg);
+      const p2 = polar(cx, cy, r, deg);
+      ticks += `<line class="dial-tick${major ? ' major' : ''}" x1="${p1.x.toFixed(1)}" y1="${p1.y.toFixed(1)}" x2="${p2.x.toFixed(1)}" y2="${p2.y.toFixed(1)}" />`;
+    }
+
+    const hourLabels = [[0, '12AM'], [6, '6AM'], [12, '12PM'], [18, '6PM']];
+    let labelHtml = '';
+    hourLabels.forEach(([h, txt]) => {
+      const p = polar(cx, cy, r + 18, h * 15);
+      labelHtml += `<text class="dial-label" x="${p.x.toFixed(1)}" y="${p.y.toFixed(1)}" text-anchor="middle" dominant-baseline="middle">${txt}</text>`;
+    });
+
+    const arc = arcPath(cx, cy, r, startDeg, endDeg);
+
+    const storyPlan = { start: startDate.getTime(), end: endDate.getTime(), duration: centerValue, label: centerLabel, buffer, cycleLength, mode };
+    document.getElementById('dialSection').dataset.plan = JSON.stringify(storyPlan);
+    window.LullStory?.setPlan(storyPlan);
+    document.getElementById('dialSection').setAttribute('aria-label', `Sleep window from ${formatTime(startDate)} to ${formatTime(endDate)}, ${centerValue}, ${centerLabel}`);
+    dialWrap.innerHTML = `
+      <svg viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle class="dial-track" cx="${cx}" cy="${cy}" r="${r}" />
+        ${ticks}
+        ${labelHtml}
+        <path class="dial-arc" d="${arc}" stroke="var(--moon)" />
+        <circle class="dial-icon-bg" cx="${startPos.x.toFixed(1)}" cy="${startPos.y.toFixed(1)}" r="12" />
+        <use href="#i-moon" x="${(startPos.x - 7).toFixed(1)}" y="${(startPos.y - 7).toFixed(1)}" width="14" height="14"
+             fill="none" stroke="var(--moon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        <circle class="dial-icon-bg" cx="${endPos.x.toFixed(1)}" cy="${endPos.y.toFixed(1)}" r="12" />
+        <use href="#i-sun" x="${(endPos.x - 7).toFixed(1)}" y="${(endPos.y - 7).toFixed(1)}" width="14" height="14"
+             fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        <circle class="dial-now" cx="${nowPos.x.toFixed(1)}" cy="${nowPos.y.toFixed(1)}" r="4.5" />
+        <text class="dial-center-value" x="${cx}" y="${cy - 6}">${centerValue}</text>
+        <text class="dial-center-label" x="${cx}" y="${cy + 14}">${centerLabel}</text>
+      </svg>`;
+  }
+
+  // ── Alternative selection ──
+  function attachTimelineHandlers() {
+    timeline.querySelectorAll('.timeline-item').forEach(item => {
+      item.addEventListener('click', () => {
+        selectedIndex = Number(item.dataset.idx);
+        cancelReminder(true);
+        calculate();
+        timeline.querySelector(`[data-idx="${selectedIndex}"]`)?.focus({ preventScroll: true });
+      });
+    });
+  }
+
+  // ── Reminder ──
+  function reminderDefaultLabel() {
+    return mode === 'nap' ? 'Set alarm' : 'Remind me';
+  }
+
+  function setReminderBtnLabel(text) {
+    reminderBtnLabel.textContent = text;
+    const use = reminderBtn.querySelector('.icon use');
+    if (use) use.setAttribute('href', mode === 'nap' ? '#i-alarm' : '#i-bell');
+  }
+
+  function cancelReminder(silent) {
+    if (reminderTimer) { clearTimeout(reminderTimer); reminderTimer = null; }
+    if (reminderCountdownTimer) { clearInterval(reminderCountdownTimer); reminderCountdownTimer = null; }
+    reminderActive = false;
+    reminderBtn.classList.remove('active');
+    setReminderBtnLabel(reminderDefaultLabel());
+    hideReminderRing();
+    document.getElementById('reminderNote').textContent = 'Keep this tab open for your reminder.';
+    if (!silent) showToast('Reminder cancelled.');
+  }
+
+  function startReminderCountdown(targetTime) {
+    if (reminderCountdownTimer) clearInterval(reminderCountdownTimer);
+    reminderRingTotal = targetTime - Date.now();
+
+    reminderRingSvg.classList.add('visible');
+    reminderBtn.style.display = '';
+    setReminderBtnLabel('Cancel reminder');
+    document.getElementById('reminderNote').textContent = 'Reminder active. Keep this tab open.';
+
+    // Set initial ring state (full circle)
+    const circum = 94.25;
+    reminderRingFill.style.transition = 'none';
+    reminderRingFill.setAttribute('stroke-dashoffset', '0');
+
+    function update() {
+      const msLeft = targetTime - Date.now();
+      if (msLeft <= 0) { clearInterval(reminderCountdownTimer); reminderRingFill.setAttribute('stroke-dashoffset', circum); return; }
+      const frac = msLeft / reminderRingTotal;
+      const offset = (1 - frac) * circum;
+      reminderRingFill.setAttribute('stroke-dashoffset', offset.toFixed(2));
+      // Describe the last ten minutes
+      if (msLeft < 10 * 60000) {
+        reminderRingSvg.setAttribute('aria-label', 'Less than ten minutes remaining');
+      }
+    }
+    update();
+    reminderCountdownTimer = setInterval(update, 15000);
+  }
+
+  function hideReminderRing() {
+    reminderRingSvg.classList.remove('visible');
+    reminderRingSvg.style.filter = '';
+    reminderBtn.style.display = '';
+  }
+
+  reminderRingSvg.addEventListener('click', () => {
+    if (reminderActive) cancelReminder();
+  });
+
+  reminderBtn.addEventListener('click', () => {
+    if (reminderActive) { cancelReminder(); return; }
+    const targetTime = parseFloat(reminderBtn.dataset.targetTime);
+    if (!targetTime) return;
+    const ms = targetTime - Date.now();
+    if (ms <= 0) { showToast('That time has already passed — try a later option.'); return; }
+
+    if (window.Notification && Notification.permission === 'default') {
+      Notification.requestPermission().catch(() => {});
+    }
+
+    reminderTimer = setTimeout(() => {
+      const body = mode === 'nap' ? 'Your nap is over — time to get up.' : 'It\'s bedtime — time to wind down.';
+      if (window.Notification && Notification.permission === 'granted') {
+        new Notification('Lull', { body });
+      } else {
+        showToast(body);
+      }
+      cancelReminder(true);
+    }, ms);
+
+    reminderActive = true;
+    reminderBtn.classList.add('active');
+    startReminderCountdown(targetTime);
+    showToast(`Reminder set for ${formatTime(new Date(targetTime))} — keep this tab open.`);
+  });
+
+  // ── Mode switching ──
+  function setMode(newMode) {
+    if (mode === newMode) return;
+    mode = newMode;
+    selectedIndex = null;
+    cancelReminder(true);
+
+    const isWake = mode === 'wake', isSleep = mode === 'sleep', isNap = mode === 'nap';
+
+    modeWakeBtn.classList.toggle('active', isWake);
+    modeWakeBtn.setAttribute('aria-pressed', isWake);
+    modeSleepBtn.classList.toggle('active', isSleep);
+    modeSleepBtn.setAttribute('aria-pressed', isSleep);
+    modeNapBtn.classList.toggle('active', isNap);
+    modeNapBtn.setAttribute('aria-pressed', isNap);
+
+
+    pickerWrap.hidden = isNap;
+    document.getElementById('quickTimes').hidden = isNap;
+    document.getElementById('moodRow').hidden = isNap;
+    napInfo.hidden = !isNap;
+    bufferRowWrap.style.display = isNap ? 'none' : '';
+
+    if (isWake) {
+      pickerLabel.textContent = 'When do you need to wake up?';
+      targetInput.value = '07:00';
+    } else if (isSleep) {
+      pickerLabel.textContent = 'When are you going to bed?';
+      const now = new Date();
+      targetInput.value = `${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}`;
+    }
+
+    renderTimeChips();
+    calculate();
+  }
+
+  // ── Core calculation ──
+  function calculate() {
+    const now = new Date();
+    nowDisplay.textContent = formatTime(now);
+    napNowTime.textContent = formatTime(now);
+    buffer = parseInt(bufferRange.value, 10);
+    bufferValue.textContent = buffer === 0 ? 'None' : `${buffer} min`;
+    cycleLength = parseInt(cycleRange.value, 10);
+    cycleValue.textContent = `${cycleLength} min`;
+
+    const invalid = mode !== 'nap' && !targetInput.value;
+    document.getElementById('timeError').hidden = !invalid;
+    targetInput.setAttribute('aria-invalid', String(invalid));
+    if (invalid) {
+      cancelReminder(true);
+      recTag.textContent = 'A time to begin';
+      document.getElementById('planTime').textContent = '—';
+      document.getElementById('planMeta').textContent = 'Your sleep window will appear here';
+      recText.textContent = 'Enter a valid time above, or choose one of the suggested times.';
+      timeline.replaceChildren();
+      dialWrap.replaceChildren();
+      document.getElementById('dialSection').dataset.plan = '';
+      window.LullStory?.setPlan(null);
+      document.getElementById('dialSection').setAttribute('aria-label', 'No sleep window selected');
+      caffeineTip.textContent = '';
+      reminderBtn.disabled = true;
+      document.getElementById('reminderNote').textContent = 'Choose a time to enable reminders.';
+      return;
+    }
+    reminderBtn.disabled = false;
+    document.getElementById('reminderNote').textContent = mode === 'sleep' ? 'Use your device alarm for your wake-up time.' : reminderActive ? 'Reminder active. Keep this tab open.' : 'Keep this tab open for your reminder.';
+    const focusedOption = document.activeElement?.closest('.timeline-item')?.dataset.idx;
+    if (mode === 'wake') calcWake(now);
+    else if (mode === 'sleep') calcSleep(now);
+    else calcNap(now);
+    if (focusedOption !== undefined) timeline.querySelector(`[data-idx="${focusedOption}"]`)?.focus({ preventScroll: true });
+  }
+
+  function buildHypnogram(cycles) {
+    // For each cycle: light->deep->rem proportions shift across cycles
+    // Early cycles: more deep; later cycles: more REM
+    if (typeof cycles !== 'number' || cycles < 1) {
+      // Nap: just show light bar
+      return `<span class="stage-mini-bar">
+        <span class="smb-light" style="flex:1"></span>
+      </span>
+      <span class="smb-legend">
+        <span class="smb-legend-item"><span class="smb-dot" style="background:var(--moon)"></span>Light</span>
+      </span>`;
+    }
+    const segs = [];
+    for (let c = 0; c < cycles; c++) {
+      const t = c / Math.max(cycles - 1, 1);
+      const deepFrac = Math.max(0.05, 0.45 - t * 0.35);
+      const remFrac  = Math.min(0.45, 0.05 + t * 0.40);
+      const lightFrac = 1 - deepFrac - remFrac;
+      segs.push({ l: lightFrac, d: deepFrac, r: remFrac });
+    }
+    const total = segs.reduce((a, s) => a + s.l + s.d + s.r, 0);
+    const bars = segs.map(s => {
+      const lw = (s.l / total * 100).toFixed(1);
+      const dw = (s.d / total * 100).toFixed(1);
+      const rw = (s.r / total * 100).toFixed(1);
+      return `<span class="smb-light" style="flex:${lw}"></span><span class="smb-deep" style="flex:${dw}"></span><span class="smb-rem" style="flex:${rw}"></span>`;
+    }).join('');
+    return `<span class="stage-mini-bar">${bars}</span>
+      <span class="smb-legend">
+        <span class="smb-legend-item"><span class="smb-dot" style="background:var(--moon)"></span>Light</span>
+        <span class="smb-legend-item"><span class="smb-dot" style="background:var(--rem)"></span>Deep</span>
+        <span class="smb-legend-item"><span class="smb-dot" style="background:var(--amber)"></span>REM</span>
+      </span>`;
+  }
+
+  function buildTimelineRow(timeStr, mainLabel, subLabel, durationStr, isSelected, isRecommended, idx, qualityObj, cycleCount) {
+    const selCls  = isSelected     ? ' selected'    : '';
+    const recCls  = isRecommended  ? ' recommended' : '';
+    return `
+      <button type="button" class="timeline-item${selCls}${recCls}" data-idx="${idx}" aria-pressed="${isSelected}">
+        <span class="time-meta">
+          <span class="target-time">${timeStr}</span>
+          <span class="cycle-count">${mainLabel}</span>
+        </span>
+        <span class="timeline-right">
+          <span class="duration-badge">${durationStr}</span>
+        </span>
+        <span class="selection-mark" aria-hidden="true">${isSelected ? '✓' : ''}</span>
+      </button>`;
+  }
+
+  function showPlan(time, label, meta, text) {
+    const [clock, period] = formatTime(time).split(' ');
+    document.getElementById('planTime').innerHTML = `${clock}<small>${period}</small>`;
+    document.getElementById('planMeta').textContent = meta.split(' · ')[0];
+    recTag.textContent = label;
+    if (recText.innerHTML !== text) recText.innerHTML = text;
+  }
+
+  function calcWake(now) {
+    const [h, m] = targetInput.value.split(':').map(Number);
+    if (isNaN(h) || isNaN(m)) return;
+
+    let target = new Date(now);
+    target.setHours(h, m, 0, 0);
+    if (target <= now) target.setDate(target.getDate() + 1);
+
+    recTag.textContent = 'Recommendation';
+    timelineHeading.textContent = 'Bedtime options';
+
+    const cycleOptions = [6, 5, 4, 3];
+    let closestFutureIdx = -1, closestDiff = Infinity;
+
+    const rows = cycleOptions.map((cycles, idx) => {
+      const sleepMins  = cycles * cycleLength;
+      const bedtime    = new Date(target.getTime() - (sleepMins + buffer) * 60000);
+      const minsAway   = (bedtime - now) / 60000;
+      if (minsAway >= 0 && minsAway < closestDiff) { closestDiff = minsAway; closestFutureIdx = idx; }
+      return { cycles, sleepMins, bedtime, minsAway, fallAsleepAt: new Date(bedtime.getTime() + buffer * 60000) };
+    });
+
+    const highlightIdx = closestFutureIdx;
+    const activeIdx = (selectedIndex !== null) ? selectedIndex : (highlightIdx >= 0 ? highlightIdx : 0);
+    timeline.innerHTML = rows.map((r, i) =>
+      buildTimelineRow(
+        formatTime(r.bedtime),
+        `${r.cycles} cycles`,
+        cycleNote(r.cycles),
+        formatDuration(r.sleepMins),
+        i === activeIdx, i === highlightIdx, i,
+        cycleQuality(r.cycles), r.cycles
+      )
+    ).join('');
+    attachTimelineHandlers();
+
+    const active = rows[activeIdx];
+    const timingNote = active.bedtime < now
+      ? 'This bedtime has passed. Adjust your wake-up time or choose a later bedtime if one is available.'
+      : `Allow ${buffer} min to settle in, then wake at <strong>${formatTime(target)}</strong>.`;
+    showPlan(active.bedtime, 'Head to bed at', `${formatDuration(active.sleepMins)} of sleep · ${active.cycles} cycles`,
+      `<span class="sr-only">Your selected bedtime is ${formatTime(active.bedtime)}. </span>${timingNote}${getMoodSuffix()}`);
+    renderDial(now, active.fallAsleepAt, target, formatDuration(active.sleepMins), `${active.cycles} cycles`);
+
+    caffeineTip.innerHTML = `<svg class="icon" aria-hidden="true"><use href="#i-coffee"/></svg>Caffeine cutoff ≈ ${formatTime(new Date(active.fallAsleepAt.getTime() - 8 * 60 * 60000))}`;
+    caffeineTip.style.display = '';
+    reminderBtn.style.display = '';
+    if (!reminderActive) setReminderBtnLabel(reminderDefaultLabel());
+    reminderBtn.dataset.targetTime = active.bedtime.getTime();
+  }
+
+  function calcSleep(now) {
+    const [h, m] = targetInput.value.split(':').map(Number);
+    if (isNaN(h) || isNaN(m)) return;
+
+    let target = new Date(now);
+    target.setHours(h, m, 0, 0);
+    if (target < now && (now - target) > 6 * 60 * 60000) target.setDate(target.getDate() + 1);
+    const fallAsleepAt = new Date(target.getTime() + buffer * 60000);
+
+    recTag.textContent = "Tonight's plan";
+    timelineHeading.textContent = 'Wake-up options';
+
+    const cycleOptions = [3, 4, 5, 6];
+    const rows = cycleOptions.map(cycles => {
+      const sleepMins = cycles * cycleLength;
+      return { cycles, sleepMins, wakeTime: new Date(fallAsleepAt.getTime() + sleepMins * 60000) };
+    });
+
+    const recommendedIdx = 2;
+    const activeIdx = (selectedIndex !== null) ? selectedIndex : recommendedIdx;
+    timeline.innerHTML = rows.map((r, i) =>
+      buildTimelineRow(
+        formatTime(r.wakeTime),
+        `${r.cycles} cycles`,
+        cycleNote(r.cycles),
+        formatDuration(r.sleepMins),
+        i === activeIdx, i === recommendedIdx, i,
+        cycleQuality(r.cycles), r.cycles
+      )
+    ).join('');
+    attachTimelineHandlers();
+
+    const active = rows[activeIdx];
+    showPlan(active.wakeTime, 'Wake up at', `${formatDuration(active.sleepMins)} of sleep · ${active.cycles} cycles`,
+      `<span class="sr-only">Your selected wake-up time is ${formatTime(active.wakeTime)}. </span>Get into bed at <strong>${formatTime(target)}</strong>, allowing ${buffer} min to fall asleep.${getMoodSuffix()}`);
+    renderDial(now, fallAsleepAt, active.wakeTime, formatDuration(active.sleepMins), `${active.cycles} cycles`);
+
+    caffeineTip.innerHTML = `<svg class="icon" aria-hidden="true"><use href="#i-coffee"/></svg>Caffeine cutoff ≈ ${formatTime(new Date(fallAsleepAt.getTime() - 8 * 60 * 60000))}`;
+    caffeineTip.style.display = '';
+    reminderBtn.style.display = 'none';
+  }
+
+  function calcNap(now) {
+    recTag.textContent = 'Nap guide';
+    timelineHeading.textContent = 'Nap lengths';
+    caffeineTip.style.display = 'none';
+    reminderBtn.style.display = '';
+
+    const presets = [
+      { mins: 20,          name: 'Power nap',    note: '· boosts alertness, no grogginess',    quality: { label: 'Quick',    cls: 'q-adequate' } },
+      { mins: 26,          name: 'NASA nap',     note: '· NASA-tested for pilot alertness',     quality: { label: 'Balanced', cls: 'q-optimal'  } },
+      { mins: 60,          name: 'Recovery nap', note: '· deep sleep; brief grogginess on wake', quality: { label: 'Deep',    cls: 'q-extended' } },
+      { mins: cycleLength, name: 'Full cycle',   note: `· full ${cycleLength}-min REM cycle`,   quality: { label: 'Full',    cls: 'q-extended' } },
+    ];
+
+    const recommendedIdx = 0;
+    const activeIdx = (selectedIndex !== null) ? selectedIndex : recommendedIdx;
+    const active = presets[activeIdx];
+    const napStart = reminderActive
+      ? new Date(Number(reminderBtn.dataset.targetTime) - active.mins * 60000)
+      : now;
+    const wakeTime = new Date(napStart.getTime() + active.mins * 60000);
+    napNowTime.textContent = formatTime(napStart);
+
+
+    timeline.innerHTML = presets.map((p, i) => {
+      const wt = new Date(napStart.getTime() + p.mins * 60000);
+      return buildTimelineRow(
+        formatTime(wt),
+        p.name,
+        p.note,
+        formatDuration(p.mins),
+        i === activeIdx, i === recommendedIdx, i,
+        p.quality, null
+      );
+    }).join('');
+    attachTimelineHandlers();
+
+    showPlan(wakeTime, 'Your nap ends at', `${active.mins} min · ${active.name}`, `<span class="sr-only">Your nap ends at ${formatTime(wakeTime)}. </span>A ${active.mins}-minute pause, starting now. Open “Compare other times” for a different duration.`);
+    renderDial(now, napStart, wakeTime, formatDuration(active.mins), active.name);
+    if (!reminderActive) setReminderBtnLabel(reminderDefaultLabel());
+    reminderBtn.dataset.targetTime = wakeTime.getTime();
+  }
+
+  // ── Quick-tap time chips ──
+  const WAKE_CHIPS = ['05:00','05:30','06:00','06:30','07:00','07:30','08:00'];
+  const SLEEP_CHIPS = ['21:00','21:30','22:00','22:30','23:00','23:30','00:00'];
+
+  function renderTimeChips() {
+    if (!timeChips) return;
+    const chips = mode === 'sleep' ? SLEEP_CHIPS : WAKE_CHIPS;
+    const labels = mode === 'sleep'
+      ? ['9 PM','9:30','10 PM','10:30','11 PM','11:30','12 AM']
+      : ['5 AM','5:30','6 AM','6:30','7 AM','7:30','8 AM'];
+    timeChips.innerHTML = chips.map((t, i) =>
+      `<button type="button" class="time-chip${targetInput.value === t ? ' active' : ''}" aria-pressed="${targetInput.value === t}" data-time="${t}">${labels[i]}</button>`
+    ).join('');
+    timeChips.querySelectorAll('.time-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        cancelReminder(true);
+        targetInput.value = chip.dataset.time;
+        selectedIndex = null;
+        timeChips.querySelectorAll('.time-chip').forEach(c => { c.classList.remove('active'); c.setAttribute('aria-pressed', 'false'); });
+        chip.classList.add('active');
+        chip.setAttribute('aria-pressed', 'true');
+        calculate();
+      });
+    });
+  }
+
+  // ── Event wiring ──
+  modeWakeBtn.addEventListener('click', () => setMode('wake'));
+  modeSleepBtn.addEventListener('click', () => setMode('sleep'));
+  modeNapBtn.addEventListener('click', () => setMode('nap'));
+
+  targetInput.addEventListener('input', () => {
+    cancelReminder(true);
+    selectedIndex = null;
+    timeChips.querySelectorAll('.time-chip').forEach(c => { const active = c.dataset.time === targetInput.value; c.classList.toggle('active', active); c.setAttribute('aria-pressed', String(active)); });
+    calculate();
+  });
+  bufferRange.addEventListener('input', () => { cancelReminder(true); calculate(); });
+  cycleRange.addEventListener('input', () => { cancelReminder(true); calculate(); });
+
+  advToggle.addEventListener('click', () => {
+    const open = advPanel.classList.toggle('open');
+    advToggle.setAttribute('aria-expanded', open);
+  });
+
+  // Mood chips
+  document.querySelectorAll('.mood-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      document.querySelectorAll('.mood-chip').forEach(c => { c.classList.remove('active'); c.setAttribute('aria-pressed', 'false'); });
+      chip.classList.add('active');
+      chip.setAttribute('aria-pressed', 'true');
+      mood = chip.dataset.mood;
+      calculate();
+    });
+  });
+
+  // Ambient sound strip
+  [ambientRain, ambientBrown, ambientOcean, ambientPiano].forEach(btn => {
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      const sound = btn.dataset.sound;
+      if (ambientActive && currentSound === sound) {
+        stopAmbientSound();
+      } else {
+        document.querySelectorAll('.ambient-sound-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
+        btn.classList.add('active');
+        startAmbientSound(sound);
+      }
+    });
+  });
+
+  // Breathing
+  breatheBtn.addEventListener('click', openBreathe);
+  breatheClose.addEventListener('click', closeBreathe);
+  breatheStartBtn.addEventListener('click', () => {
+    if (breathingActive) { stopBreathing(); } else { startBreathing(); }
+  });
+  breatheOverlay.addEventListener('click', (e) => {
+    if (e.target === breatheOverlay) closeBreathe();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Tab' && breatheOverlay.classList.contains('open')) {
+      if (e.shiftKey && document.activeElement === breatheClose) { e.preventDefault(); breatheStartBtn.focus(); }
+      else if (!e.shiftKey && document.activeElement === breatheStartBtn) { e.preventDefault(); breatheClose.focus(); }
+    }
+    if (e.key === 'Escape' && breatheOverlay.classList.contains('open')) closeBreathe();
+  });
+
+  // ── Theme toggle ──
+  function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    themeToggle.setAttribute('aria-label', theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
+    document.querySelectorAll('meta[name="theme-color"]').forEach(meta => meta.content = theme === 'dark' ? '#19251f' : '#f5f2e9');
+    const use = themeToggleIcon.querySelector('use');
+    if (use) use.setAttribute('href', theme === 'dark' ? '#i-sun' : '#i-moon');
+    try { localStorage.setItem('lull-theme', theme); } catch (_) {}
+  }
+
+  let savedTheme = null;
+  try { savedTheme = localStorage.getItem('lull-theme'); } catch (_) {}
+  if (!savedTheme) {
+    savedTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+  applyTheme(savedTheme);
+
+  themeToggle.addEventListener('click', () => {
+    const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+  });
+
+  // ── PWA: service worker + install prompt ──
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js').catch(() => {});
+    });
+  }
+
+  const isStandaloneDisplay = () =>
+    window.matchMedia('(display-mode: standalone)').matches ||
+    window.navigator.standalone === true; // iOS Safari flag
+
+  const isIOSDevice = () =>
+    /iphone|ipad|ipod/i.test(navigator.userAgent) && !window.MSStream;
+
+  let deferredInstallPrompt = null;
+
+  function refreshInstallButton() {
+    if (isStandaloneDisplay()) {
+      installBtn.hidden = true;
+      return;
+    }
+    installBtn.hidden = false;
+    installBtnLabel.textContent = deferredInstallPrompt ? 'Install app' : 'Install app';
+  }
+
+  // Chrome / Edge / Android: browser tells us installation is available
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredInstallPrompt = e;
+    refreshInstallButton();
+  });
+
+  installBtn.addEventListener('click', async () => {
+    if (isStandaloneDisplay()) return;
+
+    // Native install prompt is available — use it
+    if (deferredInstallPrompt) {
+      deferredInstallPrompt.prompt();
+      const { outcome } = await deferredInstallPrompt.userChoice;
+      deferredInstallPrompt = null;
+      showToast(outcome === 'accepted' ? 'Installing Lull…' : 'Install dismissed — you can try again anytime.');
+      refreshInstallButton();
+      return;
+    }
+
+    // iOS Safari doesn't support beforeinstallprompt — guide the user manually
+    if (isIOSDevice()) {
+      showToast('Tap the Share icon, then "Add to Home Screen" to install.');
+      return;
+    }
+
+    // Other browsers without native install support (e.g. Firefox desktop)
+    showToast('Check your browser menu for "Install app" or "Add to Home Screen".');
+  });
+
+  window.addEventListener('appinstalled', () => {
+    deferredInstallPrompt = null;
+    showToast('Lull installed! 🌙');
+    refreshInstallButton();
+  });
+
+  refreshInstallButton();
+
+  // ── Section nav bar ──
+  navItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const target = document.getElementById(item.dataset.target);
+      if (target) {
+        if (target.tagName === 'DETAILS') target.open = true;
+        target.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'start' });
+        (target.tagName === 'DETAILS' ? target.querySelector('summary') : target).focus({ preventScroll: true });
+      }
+    });
+  });
+
+  const navSections = navItems
+    .map(item => ({ item, el: document.getElementById(item.dataset.target) }))
+    .filter(s => s.el);
+
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const match = navSections.find(s => s.el === entry.target);
+      if (!match) return;
+      navItems.forEach(i => i.classList.remove('active'));
+      match.item.classList.add('active');
+    });
+  }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+
+  navSections.forEach(s => navObserver.observe(s.el));
+
+  document.querySelectorAll('a[href="#planSection"]').forEach(link => {
+    link.addEventListener('click', event => {
+      event.preventDefault();
+      const planner = document.getElementById('planSection');
+      planner.scrollIntoView({ behavior: 'instant', block: 'start' });
+      planner.focus({ preventScroll: true });
+    });
+  });
+
+  // ── Init ──
+  renderTimeChips();
+  calculate();
+  if (copyrightYear) copyrightYear.textContent = new Date().getFullYear();
+  // Keep time-dependent details current without interrupting a breathing session.
+  setInterval(() => { if (!breatheOverlay.classList.contains('open')) calculate(); }, 15000);
+</script>
+<script src="story.js"></script>
+</body>
+</html>
