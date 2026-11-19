@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Lull — A little rhythm. A better rest.</title>
 <meta name="description" content="Plan your bedtime, wake-up, or nap with Lull. Compare sleep windows, set a reminder, and wind down with ambient sounds.">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
-<meta name="theme-color" content="#19251f" media="(prefers-color-scheme: dark)">
-<meta name="theme-color" content="#f5f2e9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#050505" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#faf8f3" media="(prefers-color-scheme: light)">
 <link rel="apple-touch-icon" href="icon-192.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -16,6 +16,47 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+<div class="uiverse-midnight-sky" id="skyBackground" data-phase="intro" aria-hidden="true">
+  <div class="sky-canvas">
+    <div class="sky-gradient-layer sky-dusk"></div>
+    <div class="sky-gradient-layer sky-cosmos"></div>
+    <div class="sky-gradient-layer sky-dawn"></div>
+    <div class="sky-horizon-glow"></div>
+    <div class="stars stars-1"></div>
+    <div class="stars stars-2"></div>
+    <div class="stars stars-3"></div>
+    <div class="meteor m1"></div>
+    <div class="meteor m2"></div>
+    <div class="meteor m3"></div>
+  </div>
+</div>
+
+<div class="moon-layer" id="moonLayer">
+  <button class="moon" id="moonOrb" type="button" aria-label="Wake the moon" disabled>
+    <svg class="moon-svg" viewBox="0 0 80 80" aria-hidden="true">
+      <circle class="moon-earthshine" cx="40" cy="40" r="36"/>
+      <path class="moon-lit" id="moonLitPath" d="M 40 4 A 36 36 0 0 1 40 76 A 21.60 36 0 0 0 40 4 Z"/>
+      <g class="moon-face">
+        <g class="moon-brows"><path d="M23 25 Q27 23 31 25"/><path d="M47 24 Q51 22 55 25"/></g>
+        <g class="moon-open-eyes">
+          <path class="moon-eye-left" d="M26 31 C25 28 29 27 29 31 L29 35 C29 38 26 38 26 35Z"/>
+          <path class="moon-eye-right" d="M49 30 C49 27 52 28 52 31 L52 35 C52 38 49 37 49 34Z"/>
+        </g>
+        <g class="moon-closed-eyes"><path d="M24 34 Q27 37 31 33"/><path d="M47 34 Q51 37 55 33"/></g>
+        <path class="moon-nose" d="M39 34 L37 42 Q39 43 41 41"/>
+        <path class="moon-mouth" d="M35 49 Q40 51 44 48"/>
+        <path class="moon-yawn" d="M37 48 C34 50 35 57 39 57 C44 57 44 48 40 47 Q38 47 37 48Z"/>
+      </g>
+    </svg>
+    <svg class="moon-snore" viewBox="0 0 72 84" fill="none" aria-hidden="true">
+      <path d="M55 64 L65 63 L56 74 L67 73"/>
+      <path d="M33 39 L46 40 L33 53 L48 52"/>
+      <path d="M10 14 L26 12 L12 29 L28 28"/>
+    </svg>
+  </button>
+  <span class="sr-only" id="moonAnnouncement" role="status"></span>
+</div>
 
 <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
   <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
@@ -48,20 +89,68 @@
     <a class="brand" href="#" aria-label="Lull home"><svg class="icon" aria-hidden="true"><use href="#i-moon"/></svg><span class="wordmark">lull</span><span class="brand-note">A daily ritual<br>for better rest</span></a>
     <div class="header-actions">
       <a class="desktop-link" href="#nightStory">The story of rest</a>
-      <button class="install-btn" id="installBtn" type="button"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg><span id="installBtnLabel">Install app</span></button>
-      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark theme"><svg class="icon" id="themeToggleIcon" aria-hidden="true"><use href="#i-moon"/></svg></button>
+      <button class="font-toggle" id="fontToggle" type="button" aria-label="Switch body font between Raleway and Gilroy" title="Switch body font between Raleway and Gilroy"><span class="font-toggle-prefix">Font</span><span class="font-toggle-name" id="fontToggleName">Raleway</span></button>
+      <button class="install-btn" id="installBtn" type="button" aria-labelledby="installBtnLabel"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg><span id="installBtnLabel">Install app</span></button>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light theme"><svg class="icon" id="themeToggleIcon" aria-hidden="true"><use href="#i-sun"/></svg></button>
     </div>
   </header>
   <main>
-    <div class="intro">
-      <div><p class="eyebrow">Your personal sleep planner</p><h1>A little rhythm.<br><em>A better rest.</em></h1></div>
-      <div class="intro-note"><p>Find a little room for rest.<br>Your next sleep plan starts here.</p><a class="intro-plan-link" href="#planSection">Open the planner <span aria-hidden="true">↗</span></a><p class="intro-action-note">Choose a time. We’ll work out the rest.</p></div>
-    </div>
-    <section class="night-story" id="nightStory" aria-labelledby="storyTitle">
-      <div class="story-opening">
-        <div><p class="eyebrow">An evening in four movements</p><h2 id="storyTitle">The space between<br><em>today &amp; tomorrow.</em></h2></div>
-        <a class="story-skip" href="#planSection">Skip to planner <span aria-hidden="true">↗</span></a>
+    <!-- Unified Morphing Stage: One pinned page that transitions on scroll -->
+    <div class="morph-hero-stage" id="morphHeroStage">
+      <div class="morph-hero-sticky" id="morphSticky">
+        <div class="morph-hero-inner">
+
+          <!-- Frame 1: Personal Sleep Planner Intro -->
+          <div class="morph-frame morph-frame-1" id="morphFrame1">
+            <p class="eyebrow morph-eyebrow">Your personal sleep planner</p>
+            <h1 class="morph-headline">
+              <span class="morph-line morph-line-1">
+                <span class="morph-word">A</span> <span class="morph-word">little</span> <span class="morph-word">rhythm.</span>
+              </span>
+              <em class="morph-line morph-line-2">
+                <span class="morph-word">A</span> <span class="morph-word">better</span> <span class="morph-word">rest.</span>
+              </em>
+            </h1>
+            <div class="morph-action-card">
+              <p class="morph-sub">Find a little room for rest.<br>Your next sleep plan starts here.</p>
+              <a class="intro-plan-link" href="#planSection">Open the planner <span aria-hidden="true">↗</span></a>
+              <p class="intro-action-note">Choose a time. We’ll work out the rest.</p>
+            </div>
+          </div>
+
+          <!-- Frame 2: An Evening in Four Movements Prologue -->
+          <div class="morph-frame morph-frame-2" id="morphFrame2" aria-hidden="true">
+            <p class="eyebrow morph-eyebrow">
+              <span class="morph-badge-dot" id="morphBadgeDot"></span> An evening in four movements
+            </p>
+            <h2 class="morph-headline" id="storyTitle">
+              <span class="morph-line morph-line-1">
+                <span class="morph-word">The</span> <span class="morph-word">space</span> <span class="morph-word">between</span>
+              </span>
+              <em class="morph-line morph-line-2">
+                <span class="morph-word">today</span> <span class="morph-word">&amp;</span> <span class="morph-word">tomorrow.</span>
+              </em>
+            </h2>
+            <div class="morph-action-card">
+              <p class="morph-sub">Before you sleep, pause.<br>Follow the four quiet movements of the night.</p>
+              <a class="story-skip story-opening-skip" href="#planSection">Skip to planner <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+
+          <!-- Scroll Cue -->
+          <div class="intro-scroll-hint" id="morphScrollHint" aria-hidden="true">
+            <span class="intro-scroll-text" id="morphHintText">Scroll to explore</span>
+            <svg class="intro-scroll-arrow" width="12" height="16" viewBox="0 0 12 16" fill="none">
+              <path d="M6 1v13M1 9l5 5 5-5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+
+        </div>
       </div>
+    </div>
+
+    <!-- The 4-Movement Story & Interactive Clock -->
+    <section class="night-story" id="nightStory" aria-labelledby="storyTitle">
       <div class="story-layout">
         <div class="story-visual" aria-hidden="true">
           <div class="story-visual-top"><span>A small atlas of rest</span><span><span id="storyChapterNumber">01</span> / 04</span></div>
@@ -1198,16 +1287,19 @@
   function applyTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
     themeToggle.setAttribute('aria-label', theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
-    document.querySelectorAll('meta[name="theme-color"]').forEach(meta => meta.content = theme === 'dark' ? '#19251f' : '#f5f2e9');
+    document.querySelectorAll('meta[name="theme-color"]').forEach(meta => meta.content = theme === 'dark' ? '#050505' : '#faf8f3');
     const use = themeToggleIcon.querySelector('use');
     if (use) use.setAttribute('href', theme === 'dark' ? '#i-sun' : '#i-moon');
-    try { localStorage.setItem('lull-theme', theme); } catch (_) {}
+    try {
+      localStorage.setItem('lull-theme-v2', theme);
+      localStorage.setItem('lull-theme', theme);
+    } catch (_) {}
   }
 
   let savedTheme = null;
-  try { savedTheme = localStorage.getItem('lull-theme'); } catch (_) {}
-  if (!savedTheme) {
-    savedTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  try { savedTheme = localStorage.getItem('lull-theme-v2') || localStorage.getItem('lull-theme'); } catch (_) {}
+  if (!savedTheme || savedTheme !== 'light') {
+    savedTheme = 'dark';
   }
   applyTheme(savedTheme);
 
@@ -1215,6 +1307,31 @@
     const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     applyTheme(next);
   });
+
+  // ── Body font toggle (Raleway / Gilroy) ──
+  const fontToggle = document.getElementById('fontToggle');
+  const fontToggleName = document.getElementById('fontToggleName');
+
+  function applyFont(font) {
+    document.documentElement.setAttribute('data-font', font);
+    if (fontToggleName) fontToggleName.textContent = font === 'gilroy' ? 'Gilroy' : 'Raleway';
+    if (fontToggle) fontToggle.setAttribute('aria-label', 'Switch body font to ' + (font === 'gilroy' ? 'Raleway' : 'Gilroy'));
+    try {
+      localStorage.setItem('lull-font', font);
+    } catch (_) {}
+  }
+
+  let savedFont = 'raleway';
+  try { savedFont = localStorage.getItem('lull-font') || 'raleway'; } catch (_) {}
+  applyFont(savedFont);
+
+  if (fontToggle) {
+    fontToggle.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-font') || 'raleway';
+      const next = current === 'raleway' ? 'gilroy' : 'raleway';
+      applyFont(next);
+    });
+  }
 
   // ── PWA: service worker + install prompt ──
   if ('serviceWorker' in navigator) {

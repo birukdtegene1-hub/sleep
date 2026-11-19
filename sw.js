@@ -1,7 +1,7 @@
 // Lull — service worker
 // Caches the app shell so the planner works offline / installs as a real PWA.
 
-const CACHE_VERSION = 'lull-cache-v4';
+const CACHE_VERSION = 'lull-cache-v12';
 
 const APP_SHELL = [
   './',
@@ -13,6 +13,10 @@ const APP_SHELL = [
   './assets/fonts/lull-display-italic.woff',
   './assets/fonts/lull-sans.woff',
   './assets/fonts/lull-sans-medium.woff',
+  './assets/fonts/raleway-variable.woff2',
+  './assets/fonts/raleway-variable-italic.woff2',
+  './assets/fonts/gilroy-regular.woff',
+  './assets/fonts/gilroy-medium.woff',
   './icon-192.png',
   './icon-512.png',
   './icon-512-maskable.png'
